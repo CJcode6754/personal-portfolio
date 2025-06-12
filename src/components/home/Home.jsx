@@ -3,7 +3,7 @@ import { MapPin, Globe, Download, Github, Mail } from 'lucide-react';
 
 const Home = () => {
   return (
-    <section className="min-h-screen bg-slate-950 flex items-center justify-center ml-24">
+    <section id='home' className="min-h-screen bg-slate-950 flex items-center justify-center ml-24">
       <div className="max-w-2xl mx-auto px-8 text-center">
         {/* Avatar */}
         <div className="w-24 h-24 bg-slate-800 rounded-full flex items-center justify-center text-slate-300 text-2xl font-medium mx-auto mb-8 border border-slate-800">

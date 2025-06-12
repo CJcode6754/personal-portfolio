@@ -43,7 +43,7 @@ const TechStack = () => {
   ];
 
   return (
-    <section className="min-h-screen py-24 bg-slate-950 ml-24">
+    <section id="techstack-section" className="min-h-screen py-24 bg-slate-950 ml-24">
       <div className="max-w-6xl mx-auto px-8">
         {/* Header */}
         <div className="text-center mb-16">
