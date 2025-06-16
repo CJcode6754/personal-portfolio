@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
-
+import TrendoraPic from '../../assets/projects/Trendora.png';
+import FinanceFlow from '../../assets/projects/FinanceFlow.png';
+import BeeMo from '../../assets/projects/Parameter Monitoring.png';
+import ProjectManagement from '../../assets/projects/ProjectManagement.png';
+import AutoCaller from '../../assets/projects/autoCaller.png';
+import CineSearch from '../../assets/projects/CineSearch.png';
+import OdinDashboard from '../../assets/projects/OdinProject.png';
+import JobPortal from '../../assets/projects/JobPortal.png';
 const Project = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [expandedId, setExpandedId] = useState(null);
@@ -29,7 +36,8 @@ const Project = () => {
       title: "FinanceFlow",
       description: "FinanceFlow is a modern and user-friendly personal finance tracker built with Laravel, Tailwind CSS, JavaScript, Chart.js, and MySQL. It features comprehensive expense tracking, budget management, and detailed financial analytics.",
       technologies: ["Laravel", "Blade", "Tailwind CSS", "MySQL", "Chart.js"],
-      github: "#",
+      image: FinanceFlow,
+      github: "https://github.com/CJcode6754/FinanceFlow",
       live: "#",
       category: "Full Stack",
       gradient: "from-green-500 to-emerald-500"
@@ -39,7 +47,8 @@ const Project = () => {
       title: "AutoCaller",
       description: "A modern Laravel-based platform where users can post cars for sale and receive direct calls from potential buyers. Features advanced search filters, real-time messaging, and integrated payment processing.",
       technologies: ["Laravel", "Blade", "Alpine.js", "Tailwind CSS", "JavaScript", "MySQL"],
-      github: "#",
+      image: AutoCaller,
+      github: "https://github.com/CJcode6754/AutoCaller",
       live: "#",
       category: "Full Stack",
       gradient: "from-blue-500 to-cyan-500"
@@ -49,7 +58,8 @@ const Project = () => {
       title: "BeeMo: IoT Beehive Monitor",
       description: "BeeMo is an IoT-based, web-enabled monitoring system for Tetragonula biroi, a stingless bee species native to the Philippines. Features environmental monitoring, automated alerts, and comprehensive analytics dashboard.",
       technologies: ["PHP", "HTML", "CSS", "Bootstrap", "JavaScript", "Chart.js", "PHPMailer", "Infobip API"],
-      github: "#",
+      image: BeeMo,
+      github: "https://github.com/CJcode6754/BeeMo",
       live: "#",
       category: "IoT + Backend",
       gradient: "from-yellow-500 to-orange-500"
@@ -59,37 +69,52 @@ const Project = () => {
       title: "Trendora",
       description: "E-Commerce platform for buying and selling trending products.",
       technologies: ["Laravel", "React", "TypeScript", "Shadcn", "Tailwind", "Postgres"],
-      github: "#",
+      image: TrendoraPic,
+      github: "https://github.com/CJcode6754/Trendora",
       live: "#",
       category: "Full Stack",
       gradient: "from-pink-500 to-purple-500"
     },
     {
       id: 5,
+      title: "Job Portal",
+      description: "A modern job portal application that connects job seekers with employers, featuring job listings, CRUD for jobs and user profiles. Built with React for a seamless user experience.",
+      technologies: ["React", "React Router", "Tailwind", "JSON Server"],
+      image: JobPortal,
+      github: "https://github.com/CJcode6754/JobPortal",
+      live: "#",
+      category: "Full Stack",
+      gradient: "from-pink-500 to-purple-500"
+    },
+    {
+      id: 6,
       title: "Project Management System",
       description: "A comprehensive project management CRUD application with role-based access control, advanced search capabilities, task assignment, and progress tracking. Built with modern React and Laravel stack.",
       technologies: ["React", "Inertia.js", "Laravel", "Tailwind CSS", "MySQL"],
-      github: "#",
+      image: ProjectManagement,
+      github: 'https://github.com/CJcode6754/Project_Management',
       live: "#",
       category: "Full Stack",
       gradient: "from-purple-500 to-pink-500"
     },
     {
-      id: 6,
+      id: 7,
       title: "CineSearch",
       description: "A modern and responsive movie browsing application that allows users to search for movies, view trending content, and access detailed movie information with beautiful UI animations.",
       technologies: ["React", "Tailwind CSS", "Appwrite", "TMDB API"],
-      github: "#",
+      image: CineSearch,
+      github: "https://github.com/CJcode6754/CineSearch",
       live: "#",
       category: "Frontend",
       gradient: "from-red-500 to-pink-500"
     },
     {
-      id: 7,
+      id: 8,
       title: "Odin Dashboard",
       description: "A sleek and modern responsive dashboard built with pure HTML and CSS, featuring clean design principles and smooth animations for data visualization.",
       technologies: ["HTML", "CSS"],
-      github: "#",
+      image: OdinDashboard,
+      github: "https://github.com/CJcode6754/OdinDashboard",
       live: "#",
       category: "Frontend",
       gradient: "from-indigo-500 to-purple-500"
@@ -136,9 +161,7 @@ const Project = () => {
               {/* Project Header */}
               <div className={`h-48 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                  <div className="text-6xl font-bold text-white/80 group-hover:scale-110 transition-transform duration-500">
-                    {project.title.charAt(0)}
-                  </div>
+                  <img src={project.image} className='w-full object-cover' alt={project.title}></img>
                 </div>
                 <div className="absolute top-4 right-4">
                   <span className="bg-slate-800/70 text-slate-300 px-3 py-1 rounded-full text-xs border border-slate-600/30 backdrop-blur-sm">
@@ -219,10 +242,10 @@ const Project = () => {
               These are just a few highlights from my portfolio. I'm always working on new projects and exploring cutting-edge technologies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
+              <a href='https://github.com/CJcode6754' className="group inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
                 <Github className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
                 View All Projects
-              </button>
+              </a>
               <button className="inline-flex items-center justify-center border border-slate-600 bg-slate-800/30 hover:bg-slate-700/50 hover:border-cyan-500/50 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105">
                 Get In Touch
               </button>

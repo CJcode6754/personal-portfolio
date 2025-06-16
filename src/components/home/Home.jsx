@@ -86,7 +86,7 @@ const Home = () => {
           </div>
           <div className="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
             <Globe className="w-4 h-4 animate-bounce" style={{ animationDelay: '0.7s' }} />
-            4+ Years
+            1+ Years
           </div>
         </div>
 
@@ -104,9 +104,9 @@ const Home = () => {
             Resume
           </button>
           
-          <button className="group border border-slate-700 text-slate-300 p-3 rounded-full hover:border-cyan-500 hover:text-cyan-400 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/10">
+          <a href='https://github.com/CJcode6754' className="group border border-slate-700 text-slate-300 p-3 rounded-full hover:border-cyan-500 hover:text-cyan-400 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/10">
             <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-          </button>
+          </a>
         </div>
 
         {/* Scroll Indicator */}
