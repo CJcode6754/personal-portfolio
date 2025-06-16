@@ -38,7 +38,7 @@ const Project = () => {
       technologies: ["Laravel", "Blade", "Tailwind CSS", "MySQL", "Chart.js"],
       image: FinanceFlow,
       github: "https://github.com/CJcode6754/FinanceFlow",
-      live: "#",
+      live: "",
       category: "Full Stack",
       gradient: "from-green-500 to-emerald-500"
     },
@@ -49,7 +49,7 @@ const Project = () => {
       technologies: ["Laravel", "Blade", "Alpine.js", "Tailwind CSS", "JavaScript", "MySQL"],
       image: AutoCaller,
       github: "https://github.com/CJcode6754/AutoCaller",
-      live: "#",
+      live: "",
       category: "Full Stack",
       gradient: "from-blue-500 to-cyan-500"
     },
@@ -60,7 +60,7 @@ const Project = () => {
       technologies: ["PHP", "HTML", "CSS", "Bootstrap", "JavaScript", "Chart.js", "PHPMailer", "Infobip API"],
       image: BeeMo,
       github: "https://github.com/CJcode6754/BeeMo",
-      live: "#",
+      live: "",
       category: "IoT + Backend",
       gradient: "from-yellow-500 to-orange-500"
     },
@@ -71,7 +71,7 @@ const Project = () => {
       technologies: ["Laravel", "React", "TypeScript", "Shadcn", "Tailwind", "Postgres"],
       image: TrendoraPic,
       github: "https://github.com/CJcode6754/Trendora",
-      live: "#",
+      live: "",
       category: "Full Stack",
       gradient: "from-pink-500 to-purple-500"
     },
@@ -82,7 +82,7 @@ const Project = () => {
       technologies: ["React", "React Router", "Tailwind", "JSON Server"],
       image: JobPortal,
       github: "https://github.com/CJcode6754/JobPortal",
-      live: "#",
+      live: "",
       category: "Full Stack",
       gradient: "from-pink-500 to-purple-500"
     },
@@ -93,7 +93,7 @@ const Project = () => {
       technologies: ["React", "Inertia.js", "Laravel", "Tailwind CSS", "MySQL"],
       image: ProjectManagement,
       github: 'https://github.com/CJcode6754/Project_Management',
-      live: "#",
+      live: "",
       category: "Full Stack",
       gradient: "from-purple-500 to-pink-500"
     },
