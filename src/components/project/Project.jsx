@@ -104,7 +104,7 @@ const Project = () => {
       technologies: ["React", "Tailwind CSS", "Appwrite", "TMDB API"],
       image: CineSearch,
       github: "https://github.com/CJcode6754/CineSearch",
-      live: "#",
+      live: "https://cine-search-delta.vercel.app",
       category: "Frontend",
       gradient: "from-red-500 to-pink-500"
     },
@@ -115,7 +115,7 @@ const Project = () => {
       technologies: ["HTML", "CSS"],
       image: OdinDashboard,
       github: "https://github.com/CJcode6754/OdinDashboard",
-      live: "#",
+      live: "https://odin-dashboard-alpha.vercel.app",
       category: "Frontend",
       gradient: "from-indigo-500 to-purple-500"
     },
