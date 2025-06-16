@@ -93,10 +93,10 @@ const Home = () => {
         <div className={`flex flex-col sm:flex-row justify-center gap-4 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`} style={{ transitionDelay: '1.2s' }}>
-          <button className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25 relative overflow-hidden">
+          <a href='https://www.facebook.com/ceejay.ibabiosa.1/' className="group bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25 relative overflow-hidden">
             <span className="relative z-10">Get in touch</span>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-          </button>
+          </a>
           
           <button className="group border border-slate-700 text-slate-300 px-8 py-3 rounded-full hover:border-cyan-500 hover:text-cyan-400 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/10">
             <Download className="w-4 h-4 group-hover:animate-bounce" />

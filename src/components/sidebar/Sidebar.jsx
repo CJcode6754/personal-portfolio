@@ -31,7 +31,7 @@ const Sidebar = () => {
           <a 
             href="#home" 
             onClick={() => setIsOpen(false)}
-            className="group mb-12 hover:scale-110 transition-all duration-300"
+            className="group hover:scale-110 transition-all duration-300"
           >
             <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-cyan-500/25 group-hover:shadow-cyan-500/40 group-hover:rotate-6 transition-all duration-300">
               <div className="w-12 h-12 bg-slate-900/80 rounded-xl flex items-center justify-center backdrop-blur-sm">
@@ -70,13 +70,6 @@ const Sidebar = () => {
               </a>
             ))}
           </nav>
-
-          {/* Status Indicator */}
-          <div className="mt-auto">
-            <div className="flex items-center justify-center">
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
-            </div>
-          </div>
         </div>
       </aside>
 
