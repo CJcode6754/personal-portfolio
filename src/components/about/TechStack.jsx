@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Code, Users, ExternalLink, GitBranchIcon } from "lucide-react";
+import { Rocket, Star, Trophy, Target, Users } from "lucide-react";
 
 const TechStack = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,139 +23,130 @@ const TechStack = () => {
   }, []);
 
   const technologies = [
-    { name: "Laravel", color: "from-red-500 to-orange-500" },
-    { name: "React", color: "from-blue-400 to-cyan-400" },
-    { name: "JavaScript", color: "from-yellow-400 to-orange-400" },
-    { name: "PHP", color: "from-purple-500 to-indigo-500" },
-    { name: "Node.js", color: "from-green-500 to-emerald-500" },
-    { name: "Tailwind CSS", color: "from-cyan-400 to-blue-500" },
-    { name: "Bootstrap", color: "from-purple-600 to-blue-600" },
-    { name: "MySQL", color: "from-blue-600 to-indigo-600" },
-    { name: "PostgreSQL", color: "from-blue-500 to-slate-600" },
-    { name: "Figma", color: "from-pink-500 to-purple-500" },
-    { name: "Git", color: "from-orange-500 to-red-500" },
-    { name: "Chart.js", color: "from-green-400 to-cyan-400" },
+    { name: "Laravel", icon: "🔥", color: "from-red-500 to-orange-500" },
+    { name: "React", icon: "⚛️", color: "from-blue-400 to-cyan-400" },
+    { name: "JavaScript", icon: "⚡", color: "from-yellow-400 to-orange-400" },
+    { name: "PHP", icon: "🐘", color: "from-purple-500 to-indigo-500" },
+    { name: "Node.js", icon: "🟢", color: "from-green-500 to-emerald-500" },
+    { name: "Tailwind", icon: "💨", color: "from-cyan-400 to-blue-500" },
+    { name: "Bootstrap", icon: "🅱️", color: "from-purple-600 to-blue-600" },
+    { name: "MySQL", icon: "🗄️", color: "from-blue-600 to-indigo-600" },
+    { name: "PostgreSQL", icon: "🐘", color: "from-blue-500 to-slate-600" },
+    { name: "Figma", icon: "🎨", color: "from-pink-500 to-purple-500" },
+    { name: "Git", icon: "🌿", color: "from-orange-500 to-red-500" },
+    { name: "Chart.js", icon: "📊", color: "from-green-400 to-cyan-400" },
   ];
 
   const stats = [
-    { number: "19+", label: "Projects" },
-    { number: "9+", label: "Clients" },
-    { number: "4+", label: "Years" },
-    { number: "100%", label: "Satisfaction" },
-  ];
-
-  const services = [
-    { name: "Web Development", icon: "🚀" },
-    { name: "UI/UX Design", icon: "🎨" },
-    { name: "Performance Optimization", icon: "⚡" },
+    { number: "8+", label: "Projects Completed", icon: Rocket, color: "from-purple-500 to-pink-500" },
+    { number: "2+", label: "Happy Clients", icon: Users, color: "from-green-500 to-emerald-500" },
+    { number: "1+", label: "Years Experience", icon: Trophy, color: "from-yellow-500 to-orange-500" },
+    { number: "100%", label: "Success Rate", icon: Target, color: "from-cyan-500 to-blue-500" },
   ];
 
   return (
-    <section id="techstack-section" className="min-h-screen py-24 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 lg:ml-24 px-4 relative overflow-hidden">
-      {/* Animated Background */}
+    <section id="techstack-section" className="min-h-screen py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 lg:ml-24 px-4 relative overflow-hidden">
+      {/* Enhanced Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-3/4 left-1/4 w-48 h-48 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${
+        <div className={`text-center mb-20 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="text-4xl lg:text-5xl font-light text-white mb-4">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-full px-6 py-3 border border-purple-500/30 mb-8">
+            <Star className="w-5 h-5 text-purple-400" />
+            <span className="text-purple-300 font-medium">Skills & Expertise</span>
+          </div>
+          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+            My <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
               Tech Stack
-            </span> & Services
+            </span>
           </h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg">
-            The technologies I work with and the results I deliver
+          <p className="text-slate-400 max-w-3xl mx-auto text-xl leading-relaxed">
+            Crafting digital experiences with cutting-edge technologies and creative problem-solving
           </p>
         </div>
 
-        {/* Technologies */}
-        <div className={`mb-16 transition-all duration-1000 ${
+        {/* Technologies Compact Grid */}
+        <div className={`mb-20 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`} style={{ transitionDelay: '0.2s' }}>
-          <div className="flex items-center justify-center gap-3 mb-12">
-            <Code className="w-6 h-6 text-cyan-400" />
-            <h3 className="text-2xl font-light text-white">Technologies</h3>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <h3 className="text-3xl font-bold text-white text-center mb-12">
+            Technologies I Love
+          </h3>
+          
+          {/* Floating Tech Pills */}
+          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
             {technologies.map((tech, index) => (
               <div
                 key={tech.name}
-                className={`group p-6 bg-slate-800/30 backdrop-blur-sm rounded-2xl border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2 hover:scale-105 cursor-pointer ${
+                className={`group relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-800/70 to-slate-900/70 backdrop-blur-lg rounded-full px-6 py-3 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 hover:scale-110 hover:-translate-y-1 cursor-pointer ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
-                style={{ transitionDelay: `${0.1 * index}s` }}
+                style={{ transitionDelay: `${0.05 * index}s` }}
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${tech.color} rounded-xl mx-auto mb-4 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:rotate-6`}>
-                  {tech.name.charAt(0)}
-                </div>
-                <h4 className="text-white text-center font-medium group-hover:text-cyan-300 transition-colors duration-300">
+                {/* Gradient Background on Hover */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
+                
+                {/* Icon */}
+                <span className="text-2xl group-hover:scale-125 transition-transform duration-300 relative z-10">
+                  {tech.icon}
+                </span>
+                
+                {/* Name */}
+                <span className="text-white font-medium group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-300 group-hover:to-pink-300 group-hover:bg-clip-text transition-all duration-300 relative z-10">
                   {tech.name}
-                </h4>
+                </span>
+
+                {/* Hover Glow Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} rounded-full blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-300 -z-10`}></div>
               </div>
             ))}
           </div>
+
+          {/* Tech Categories Showcase */}
+          {/* <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-lg rounded-2xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300">
+              <div className="text-3xl mb-3">⚡</div>
+              <h4 className="text-lg font-bold text-white mb-2">Frontend</h4>
+              <p className="text-slate-400 text-sm">React, JavaScript, Tailwind CSS</p>
+            </div>
+            <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-lg rounded-2xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300">
+              <div className="text-3xl mb-3">🔧</div>
+              <h4 className="text-lg font-bold text-white mb-2">Backend</h4>
+              <p className="text-slate-400 text-sm">Laravel, PHP, Node.js</p>
+            </div>
+            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-lg rounded-2xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all duration-300">
+              <div className="text-3xl mb-3">🛠️</div>
+              <h4 className="text-lg font-bold text-white mb-2">Tools</h4>
+              <p className="text-slate-400 text-sm">Git, Figma, Chart.js</p>
+            </div>
+          </div> */}
         </div>
 
-        {/* Stats and Services */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Stats */}
-          <div className={`transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-          }`} style={{ transitionDelay: '0.4s' }}>
-            <h3 className="text-2xl font-light text-white mb-8 text-center">Statistics</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className="bg-slate-800/30 backdrop-blur-sm rounded-2xl border border-slate-700/50 p-6 text-center hover:border-cyan-500/50 transition-all duration-300 hover:scale-105"
-                >
-                  <div className="text-3xl font-bold text-cyan-400 mb-2">{stat.number}</div>
-                  <div className="text-slate-400">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Services */}
-          <div className={`transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-          }`} style={{ transitionDelay: '0.6s' }}>
-            <h3 className="text-2xl font-light text-white mb-8 text-center">Services</h3>
-            <div className="space-y-4">
-              {services.map((service, index) => (
-                <div
-                  key={service.name}
-                  className="group bg-slate-800/30 backdrop-blur-sm rounded-2xl border border-slate-700/50 p-6 hover:border-cyan-500/50 transition-all duration-300 hover:scale-105 cursor-pointer"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="text-2xl group-hover:scale-125 transition-transform duration-300">
-                      {service.icon}
+        {/* Stats Section */}
+        <div className={`mb-20 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{ transitionDelay: '0.4s' }}>
+          <div className="bg-gradient-to-r from-slate-800/30 to-slate-900/30 backdrop-blur-xl rounded-3xl border border-slate-700/50 p-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {stats.map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <div key={stat.label} className="text-center group">
+                    <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <IconComponent className="w-8 h-8 text-white" />
                     </div>
-                    <span className="text-slate-300 group-hover:text-cyan-300 transition-colors duration-300">
-                      {service.name}
-                    </span>
+                    <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
+                    <div className="text-slate-400 text-sm">{stat.label}</div>
                   </div>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 backdrop-blur-sm rounded-2xl border border-cyan-500/20 p-8 text-center mt-8">
-              <h3 className="text-xl font-light text-white mb-4">
-                Ready to work together?
-              </h3>
-              <p className="text-slate-400 mb-6">
-                Let's discuss your project and bring your ideas to life.
-              </p>
-              <button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25">
-                Start a conversation
-              </button>
+                );
+              })}
             </div>
           </div>
         </div>

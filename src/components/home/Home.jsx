@@ -41,7 +41,6 @@ const Home = () => {
               CJ
             </div>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 animate-pulse"></div>
         </div>
         
         {/* Status */}
@@ -77,7 +76,7 @@ const Home = () => {
         </p>
 
         {/* Quick Info */}
-        <div className={`flex flex-col sm:flex-row justify-center gap-6 sm:gap-8 mb-12 text-sm text-slate-400 transition-all duration-700 ${
+        <div className={`flex flex-row justify-center gap-6 sm:gap-8 mb-12 text-sm text-slate-400 transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`} style={{ transitionDelay: '1s' }}>
           <div className="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
@@ -104,7 +103,7 @@ const Home = () => {
             Resume
           </button>
           
-          <a href='https://github.com/CJcode6754' className="group border border-slate-700 text-slate-300 p-3 rounded-full hover:border-cyan-500 hover:text-cyan-400 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/10">
+          <a href='https://github.com/CJcode6754' className="group flex justify-center border border-slate-700 text-slate-300 p-3 rounded-full hover:border-cyan-500 hover:text-cyan-400 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/10">
             <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
           </a>
         </div>

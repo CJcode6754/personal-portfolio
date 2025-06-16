@@ -228,30 +228,6 @@ const Project = () => {
             </div>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <div className={`text-center transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{ transitionDelay: '0.8s' }}>
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-700/30 backdrop-blur-lg rounded-3xl p-12 border border-slate-700/50 max-w-2xl mx-auto hover:border-cyan-500/30 transition-all duration-500">
-            <div className="text-6xl mb-6 animate-bounce">🎯</div>
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Want to see more?
-            </h3>
-            <p className="text-slate-400 mb-8 leading-relaxed">
-              These are just a few highlights from my portfolio. I'm always working on new projects and exploring cutting-edge technologies.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href='https://github.com/CJcode6754' className="group inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
-                <Github className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
-                View All Projects
-              </a>
-              <button className="inline-flex items-center justify-center border border-slate-600 bg-slate-800/30 hover:bg-slate-700/50 hover:border-cyan-500/50 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105">
-                Get In Touch
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
