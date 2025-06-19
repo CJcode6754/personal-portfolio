@@ -15,7 +15,7 @@ const Sidebar = () => {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 left-6 z-50 lg:hidden bg-slate-900/90 backdrop-blur-sm border border-slate-700 rounded-2xl p-3 text-white hover:bg-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:scale-110 shadow-lg"
+        className="fixed top-6 right-6 z-50 lg:hidden bg-slate-900/90 backdrop-blur-sm border border-slate-700 rounded-2xl p-3 text-white hover:bg-slate-800 hover:border-cyan-500/50 transition-all duration-300 hover:scale-110 shadow-lg"
       >
         <div className="relative">
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

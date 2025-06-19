@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Rocket, Star, Trophy, Target, Users } from "lucide-react";
-
+import LaravelIcon from '../../assets/icons/laravel.svg';
+import JavaScriptIcon from '../../assets/icons/javascript.svg';
+import PHPIcon from '../../assets/icons/php.svg';
+import NodeJsIcon from '../../assets/icons/nodejs.svg';
+import TailwindIcon from '../../assets/icons/tailwind.svg';
+import BootstrapIcon from '../../assets/icons/bootstrap.svg';
+import MySQLIcon from '../../assets/icons/mysql.svg';
+import PostgresIcon from '../../assets/icons/postgresql.svg';
+import FigmaIcon from '../../assets/icons/figma.svg';
+import GitIcon from '../../assets/icons/git.svg';
+import ChartJsIcon from '../../assets/icons/chartjs.png';
+import ReactIcon from '../../assets/react.svg';
 const TechStack = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -23,18 +34,18 @@ const TechStack = () => {
   }, []);
 
   const technologies = [
-    { name: "Laravel", icon: "🔥", color: "from-red-500 to-orange-500" },
-    { name: "React", icon: "⚛️", color: "from-blue-400 to-cyan-400" },
-    { name: "JavaScript", icon: "⚡", color: "from-yellow-400 to-orange-400" },
-    { name: "PHP", icon: "🐘", color: "from-purple-500 to-indigo-500" },
-    { name: "Node.js", icon: "🟢", color: "from-green-500 to-emerald-500" },
-    { name: "Tailwind", icon: "💨", color: "from-cyan-400 to-blue-500" },
-    { name: "Bootstrap", icon: "🅱️", color: "from-purple-600 to-blue-600" },
-    { name: "MySQL", icon: "🗄️", color: "from-blue-600 to-indigo-600" },
-    { name: "PostgreSQL", icon: "🐘", color: "from-blue-500 to-slate-600" },
-    { name: "Figma", icon: "🎨", color: "from-pink-500 to-purple-500" },
-    { name: "Git", icon: "🌿", color: "from-orange-500 to-red-500" },
-    { name: "Chart.js", icon: "📊", color: "from-green-400 to-cyan-400" },
+    { name: "Laravel", icon: LaravelIcon, color: "from-red-500 to-orange-500" },
+    { name: "React", icon: ReactIcon, color: "from-blue-400 to-cyan-400" },
+    { name: "JavaScript", icon: JavaScriptIcon, color: "from-yellow-400 to-orange-400" },
+    { name: "PHP", icon: PHPIcon, color: "from-purple-500 to-indigo-500" },
+    { name: "Node.js", icon: NodeJsIcon, color: "from-green-500 to-emerald-500" },
+    { name: "Tailwind", icon: TailwindIcon, color: "from-cyan-400 to-blue-500" },
+    { name: "Bootstrap", icon: BootstrapIcon, color: "from-purple-600 to-blue-600" },
+    { name: "MySQL", icon: MySQLIcon, color: "from-blue-600 to-indigo-600" },
+    { name: "PostgreSQL", icon: PostgresIcon, color: "from-blue-500 to-slate-600" },
+    { name: "Figma", icon: FigmaIcon, color: "from-pink-500 to-purple-500" },
+    { name: "Git", icon: GitIcon, color: "from-orange-500 to-red-500" },
+    { name: "Chart.js", icon: ChartJsIcon, color: "from-green-400 to-cyan-400" },
   ];
 
   const stats = [
@@ -94,9 +105,11 @@ const TechStack = () => {
                 <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
                 
                 {/* Icon */}
-                <span className="text-2xl group-hover:scale-125 transition-transform duration-300 relative z-10">
+                {/* <span className="text-2xl group-hover:scale-125 transition-transform duration-300 relative z-10">
                   {tech.icon}
-                </span>
+                </span> */}
+
+                <img src={tech.icon} alt="" className="w-6 h-8 object-contain" />
                 
                 {/* Name */}
                 <span className="text-white font-medium group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-300 group-hover:to-pink-300 group-hover:bg-clip-text transition-all duration-300 relative z-10">
