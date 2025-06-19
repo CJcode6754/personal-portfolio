@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Home, User, Folder } from 'lucide-react';
+import { Menu, X, Home, User, Folder, BriefcaseBusinessIcon } from 'lucide-react';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +8,7 @@ const Sidebar = () => {
     { href: '#home', label: 'Home', icon: <Home className="w-5 h-5" /> },
     { href: '#techstack-section', label: 'About', icon: <User className="w-5 h-5" /> },
     { href: '#project-section', label: 'Projects', icon: <Folder className="w-5 h-5" /> },
+    { href: '#services', label: 'Services', icon: <BriefcaseBusinessIcon className='w-5 h-5' />}
   ];
 
   return (

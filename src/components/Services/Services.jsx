@@ -45,8 +45,8 @@ export default function Services() {
 
   return (
     <section
-      id="techstack-section"
-      className="min-h-screen py-24  bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 lg:ml-24 px-6 md:px-24 relative overflow-hidden"
+      id="services"
+      className="min-h-screen py-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 lg:ml-24 px-6 md:px-24 relative overflow-hidden"
     >
       {/* Services Section */}
       <div
@@ -65,7 +65,7 @@ export default function Services() {
             return (
               <div
                 key={service.name}
-                className="group bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2 hover:scale-105"
+                className="group bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-xl rounded-3xl p-4 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2 hover:scale-105"
               >
                 <div
                   className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}

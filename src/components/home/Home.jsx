@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { MapPin, Globe, Download, Github, Mail, ChevronDown } from 'lucide-react';
+import myPic from '../../assets/formal pic.png';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,9 +38,7 @@ const Home = () => {
         {/* Avatar */}
         <div className="relative mb-8 group">
           <div className="w-32 h-32 bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto shadow-2xl shadow-cyan-500/25 transition-all duration-500 hover:scale-110 hover:shadow-cyan-500/40">
-            <div className="w-28 h-28 bg-slate-900 rounded-full flex items-center justify-center">
-              CJ
-            </div>
+            <img src={myPic} alt="My Picture" className='w-29 h-29 object-cover rounded-full' />
           </div>
         </div>
         
