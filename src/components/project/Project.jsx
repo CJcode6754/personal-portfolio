@@ -8,11 +8,12 @@ import AutoCaller from "../../assets/projects/autoCaller.png";
 import CineSearch from "../../assets/projects/CineSearch.png";
 import OdinDashboard from "../../assets/projects/OdinProject.png";
 import JobPortal from "../../assets/projects/JobPortal.png";
-import Car from '../../assets/projects/Car_Configurator.png';
+import Car from "../../assets/projects/Car_Configurator.png";
 
 const Project = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [expandedId, setExpandedId] = useState(null);
+  const [techStackId, setTechStackId] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -145,7 +146,7 @@ const Project = () => {
       title: "Car Color Configurator",
       description:
         "Website where you can modify car colors (exterior & interior) and calculate the prize of Tesla Model Y based on the configuration.",
-      technologies: ["HTML", "Tailwind CSS", "JavaScript",],
+      technologies: ["HTML", "Tailwind CSS", "JavaScript"],
       image: Car,
       github: "https://github.com/CJcode6754/car_color_configuration",
       live: "https://car-color-configuration.vercel.app",
@@ -168,6 +169,10 @@ const Project = () => {
 
   const toggleDescription = (id) => {
     setExpandedId(expandedId === id ? null : id);
+  };
+
+  const toggleTechStack = (id) => {
+    setTechStackId(techStackId === id ? null : id);
   };
 
   return (
@@ -252,19 +257,38 @@ const Project = () => {
                 </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-slate-700/50 text-slate-400 px-3 py-1 rounded-full text-xs border border-slate-600/30 hover:border-cyan-500/50 hover:text-cyan-300 transition-all duration-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-slate-500 text-xs px-3 py-1 hover:text-slate-400 transition-colors duration-300">
-                      +{project.technologies.length - 3}
-                    </span>
+                <div
+                  onClick={() => toggleTechStack(project.id)}
+                  className="flex flex-wrap gap-2 mb-6"
+                >
+                  {techStackId === project.id ? (
+                    project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="bg-slate-700/50 text-slate-400 px-3 py-1 rounded-full text-xs border border-slate-600/30 hover:border-cyan-500/50 hover:text-cyan-300 transition-all duration-300"
+                      >
+                        {tech}
+                      </span>
+                    ))
+                  ) : (
+                    <>
+                      {project.technologies
+                        .slice(0, 3)
+                        .map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="bg-slate-700/50 text-slate-400 px-3 py-1 rounded-full text-xs border border-slate-600/30 hover:border-cyan-500/50 hover:text-cyan-300 transition-all duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+
+                      {project.technologies.length > 3 && (
+                        <span className="text-slate-500 text-xs px-3 py-1 hover:text-slate-400 transition-colors duration-300">
+                          +{project.technologies.length - 3}
+                        </span>
+                      )}
+                    </>
                   )}
                 </div>
 
@@ -276,8 +300,8 @@ const Project = () => {
                     rel="noopener noreferrer"
                     className="flex-1 group/btn inline-flex items-center justify-center border border-slate-700 bg-slate-800/50 hover:bg-slate-700 hover:border-cyan-500/50 text-xs py-3 px-4 rounded-xl transition-all duration-300 hover:scale-105"
                   >
-                    <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform duration-300" />
-                    Code
+                    <Github className="text-white w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform duration-300" />
+                    <span className="text-white">Code</span>
                   </a>
                   {project.live ? (
                     <a
