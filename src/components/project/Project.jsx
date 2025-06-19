@@ -8,6 +8,8 @@ import AutoCaller from "../../assets/projects/autoCaller.png";
 import CineSearch from "../../assets/projects/CineSearch.png";
 import OdinDashboard from "../../assets/projects/OdinProject.png";
 import JobPortal from "../../assets/projects/JobPortal.png";
+import Car from '../../assets/projects/Car_Configurator.png';
+
 const Project = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [expandedId, setExpandedId] = useState(null);
@@ -140,6 +142,18 @@ const Project = () => {
     },
     {
       id: 8,
+      title: "Car Color Configurator",
+      description:
+        "Website where you can modify car colors (exterior & interior) and calculate the prize of Tesla Model Y based on the configuration.",
+      technologies: ["HTML", "Tailwind CSS", "JavaScript",],
+      image: Car,
+      github: "https://github.com/CJcode6754/car_color_configuration",
+      live: "https://car-color-configuration.vercel.app",
+      category: "Frontend",
+      gradient: "from-red-500 to-pink-500",
+    },
+    {
+      id: 9,
       title: "Odin Dashboard",
       description:
         "A sleek and modern responsive dashboard built with pure HTML and CSS, featuring clean design principles and smooth animations for data visualization.",
@@ -208,7 +222,7 @@ const Project = () => {
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                   <img
                     src={project.image}
-                    className="w-full object-cover"
+                    className="w-full h-full object-fill"
                     alt={project.title}
                   ></img>
                 </div>
