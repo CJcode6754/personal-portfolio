@@ -84,7 +84,7 @@ const Home = () => {
           </div>
           <div className="flex items-center gap-2 hover:text-cyan-400 transition-colors duration-300">
             <Globe className="w-4 h-4 animate-bounce" style={{ animationDelay: '0.7s' }} />
-            1+ Years
+            6+ Months
           </div>
         </div>
 

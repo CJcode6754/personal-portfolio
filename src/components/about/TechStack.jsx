@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Rocket, Star, Trophy, Target, Users } from "lucide-react";
-import LaravelIcon from '../../assets/icons/laravel.svg';
-import JavaScriptIcon from '../../assets/icons/javascript.svg';
-import PHPIcon from '../../assets/icons/php.svg';
-import NodeJsIcon from '../../assets/icons/nodejs.svg';
-import TailwindIcon from '../../assets/icons/tailwind.svg';
-import BootstrapIcon from '../../assets/icons/bootstrap.svg';
-import MySQLIcon from '../../assets/icons/mysql.svg';
-import PostgresIcon from '../../assets/icons/postgresql.svg';
-import FigmaIcon from '../../assets/icons/figma.svg';
-import GitIcon from '../../assets/icons/git.svg';
-import ChartJsIcon from '../../assets/icons/chartjs.png';
-import ReactIcon from '../../assets/react.svg';
+import { Star } from "lucide-react";
+import { stats, technologies } from "../assets";
 const TechStack = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [tech, setTech] = useState([]);
+  const [myStats, setMyStats] = useState([]);
+
+  const fetchTechStack = () => {
+    setTech(technologies);
+  }
+
+  const fetchStats = () => {
+    setMyStats(stats)
+  }
+
+  useEffect(() => {
+    fetchTechStack();
+    fetchStats();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,28 +36,6 @@ const TechStack = () => {
       if (element) observer.unobserve(element);
     };
   }, []);
-
-  const technologies = [
-    { name: "Laravel", icon: LaravelIcon, color: "from-red-500 to-orange-500" },
-    { name: "React", icon: ReactIcon, color: "from-blue-400 to-cyan-400" },
-    { name: "JavaScript", icon: JavaScriptIcon, color: "from-yellow-400 to-orange-400" },
-    { name: "PHP", icon: PHPIcon, color: "from-purple-500 to-indigo-500" },
-    { name: "Node.js", icon: NodeJsIcon, color: "from-green-500 to-emerald-500" },
-    { name: "Tailwind", icon: TailwindIcon, color: "from-cyan-400 to-blue-500" },
-    { name: "Bootstrap", icon: BootstrapIcon, color: "from-purple-600 to-blue-600" },
-    { name: "MySQL", icon: MySQLIcon, color: "from-blue-600 to-indigo-600" },
-    { name: "PostgreSQL", icon: PostgresIcon, color: "from-blue-500 to-slate-600" },
-    { name: "Figma", icon: FigmaIcon, color: "from-pink-500 to-purple-500" },
-    { name: "Git", icon: GitIcon, color: "from-orange-500 to-red-500" },
-    { name: "Chart.js", icon: ChartJsIcon, color: "from-green-400 to-cyan-400" },
-  ];
-
-  const stats = [
-    { number: "8+", label: "Projects Completed", icon: Rocket, color: "from-purple-500 to-pink-500" },
-    { number: "2+", label: "Happy Clients", icon: Users, color: "from-green-500 to-emerald-500" },
-    { number: "1+", label: "Years Experience", icon: Trophy, color: "from-yellow-500 to-orange-500" },
-    { number: "100%", label: "Success Rate", icon: Target, color: "from-cyan-500 to-blue-500" },
-  ];
 
   return (
     <section id="techstack-section" className="min-h-screen py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 lg:ml-24 px-4 relative overflow-hidden">
@@ -93,7 +75,7 @@ const TechStack = () => {
           
           {/* Floating Tech Pills */}
           <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            {technologies.map((tech, index) => (
+            {tech.map((tech, index) => (
               <div
                 key={tech.name}
                 className={`group relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-800/70 to-slate-900/70 backdrop-blur-lg rounded-full px-6 py-3 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 hover:scale-110 hover:-translate-y-1 cursor-pointer ${
@@ -121,25 +103,6 @@ const TechStack = () => {
               </div>
             ))}
           </div>
-
-          {/* Tech Categories Showcase */}
-          {/* <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-lg rounded-2xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300">
-              <div className="text-3xl mb-3">⚡</div>
-              <h4 className="text-lg font-bold text-white mb-2">Frontend</h4>
-              <p className="text-slate-400 text-sm">React, JavaScript, Tailwind CSS</p>
-            </div>
-            <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-lg rounded-2xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300">
-              <div className="text-3xl mb-3">🔧</div>
-              <h4 className="text-lg font-bold text-white mb-2">Backend</h4>
-              <p className="text-slate-400 text-sm">Laravel, PHP, Node.js</p>
-            </div>
-            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-lg rounded-2xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all duration-300">
-              <div className="text-3xl mb-3">🛠️</div>
-              <h4 className="text-lg font-bold text-white mb-2">Tools</h4>
-              <p className="text-slate-400 text-sm">Git, Figma, Chart.js</p>
-            </div>
-          </div> */}
         </div>
 
         {/* Stats Section */}
@@ -148,7 +111,7 @@ const TechStack = () => {
         }`} style={{ transitionDelay: '0.4s' }}>
           <div className="bg-gradient-to-r from-slate-800/30 to-slate-900/30 backdrop-blur-xl rounded-3xl border border-slate-700/50 p-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {stats.map((stat, index) => {
+              {myStats.map((stat, index) => {
                 const IconComponent = stat.icon;
                 return (
                   <div key={stat.label} className="text-center group">
