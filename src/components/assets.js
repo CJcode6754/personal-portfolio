@@ -20,6 +20,11 @@ import GitIcon from '../assets/icons/git.svg';
 import ChartJsIcon from '../assets/icons/chartjs.png';
 import ReactIcon from '../assets/react.svg';
 import { Rocket, Trophy, Target, Users } from "lucide-react";
+import resume from '../assets/resume.pdf';
+
+export const assets = {
+  resume
+}
 
 export const techStackCategory = [
     'All',
