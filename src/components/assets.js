@@ -125,7 +125,7 @@ export const projects = [
     title: "Job Portal",
     description:
       "A modern job portal application that connects job seekers with employers, featuring job listings, CRUD for jobs and user profiles. Built with React for a seamless user experience.",
-    technologies: ["React", "React Router", "Tailwind", "JSON Server"],
+    technologies: ["React", "React Router", "Tailwind", "JSON Server", "NodeJS"],
     image: JobPortal,
     github: "https://github.com/CJcode6754/JobPortal",
     live: "",
@@ -149,7 +149,7 @@ export const projects = [
     title: "CineSearch",
     description:
       "A modern and responsive movie browsing application that allows users to search for movies, view trending content, and access detailed movie information with beautiful UI animations.",
-    technologies: ["React", "Tailwind CSS", "Appwrite", "TMDB API"],
+    technologies: ["React", "Tailwind CSS", "NodeJS", "Appwrite", "TMDB API"],
     image: CineSearch,
     github: "https://github.com/CJcode6754/CineSearch",
     live: "https://cine-search-delta.vercel.app",
