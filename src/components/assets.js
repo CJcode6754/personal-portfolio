@@ -94,7 +94,7 @@ export const projects = [
     title: "ThinkDraft",
     description:
       "AI-powered blog generation platform utilizing Gemini API to help users create and manage engaging content seamlessly.",
-    technologies: ["ReactJs", "Express", "NodeJS", "Mongodb", "Tailwind"],
+    technologies: ["React", "Express", "NodeJS", "Mongodb", "Tailwind"],
     image: ThinkDraft,
     github: "https://github.com/CJcode6754/ThinkDraft",
     live: "https://think-draft-e8iv.vercel.app",
