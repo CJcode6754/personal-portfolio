@@ -7,31 +7,33 @@ import CineSearch from "../assets/projects/CineSearch.png";
 import OdinDashboard from "../assets/projects/OdinProject.png";
 import JobPortal from "../assets/projects/JobPortal.png";
 import Car from "../assets/projects/Car_Configurator.png";
-import LaravelIcon from '../assets/icons/laravel.svg';
-import JavaScriptIcon from '../assets/icons/javascript.svg';
-import PHPIcon from '../assets/icons/php.svg';
-import NodeJsIcon from '../assets/icons/nodejs.svg';
-import TailwindIcon from '../assets/icons/tailwind.svg';
-import BootstrapIcon from '../assets/icons/bootstrap.svg';
-import MySQLIcon from '../assets/icons/mysql.svg';
-import PostgresIcon from '../assets/icons/postgresql.svg';
-import FigmaIcon from '../assets/icons/figma.svg';
-import GitIcon from '../assets/icons/git.svg';
-import ChartJsIcon from '../assets/icons/chartjs.png';
-import ReactIcon from '../assets/react.svg';
+import LaravelIcon from "../assets/icons/laravel.svg";
+import JavaScriptIcon from "../assets/icons/javascript.svg";
+import PHPIcon from "../assets/icons/php.svg";
+import NodeJsIcon from "../assets/icons/nodejs.svg";
+import TailwindIcon from "../assets/icons/tailwind.svg";
+import BootstrapIcon from "../assets/icons/bootstrap.svg";
+import MySQLIcon from "../assets/icons/mysql.svg";
+import PostgresIcon from "../assets/icons/postgresql.svg";
+import FigmaIcon from "../assets/icons/figma.svg";
+import GitIcon from "../assets/icons/git.svg";
+import ChartJsIcon from "../assets/icons/chartjs.png";
+import ReactIcon from "../assets/react.svg";
+import ThinkDraft from "../assets/projects/ThinkDraft.png";
 import { Rocket, Trophy, Target, Users } from "lucide-react";
-import resume from '../assets/resume.pdf';
+import resume from "../assets/resume.pdf";
 
 export const assets = {
-  resume
-}
+  resume,
+};
 
 export const techStackCategory = [
-    'All',
-    'Laravel',
-    'React',
-    'PHP',
-    'JavaScript'
+  "All",
+  "Laravel",
+  "React",
+  "PHP",
+  "JavaScript",
+  "NodeJS"
 ];
 
 export const projects = [
@@ -89,6 +91,18 @@ export const projects = [
   },
   {
     id: 4,
+    title: "ThinkDraft",
+    description:
+      "AI-powered blog generation platform utilizing Gemini API to help users create and manage engaging content seamlessly.",
+    technologies: ["ReactJs", "Express", "NodeJS", "Mongodb", "Tailwind"],
+    image: ThinkDraft,
+    github: "https://github.com/CJcode6754/ThinkDraft",
+    live: "https://think-draft-e8iv.vercel.app",
+    category: "Full Stack",
+    gradient: "from-pink-500 to-purple-500",
+  },
+  {
+    id: 5,
     title: "Trendora",
     description:
       "E-Commerce platform for buying and selling trending products.",
@@ -107,7 +121,7 @@ export const projects = [
     gradient: "from-pink-500 to-purple-500",
   },
   {
-    id: 5,
+    id: 6,
     title: "Job Portal",
     description:
       "A modern job portal application that connects job seekers with employers, featuring job listings, CRUD for jobs and user profiles. Built with React for a seamless user experience.",
@@ -119,7 +133,7 @@ export const projects = [
     gradient: "from-pink-500 to-purple-500",
   },
   {
-    id: 6,
+    id: 7,
     title: "Project Management System",
     description:
       "A comprehensive project management CRUD application with role-based access control, advanced search capabilities, task assignment, and progress tracking. Built with modern React and Laravel stack.",
@@ -131,7 +145,7 @@ export const projects = [
     gradient: "from-purple-500 to-pink-500",
   },
   {
-    id: 7,
+    id: 8,
     title: "CineSearch",
     description:
       "A modern and responsive movie browsing application that allows users to search for movies, view trending content, and access detailed movie information with beautiful UI animations.",
@@ -143,7 +157,7 @@ export const projects = [
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 8,
+    id: 9,
     title: "Car Color Configurator",
     description:
       "Website where you can modify car colors (exterior & interior) and calculate the prize of Tesla Model Y based on the configuration.",
@@ -155,7 +169,7 @@ export const projects = [
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 9,
+    id: 10,
     title: "Odin Dashboard",
     description:
       "A sleek and modern responsive dashboard built with pure HTML and CSS, featuring clean design principles and smooth animations for data visualization.",
