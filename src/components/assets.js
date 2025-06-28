@@ -112,7 +112,7 @@ export const projects = [
       "TypeScript",
       "Shadcn",
       "Tailwind",
-      "Postgres",
+      "PostgreSQL",
     ],
     image: TrendoraPic,
     github: "https://github.com/CJcode6754/Trendora",
@@ -192,6 +192,7 @@ export const technologies = [
   },
   { name: "PHP", icon: PHPIcon, color: "from-purple-500 to-indigo-500" },
   { name: "Node.js", icon: NodeJsIcon, color: "from-green-500 to-emerald-500" },
+  { name: "Express", icon: ChartJsIcon, color: "from-green-400 to-cyan-400" },
   { name: "Tailwind", icon: TailwindIcon, color: "from-cyan-400 to-blue-500" },
   {
     name: "Bootstrap",
@@ -199,6 +200,7 @@ export const technologies = [
     color: "from-purple-600 to-blue-600",
   },
   { name: "MySQL", icon: MySQLIcon, color: "from-blue-600 to-indigo-600" },
+  { name: "MongoDB", icon: ChartJsIcon, color: "from-green-400 to-cyan-400" },
   {
     name: "PostgreSQL",
     icon: PostgresIcon,
