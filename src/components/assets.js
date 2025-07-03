@@ -22,6 +22,7 @@ import ReactIcon from "../assets/react.svg";
 import ExpressIcon from '../assets/icons/express.svg';
 import MongoDBIcon from '../assets/icons/mongodb.svg';
 import ThinkDraft from "../assets/projects/ThinkDraft.png";
+import TicTacToe from '../assets/projects/tictactoe.png';
 import { Rocket, Trophy, Target, Users } from "lucide-react";
 import resume from "../assets/resume.pdf";
 
@@ -160,6 +161,18 @@ export const projects = [
   },
   {
     id: 9,
+    title: "TicTacToe",
+    description:
+      "Simple TicTacToe Games",
+    technologies: ["ReactJS", "Tailwind CSS"],
+    image: TicTacToe,
+    github: "https://github.com/CJcode6754/TicTacToe",
+    live: "https://tic-tac-toe-beryl-omega.vercel.app",
+    category: "Frontend",
+    gradient: "from-red-500 to-pink-500",
+  },
+  {
+    id: 10,
     title: "Car Color Configurator",
     description:
       "Website where you can modify car colors (exterior & interior) and calculate the prize of Tesla Model Y based on the configuration.",
@@ -171,7 +184,7 @@ export const projects = [
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 10,
+    id: 11,
     title: "Odin Dashboard",
     description:
       "A sleek and modern responsive dashboard built with pure HTML and CSS, featuring clean design principles and smooth animations for data visualization.",
