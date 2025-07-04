@@ -46,7 +46,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="min-h-screen py-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 lg:ml-24 px-6 md:px-24 relative overflow-hidden"
+      className="min-h-screen py-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-6 md:px-24 relative overflow-hidden"
     >
       {/* Services Section */}
       <div
@@ -110,11 +110,11 @@ export default function Services() {
               difference.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.facebook.com/ceejay.ibabiosa.1/" className="group inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
+              <a href="https://www.linkedin.com/in/ceejay-ibabiosa-206052292/" target="_blank" className="group inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
                 <Rocket className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
                 Let's Work Together
               </a>
-              <a href="https://github.com/CJcode6754" className="inline-flex items-center justify-center border-2 border-slate-600 bg-slate-800/30 hover:bg-slate-700/50 hover:border-purple-500/50 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
+              <a href="https://github.com/CJcode6754" target="_blank" className="inline-flex items-center justify-center border-2 border-slate-600 bg-slate-800/30 hover:bg-slate-700/50 hover:border-purple-500/50 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
                 View My Work
               </a>
             </div>

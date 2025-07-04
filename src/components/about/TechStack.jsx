@@ -38,7 +38,7 @@ const TechStack = () => {
   }, []);
 
   return (
-    <section id="techstack-section" className="min-h-screen py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 lg:ml-24 px-4 relative overflow-hidden">
+    <section id="techstack-section" className="min-h-screen py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 relative overflow-hidden">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>

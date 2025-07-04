@@ -52,7 +52,7 @@ const Project = () => {
   return (
     <section
       id="project-section"
-      className="min-h-screen py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 lg:ml-24 px-4 relative overflow-hidden"
+      className="min-h-screen py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 relative overflow-hidden"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -213,7 +213,7 @@ const Project = () => {
                       disabled
                       className="flex-1 inline-flex items-center justify-center bg-gray-300 text-gray-500 text-xs py-3 px-4 rounded-xl cursor-not-allowed"
                     >
-                      No Live Link
+                      Live Demo
                     </button>
                   )}
                 </div>
