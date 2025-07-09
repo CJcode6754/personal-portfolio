@@ -19,10 +19,11 @@ import FigmaIcon from "../assets/icons/figma.svg";
 import GitIcon from "../assets/icons/git.svg";
 import ChartJsIcon from "../assets/icons/chartjs.png";
 import ReactIcon from "../assets/react.svg";
-import ExpressIcon from '../assets/icons/express.svg';
-import MongoDBIcon from '../assets/icons/mongodb.svg';
+import ExpressIcon from "../assets/icons/express.svg";
+import MongoDBIcon from "../assets/icons/mongodb.svg";
 import ThinkDraft from "../assets/projects/ThinkDraft.png";
-import TicTacToe from '../assets/projects/tictactoe.png';
+import TicTacToe from "../assets/projects/tictactoe.png";
+import InvoiceAppImage from "../assets/projects/InvoiceApp.png";
 import { Rocket, Trophy, Target, Users } from "lucide-react";
 import resume from "../assets/resume.pdf";
 
@@ -36,7 +37,7 @@ export const techStackCategory = [
   "React",
   "PHP",
   "JavaScript",
-  "NodeJS"
+  "NodeJS",
 ];
 
 export const projects = [
@@ -128,7 +129,13 @@ export const projects = [
     title: "Job Portal",
     description:
       "A modern job portal application that connects job seekers with employers, featuring job listings, CRUD for jobs and user profiles. Built with React for a seamless user experience.",
-    technologies: ["React", "React Router", "Tailwind", "JSON Server", "NodeJS"],
+    technologies: [
+      "React",
+      "React Router",
+      "Tailwind",
+      "JSON Server",
+      "NodeJS",
+    ],
     image: JobPortal,
     github: "https://github.com/CJcode6754/JobPortal",
     live: "",
@@ -161,9 +168,20 @@ export const projects = [
   },
   {
     id: 9,
-    title: "TicTacToe",
+    title: "Invoice Management App",
     description:
-      "Simple TicTacToe Games",
+      "A dynamic invoice management web app that allows users to create invoices with multiple products, auto-calculate subtotals and totals, and generate unique invoice numbers. Built with ReactJS, Zustand, and Tailwind CSS for a smooth and responsive user experience.",
+    technologies: ["ReactJS", "Tailwind CSS", "Zustand"],
+    image: InvoiceAppImage,
+    github: "https://github.com/CJcode6754/Invoice",
+    live: "https://invoice-sigma-eight.vercel.app",
+    category: "Frontend",
+    gradient: "from-indigo-500 to-purple-500",
+  },
+  {
+    id: 10,
+    title: "TicTacToe",
+    description: "Simple TicTacToe Games",
     technologies: ["ReactJS", "Tailwind CSS"],
     image: TicTacToe,
     github: "https://github.com/CJcode6754/TicTacToe",
@@ -172,7 +190,7 @@ export const projects = [
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 10,
+    id: 11,
     title: "Car Color Configurator",
     description:
       "Website where you can modify car colors (exterior & interior) and calculate the prize of Tesla Model Y based on the configuration.",
@@ -184,7 +202,7 @@ export const projects = [
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 11,
+    id: 12,
     title: "Odin Dashboard",
     description:
       "A sleek and modern responsive dashboard built with pure HTML and CSS, featuring clean design principles and smooth animations for data visualization.",
