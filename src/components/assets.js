@@ -24,6 +24,7 @@ import MongoDBIcon from "../assets/icons/mongodb.svg";
 import ThinkDraft from "../assets/projects/ThinkDraft.png";
 import TicTacToe from "../assets/projects/tictactoe.png";
 import InvoiceAppImage from "../assets/projects/InvoiceApp.png";
+import SayHiImage from "../assets/projects/sayHi.png";
 import { Rocket, Trophy, Target, Users } from "lucide-react";
 import resume from "../assets/resume.pdf";
 
@@ -126,6 +127,28 @@ export const projects = [
   },
   {
     id: 6,
+    title: "SayHi",
+    description:
+      "A real-time chat application with active user tracking, built using the MERN stack and Socket.io. Features include live messaging, online status indicators, and image uploads.",
+    technologies: [
+      "MongoDB",
+      "Express.js",
+      "React",
+      "Node.js",
+      "Socket.io",
+      "Tailwind CSS",
+      "Zustand",
+      "Cloudinary",
+    ],
+    image: SayHiImage,
+    github: "https://github.com/CJcode6754/sayHi.git",
+    live: "", // add deployed URL if available
+    category: "Full Stack",
+    gradient: "from-pink-500 to-purple-500",
+  },
+
+  {
+    id: 7,
     title: "Job Portal",
     description:
       "A modern job portal application that connects job seekers with employers, featuring job listings, CRUD for jobs and user profiles. Built with React for a seamless user experience.",
@@ -143,7 +166,7 @@ export const projects = [
     gradient: "from-pink-500 to-purple-500",
   },
   {
-    id: 7,
+    id: 8,
     title: "Project Management System",
     description:
       "A comprehensive project management CRUD application with role-based access control, advanced search capabilities, task assignment, and progress tracking. Built with modern React and Laravel stack.",
@@ -155,7 +178,7 @@ export const projects = [
     gradient: "from-purple-500 to-pink-500",
   },
   {
-    id: 8,
+    id: 9,
     title: "CineSearch",
     description:
       "A modern and responsive movie browsing application that allows users to search for movies, view trending content, and access detailed movie information with beautiful UI animations.",
@@ -167,7 +190,7 @@ export const projects = [
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 9,
+    id: 10,
     title: "Invoice Management App",
     description:
       "A dynamic invoice management web app that allows users to create invoices with multiple products, auto-calculate subtotals and totals, and generate unique invoice numbers. Built with ReactJS, Zustand, and Tailwind CSS for a smooth and responsive user experience.",
@@ -179,7 +202,7 @@ export const projects = [
     gradient: "from-indigo-500 to-purple-500",
   },
   {
-    id: 10,
+    id: 11,
     title: "TicTacToe",
     description: "Simple TicTacToe Games",
     technologies: ["ReactJS", "Tailwind CSS"],
@@ -190,7 +213,7 @@ export const projects = [
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 11,
+    id: 12,
     title: "Car Color Configurator",
     description:
       "Website where you can modify car colors (exterior & interior) and calculate the prize of Tesla Model Y based on the configuration.",
@@ -202,7 +225,7 @@ export const projects = [
     gradient: "from-red-500 to-pink-500",
   },
   {
-    id: 12,
+    id: 13,
     title: "Odin Dashboard",
     description:
       "A sleek and modern responsive dashboard built with pure HTML and CSS, featuring clean design principles and smooth animations for data visualization.",
