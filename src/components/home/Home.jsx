@@ -109,11 +109,11 @@ const Home = () => {
             <span className="animate-pulse text-cyan-400 ml-1">|</span>
           </div>
 
-          <p className="text-slate-400 leading-relaxed max-w-2xl mb-10 text-lg sm:text-xl font-light">
+          {/* <p className="text-slate-400 leading-relaxed max-w-2xl mb-10 text-lg sm:text-xl font-light">
             I craft exceptional digital experiences through clean code and thoughtful design. 
             Passionate about building modern web applications that solve real-world problems 
             and create meaningful user connections.
-          </p>
+          </p> */}
 
           {/* Enhanced Quick Info */}
           <div className="flex flex-row justify-center lg:justify-start gap-6 sm:gap-8 mb-10 text-sm text-slate-400">
@@ -200,7 +200,7 @@ const Home = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-slate-400 animate-bounce">
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-slate-400 animate-bounce">
         <span className="text-sm mb-2">Scroll down</span>
         <ChevronDown className="w-5 h-5" />
       </div>

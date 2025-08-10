@@ -1,12 +1,10 @@
-import TrendoraPic from "../assets/projects/Trendora.png";
 import FinanceFlow from "../assets/projects/FinanceFlow.png";
-import BeeMo from "../assets/projects/Parameter Monitoring.png";
-import ProjectManagement from "../assets/projects/ProjectManagement.png";
+import IAM from "../assets/projects/IAM.png";
+import BeeMo from "../assets/projects/BeeMo.png";
 import AutoCaller from "../assets/projects/autoCaller.png";
 import CineSearch from "../assets/projects/CineSearch.png";
-import OdinDashboard from "../assets/projects/OdinProject.png";
-import JobPortal from "../assets/projects/JobPortal.png";
-import Car from "../assets/projects/Car_Configurator.png";
+import ThinkDraft from "../assets/projects/ThinkDraft.png";
+import SayHiImage from "../assets/projects/sayHi.png";
 import LaravelIcon from "../assets/icons/laravel.svg";
 import JavaScriptIcon from "../assets/icons/javascript.svg";
 import PHPIcon from "../assets/icons/php.svg";
@@ -21,10 +19,6 @@ import ChartJsIcon from "../assets/icons/chartjs.png";
 import ReactIcon from "../assets/react.svg";
 import ExpressIcon from "../assets/icons/express.svg";
 import MongoDBIcon from "../assets/icons/mongodb.svg";
-import ThinkDraft from "../assets/projects/ThinkDraft.png";
-import TicTacToe from "../assets/projects/tictactoe.png";
-import InvoiceAppImage from "../assets/projects/InvoiceApp.png";
-import SayHiImage from "../assets/projects/sayHi.png";
 import { Rocket, Trophy, Target, Users } from "lucide-react";
 import resume from "../assets/resume.pdf";
 
@@ -32,33 +26,109 @@ export const assets = {
   resume,
 };
 
-export const techStackCategory = [
-  "All",
-  "Laravel",
-  "React",
-  "PHP",
-  "JavaScript",
-  "NodeJS",
+export const teamProjects = [
+  {
+    id: "beemo",
+    title: "BeeMo: IoT Beehive Monitor",
+    description:
+      "BeeMo is an IoT-based, web-enabled monitoring system for Tetragonula biroi, a stingless bee species native to the Philippines. This comprehensive system provides real-time environmental monitoring, automated alerts, and detailed analytics to help beekeepers optimize hive conditions and bee health.",
+    myRole: "Backend Developer, QA Engineer & Arduino Programmer",
+    responsibilities: [
+      "Designed and developed backend API architecture using PHP and MySQL with efficient database schema for sensor data",
+      "Integrated Arduino microcontrollers with IoT sensors for temperature, humidity, and hive activity monitoring",
+      "Implemented automated SMS/email alerts using Infobip API and PHPMailer, ensuring real-time beekeeper notifications",
+      "Performed comprehensive testing, quality assurance, and created a responsive data dashboard with Chart.js",
+    ],
+    technologies: [
+      "PHP",
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JavaScript",
+      "Chart.js",
+      "PHPMailer",
+      "Infobip API",
+      "Arduino",
+      "MySQL",
+    ],
+    image: BeeMo,
+    github: "https://github.com/CJcode6754/BeeMo",
+    live: "",
+    category: "IoT + Backend",
+    gradient: "from-yellow-500 to-orange-500",
+    teamSize: "3 members",
+    duration: "5 months",
+    status: "Completed",
+  },
 ];
 
-export const projects = [
+export const personalProjects = [
   {
-    id: 1,
+    id: "financeflow",
     title: "FinanceFlow",
     description:
-      "FinanceFlow is a modern and user-friendly personal finance tracker built with Laravel, Tailwind CSS, JavaScript, Chart.js, and MySQL. It features comprehensive expense tracking, budget management, and detailed financial analytics.",
-    technologies: ["Laravel", "Blade", "Tailwind CSS", "MySQL", "Chart.js"],
+      "A comprehensive personal finance management application that empowers users to take control of their financial health through intuitive expense tracking, budget management, and detailed analytics.",
+    responsibilities: [
+      "Developed full expense tracking and budget management system with categorization, tagging, and spending alerts",
+      "Built responsive Tailwind CSS UI and interactive dashboards using Chart.js for financial analytics",
+      "Implemented secure authentication/authorization with comprehensive reporting and export features",
+      "Designed automated backup and data recovery systems for secure financial data management",
+    ],
+    technologies: [
+      "Laravel",
+      "Blade",
+      "Tailwind CSS",
+      "MySQL",
+      "Chart.js",
+      "JavaScript",
+    ],
     image: FinanceFlow,
     github: "https://github.com/CJcode6754/FinanceFlow",
     live: "",
     category: "Full Stack",
     gradient: "from-green-500 to-emerald-500",
+    duration: "2 months",
+    status: "Completed",
   },
   {
-    id: 2,
+    id: "thinkdraft",
+    title: "ThinkDraft",
+    description:
+      "An AI-powered blog generation platform that leverages the Gemini API to help content creators generate high-quality, engaging blog posts with intelligent content suggestions and seamless management features.",
+    responsibilities: [
+      "Integrated Google's Gemini API for AI-driven content generation and tagging",
+      "Developed full-stack application with React frontend, Express.js backend, and MongoDB schema",
+      "Implemented JWT-based authentication, real-time blog editing, and auto-save functionality",
+      "Deployed application with CI/CD pipeline for seamless updates and scalability",
+    ],
+    technologies: [
+      "React",
+      "Express",
+      "NodeJS",
+      "MongoDB",
+      "Tailwind",
+      "Gemini API",
+      "JWT",
+    ],
+    image: ThinkDraft,
+    github: "https://github.com/CJcode6754/ThinkDraft",
+    live: "https://think-draft-e8iv.vercel.app",
+    category: "Full Stack",
+    gradient: "from-pink-500 to-purple-500",
+    duration: "1 month",
+    status: "Completed",
+  },
+  {
+    id: "autocaller",
     title: "AutoCaller",
     description:
-      "A modern Laravel-based platform where users can post cars for sale and receive direct calls from potential buyers. Features advanced search filters, real-time messaging, and integrated payment processing.",
+      "A modern Laravel-based platform where users can post cars for sale and receive direct calls from potential buyers. Features advanced search filters, real-time messaging, and integrated payment processing for a seamless selling experience.",
+    responsibilities: [
+      "Developed car listing system with image uploads, search filters, and detailed specifications",
+      "Created responsive Tailwind CSS UI and admin dashboard for managing listings and transactions",
+      "Implemented role-based access control, secure authentication, and payment processing",
+      "Built backend with Laravel and MySQL for reliable and scalable operations",
+    ],
     technologies: [
       "Laravel",
       "Blade",
@@ -72,64 +142,20 @@ export const projects = [
     live: "",
     category: "Full Stack",
     gradient: "from-blue-500 to-cyan-500",
+    duration: "1 month",
+    status: "Completed",
   },
   {
-    id: 3,
-    title: "BeeMo: IoT Beehive Monitor",
-    description:
-      "BeeMo is an IoT-based, web-enabled monitoring system for Tetragonula biroi, a stingless bee species native to the Philippines. Features environmental monitoring, automated alerts, and comprehensive analytics dashboard.",
-    technologies: [
-      "PHP",
-      "HTML",
-      "CSS",
-      "Bootstrap",
-      "JavaScript",
-      "Chart.js",
-      "PHPMailer",
-      "Infobip API",
-    ],
-    image: BeeMo,
-    github: "https://github.com/CJcode6754/BeeMo",
-    live: "",
-    category: "IoT + Backend",
-    gradient: "from-yellow-500 to-orange-500",
-  },
-  {
-    id: 4,
-    title: "ThinkDraft",
-    description:
-      "AI-powered blog generation platform utilizing Gemini API to help users create and manage engaging content seamlessly.",
-    technologies: ["React", "Express", "NodeJS", "Mongodb", "Tailwind"],
-    image: ThinkDraft,
-    github: "https://github.com/CJcode6754/ThinkDraft",
-    live: "https://think-draft-e8iv.vercel.app",
-    category: "Full Stack",
-    gradient: "from-pink-500 to-purple-500",
-  },
-  {
-    id: 5,
-    title: "Trendora",
-    description:
-      "E-Commerce platform for buying and selling trending products.",
-    technologies: [
-      "Laravel",
-      "React",
-      "TypeScript",
-      "Shadcn",
-      "Tailwind",
-      "PostgreSQL",
-    ],
-    image: TrendoraPic,
-    github: "https://github.com/CJcode6754/Trendora",
-    live: "",
-    category: "Full Stack",
-    gradient: "from-pink-500 to-purple-500",
-  },
-  {
-    id: 6,
+    id: "sayhi",
     title: "SayHi",
     description:
-      "A real-time chat application with active user tracking, built using the MERN stack and Socket.io. Features include live messaging, online status indicators, and image uploads.",
+      "A real-time chat application with active user tracking, built using the MERN stack and Socket.io. Features include live messaging, online status indicators, and media sharing capabilities.",
+    responsibilities: [
+      "Implemented real-time messaging, typing indicators, and read receipts using Socket.io",
+      "Built responsive Tailwind CSS UI with media upload and group/private chat functionality",
+      "Developed backend with JWT authentication and Cloudinary integration for media storage",
+      "Optimized state management with Zustand for performance and minimal re-renders",
+    ],
     technologies: [
       "MongoDB",
       "Express.js",
@@ -142,99 +168,60 @@ export const projects = [
     ],
     image: SayHiImage,
     github: "https://github.com/CJcode6754/sayHi.git",
-    live: "", // add deployed URL if available
-    category: "Full Stack",
-    gradient: "from-pink-500 to-purple-500",
-  },
-
-  {
-    id: 7,
-    title: "Job Portal",
-    description:
-      "A modern job portal application that connects job seekers with employers, featuring job listings, CRUD for jobs and user profiles. Built with React for a seamless user experience.",
-    technologies: [
-      "React",
-      "React Router",
-      "Tailwind",
-      "JSON Server",
-      "NodeJS",
-    ],
-    image: JobPortal,
-    github: "https://github.com/CJcode6754/JobPortal",
     live: "",
     category: "Full Stack",
     gradient: "from-pink-500 to-purple-500",
+    duration: "1.2 months",
+    status: "Completed",
   },
   {
-    id: 8,
-    title: "Project Management System",
-    description:
-      "A comprehensive project management CRUD application with role-based access control, advanced search capabilities, task assignment, and progress tracking. Built with modern React and Laravel stack.",
-    technologies: ["React", "Inertia.js", "Laravel", "Tailwind CSS", "MySQL"],
-    image: ProjectManagement,
-    github: "https://github.com/CJcode6754/Project_Management",
-    live: "",
-    category: "Full Stack",
-    gradient: "from-purple-500 to-pink-500",
-  },
-  {
-    id: 9,
+    id: "cinesearch",
     title: "CineSearch",
     description:
       "A modern and responsive movie browsing application that allows users to search for movies, view trending content, and access detailed movie information with beautiful UI animations.",
+    responsibilities: [
+      "Integrated TMDB API for movie search, trending content, and detailed info pages",
+      "Designed responsive Tailwind CSS UI with animations, skeleton screens, and filtering features",
+      "Implemented Appwrite backend services for authentication and watchlist functionality",
+      "Deployed application on Vercel for optimized performance and accessibility",
+    ],
     technologies: ["React", "Tailwind CSS", "NodeJS", "Appwrite", "TMDB API"],
     image: CineSearch,
     github: "https://github.com/CJcode6754/CineSearch",
     live: "https://cine-search-delta.vercel.app",
     category: "Frontend",
     gradient: "from-red-500 to-pink-500",
+    duration: "1 week",
+    status: "Completed",
   },
   {
-    id: 10,
-    title: "Invoice Management App",
+    id: "iamaccesscontrol",
+    title: "IAM-Style Access Control System",
     description:
-      "A dynamic invoice management web app that allows users to create invoices with multiple products, auto-calculate subtotals and totals, and generate unique invoice numbers. Built with ReactJS, Zustand, and Tailwind CSS for a smooth and responsive user experience.",
-    technologies: ["ReactJS", "Tailwind CSS", "Zustand"],
-    image: InvoiceAppImage,
-    github: "https://github.com/CJcode6754/Invoice",
-    live: "https://invoice-sigma-eight.vercel.app",
-    category: "Frontend",
+      "A full-stack web application implementing a simplified yet powerful Identity and Access Management (IAM) system. Inspired by cloud providers, it enables fine-grained control over application resources via users, groups, and roles.",
+    responsibilities: [
+      "Developed CRUD operations for users, groups, roles, and permissions with inheritance rules",
+      "Built module-level permission system with real-time checks using middleware",
+      "Implemented JWT authentication and dynamic admin dashboard with Tailwind CSS",
+      "Designed secure, scalable backend API with Express.js and SQLite",
+    ],
+    technologies: [
+      "React",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "SQLite",
+      "Axios",
+      "JWT",
+    ],
+    image: IAM,
+    github: "https://github.com/YourUsername/IAM-Access-Control",
+    live: "",
+    category: "Full Stack",
     gradient: "from-indigo-500 to-purple-500",
-  },
-  {
-    id: 11,
-    title: "TicTacToe",
-    description: "Simple TicTacToe Games",
-    technologies: ["ReactJS", "Tailwind CSS"],
-    image: TicTacToe,
-    github: "https://github.com/CJcode6754/TicTacToe",
-    live: "https://tic-tac-toe-beryl-omega.vercel.app",
-    category: "Frontend",
-    gradient: "from-red-500 to-pink-500",
-  },
-  {
-    id: 12,
-    title: "Car Color Configurator",
-    description:
-      "Website where you can modify car colors (exterior & interior) and calculate the prize of Tesla Model Y based on the configuration.",
-    technologies: ["HTML", "Tailwind CSS", "JavaScript"],
-    image: Car,
-    github: "https://github.com/CJcode6754/car_color_configuration",
-    live: "https://car-color-configuration.vercel.app",
-    category: "Frontend",
-    gradient: "from-red-500 to-pink-500",
-  },
-  {
-    id: 13,
-    title: "Odin Dashboard",
-    description:
-      "A sleek and modern responsive dashboard built with pure HTML and CSS, featuring clean design principles and smooth animations for data visualization.",
-    technologies: ["HTML", "CSS"],
-    image: OdinDashboard,
-    github: "https://github.com/CJcode6754/OdinDashboard",
-    live: "https://odin-dashboard-alpha.vercel.app",
-    category: "Frontend",
-    gradient: "from-indigo-500 to-purple-500",
+    duration: "1 months",
+    status: "Completed",
   },
 ];
 
