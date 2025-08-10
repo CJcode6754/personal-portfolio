@@ -220,7 +220,7 @@ export const personalProjects = [
     live: "",
     category: "Full Stack",
     gradient: "from-indigo-500 to-purple-500",
-    duration: "1 months",
+    duration: "1 week",
     status: "Completed",
   },
 ];
