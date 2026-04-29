@@ -159,13 +159,6 @@ const ExperienceTimeline = () => {
         {/* Compact vertical timeline — left anchored */}
         <div style={{ position: "relative", paddingLeft: "2.5rem" }}>
 
-          {/* Vertical line */}
-          <div style={{
-            position: "absolute", left: "0.6875rem", top: 0, bottom: 0,
-            width: "2px",
-            background: "linear-gradient(to bottom, var(--accent), var(--accent-2), var(--border))",
-          }} />
-
           {timeline.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -176,6 +169,7 @@ const ExperienceTimeline = () => {
                 index={i}
                 isVisible={isVisible}
                 isLast={i === timeline.length - 1}
+                nextItem={timeline[i + 1]}
               />
             );
           })}
@@ -186,7 +180,7 @@ const ExperienceTimeline = () => {
   );
 };
 
-const TimelineCard = ({ item, Icon, index, isVisible, isLast }) => {
+const TimelineCard = ({ item, Icon, index, isVisible, isLast, nextItem }) => {
   const [hovered, setHovered] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -200,6 +194,20 @@ const TimelineCard = ({ item, Icon, index, isVisible, isLast }) => {
         transition: `opacity 0.5s ease ${0.08 * index}s, transform 0.5s ease ${0.08 * index}s`,
       }}
     >
+      {/* Connecting Line Segment */}
+      {!isLast && (
+        <div style={{
+          position: "absolute",
+          left: "-1.75rem",
+          top: "2.625rem",
+          height: "calc(100% - 0.375rem)",
+          width: "2px",
+          background: `linear-gradient(to bottom, ${item.iconColor}, ${nextItem?.iconColor || 'var(--border)'})`,
+          opacity: 0.5,
+          zIndex: 0,
+        }} />
+      )}
+
       {/* Icon dot */}
       <div style={{
         position: "absolute",
