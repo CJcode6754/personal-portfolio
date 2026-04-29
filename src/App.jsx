@@ -18,38 +18,62 @@ const pathMap = {
 };
 
 const ScrollManager = () => {
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const { pathname } = location;
   const navigate = useNavigate();
   const isScrollingRef = useRef(false);
 
   // Handle scrolling when the URL changes (e.g., clicking a link)
   useEffect(() => {
+    // If this update came from the scroll spy, don't trigger another scroll
+    if (location.state?.fromScrollSpy) return;
+    
+    // If we're already animating a scroll, don't interrupt
     if (isScrollingRef.current) return;
 
     const sectionId = pathMap[pathname];
     if (sectionId) {
       const element = document.getElementById(sectionId);
       if (element) {
-        isScrollingRef.current = true;
-        element.scrollIntoView({ behavior: "smooth" });
+        // Optimization: only scroll if the element isn't already roughly in view
+        const rect = element.getBoundingClientRect();
+        const isInView = rect.top >= -50 && rect.top <= 150;
         
-        // Reset the flag after scroll finishes (rough estimate)
-        const checkScroll = () => {
-          isScrollingRef.current = false;
-          window.removeEventListener("scrollend", checkScroll);
-        };
-        window.addEventListener("scrollend", checkScroll);
+        if (!isInView) {
+          isScrollingRef.current = true;
+          element.scrollIntoView({ behavior: "smooth" });
+          
+          const handleScrollEnd = () => {
+            isScrollingRef.current = false;
+            window.removeEventListener("scrollend", handleScrollEnd);
+          };
+          window.addEventListener("scrollend", handleScrollEnd);
+          
+          // Fallback for browsers without scrollend or if it fails to fire
+          setTimeout(() => {
+            isScrollingRef.current = false;
+            window.removeEventListener("scrollend", handleScrollEnd);
+          }, 1500);
+        }
       }
     } else if (pathname === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.scrollY > 10) {
+        isScrollingRef.current = true;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 1000);
+      }
     }
-  }, [pathname]);
+  }, [pathname, location.state]);
 
   // Handle URL updates when scrolling (Scroll-Spy)
   useEffect(() => {
     const options = { threshold: 0.6 };
 
     const callback = (entries) => {
+      // If we are currently performing an intentional scroll (from a click), 
+      // don't let the observer trigger navigation updates which might fight the scroll.
       if (isScrollingRef.current) return;
 
       entries.forEach((entry) => {
@@ -57,7 +81,8 @@ const ScrollManager = () => {
           const sectionId = entry.target.id;
           const path = Object.keys(pathMap).find((key) => pathMap[key] === sectionId);
           if (path && window.location.pathname !== path) {
-            navigate(path, { replace: true });
+            // Pass state: { fromScrollSpy: true } so the scroll-to-section effect knows to skip
+            navigate(path, { replace: true, state: { fromScrollSpy: true } });
           }
         }
       });
