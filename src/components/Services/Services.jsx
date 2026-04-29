@@ -1,32 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Code2, Zap, Palette, Rocket, Github, Mail } from "lucide-react";
-
-const services = [
-  {
-    name: "Full-Stack Development",
-    icon: Code2,
-    description:
-      "End-to-end web apps using Laravel, React, and Node.js — from database architecture to polished UI.",
-    color: "var(--accent)",
-    colorRaw: "#6366f1",
-  },
-  {
-    name: "UI/UX Design",
-    icon: Palette,
-    description:
-      "Beautiful, intuitive interfaces built with Tailwind and Bootstrap that users genuinely enjoy using.",
-    color: "#ec4899",
-    colorRaw: "#ec4899",
-  },
-  {
-    name: "Performance Optimization",
-    icon: Zap,
-    description:
-      "Diagnosing and fixing bottlenecks — like cutting a 5-minute report down to 5 seconds.",
-    color: "#f59e0b",
-    colorRaw: "#f59e0b",
-  },
-];
+import { Github, Mail } from "lucide-react";
+import { services } from "../assets";
 
 export default function Services() {
   const [isVisible, setIsVisible] = useState(false);
@@ -91,7 +65,7 @@ export default function Services() {
         {/* Services Grid */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
           gap: "1.5rem",
           marginBottom: "3rem",
           ...fade(0.15),

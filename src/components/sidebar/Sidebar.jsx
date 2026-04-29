@@ -51,12 +51,13 @@ const Sidebar = () => {
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         borderRadius: '9999px',
-        padding: '0.5rem 0.875rem',
+        padding: '0.5rem clamp(0.4rem, 2vw, 0.875rem)',
         display: 'flex',
         alignItems: 'center',
-        gap: '0.25rem',
+        gap: 'clamp(0.1rem, 1vw, 0.25rem)',
         boxShadow: scrolled ? 'var(--shadow-lg)' : 'var(--shadow)',
         transition: 'box-shadow 0.3s ease, background-color 0.4s ease',
+        maxWidth: 'calc(100vw - 1rem)',
       }}
     >
       {/* Logo */}
@@ -88,7 +89,7 @@ const Sidebar = () => {
             aria-label={label}
             style={{
               display: 'flex', alignItems: 'center', gap: '0.375rem',
-              padding: '0.5rem 0.875rem', borderRadius: '9999px',
+              padding: '0.5rem clamp(0.4rem, 2vw, 0.875rem)', borderRadius: '9999px',
               fontSize: '0.8125rem', fontWeight: 500,
               textDecoration: 'none',
               background: isActive ? 'var(--accent-glow)' : 'transparent',

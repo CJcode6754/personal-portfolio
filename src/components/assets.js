@@ -19,7 +19,19 @@ import ChartJsIcon from "../assets/icons/chartjs.png";
 import ReactIcon from "../assets/react.svg";
 import ExpressIcon from "../assets/icons/express.svg";
 import MongoDBIcon from "../assets/icons/mongodb.svg";
-import { Rocket, Trophy, Target, Users } from "lucide-react";
+import {
+  Rocket,
+  Trophy,
+  Target,
+  Users,
+  GraduationCap,
+  Star,
+  Wrench,
+  Code2,
+  Zap,
+  Palette,
+  Briefcase
+} from "lucide-react";
 import resume from "../assets/resume.pdf";
 
 export const assets = {
@@ -256,7 +268,7 @@ export const technologies = [
 
 export const stats = [
   {
-    number: "8+",
+    number: "5+",
     label: "Projects Completed",
     icon: Rocket,
     color: "from-purple-500 to-pink-500",
@@ -278,5 +290,114 @@ export const stats = [
     label: "Success Rate",
     icon: Target,
     color: "from-cyan-500 to-blue-500",
+  },
+];
+
+export const timeline = [
+  {
+    id: "junior-dev",
+    year: "Sept 2025 – Present",
+    icon: Star,
+    iconColor: "#06b6d4",
+    iconBg: "rgba(6,182,212,0.12)",
+    iconBorder: "rgba(6,182,212,0.3)",
+    title: "Junior Developer",
+    subtitle: "Intercommerce Network Services · Makati City, Philippines",
+    description:
+      "Built the Transfer Notification System for Clark Development Corporation, digitizing a paper-based permit workflow. Cut report generation from 5 min → 5–10 s and apply the proper query based on the requirements. Added lock payment features that safeguards and security hardening the systems. Also, help with the change request for different systems and fix error encountered on production environment",
+    tags: ["Laravel", "React", "PHP", "Codeigniter", "JavaScript", "MySQL", "Sanctum"],
+    isCurrent: true,
+  },
+  {
+    id: "commissions",
+    year: "Jun – Sep 2025",
+    icon: Wrench,
+    iconColor: "#ec4899",
+    iconBg: "rgba(236,72,153,0.12)",
+    iconBorder: "rgba(236,72,153,0.3)",
+    title: "Commission Projects",
+    subtitle: "EduForm & AppliLoan",
+    description:
+      "EduForm — multi-role school management (grades, attendance, BMI, parent conferences). AppliLoan — loan platform with QR payments, barcode inventory & sales analytics.",
+    tags: ["Laravel", "Sanctum", "React", "Zustand", "Tailwind CSS"],
+  },
+  {
+    id: "internship",
+    year: "Mar – Jun 2025",
+    icon: Briefcase,
+    iconColor: "#8b5cf6",
+    iconBg: "rgba(139,92,246,0.12)",
+    iconBorder: "rgba(139,92,246,0.3)",
+    title: "Full-Stack Developer Intern",
+    subtitle: "Mentorspire IT Services · Tayabas City, Philippines",
+    description:
+      "Improved a voter-tagging app and built gaming platform features — digital wallets, player verification, and team management. Worked in Agile with daily code reviews.",
+    tags: ["Laravel", "React", "MySQL", "Git", "Agile"],
+  },
+  {
+    id: "beemo",
+    year: "Aug – Dec 2024",
+    icon: Code2,
+    iconColor: "#10b981",
+    iconBg: "rgba(16,185,129,0.12)",
+    iconBorder: "rgba(16,185,129,0.3)",
+    title: "BEEMO — Capstone Project",
+    subtitle: "IoT Beehive Management System",
+    description:
+      "Real-time beehive monitor processing sensor data from Arduino/NodeMCU. Analytics dashboard with automated harvest alerts via SMS API.",
+    tags: ["PHP", "MySQL", "Chart.js", "Arduino", "IoT"],
+  },
+  {
+    id: "bsit",
+    year: "2021 – July 2025",
+    icon: GraduationCap,
+    iconColor: "#6366f1",
+    iconBg: "rgba(99,102,241,0.12)",
+    iconBorder: "rgba(99,102,241,0.3)",
+    title: "BS Information Technology",
+    subtitle: "CSTC — College of Sciences, Technology and Communication Inc.",
+    description:
+      "Graduated with a BSIT degree, studying programming, databases, networking, and system design.",
+    tags: ["BSIT", "Web Development", "Database"],
+  },
+  {
+    id: "hello-world",
+    year: "2021",
+    icon: Rocket,
+    iconColor: "#f59e0b",
+    iconBg: "rgba(245,158,11,0.12)",
+    iconBorder: "rgba(245,158,11,0.3)",
+    title: "Hello, World!",
+    subtitle: "First Line of Code",
+    description:
+      "Started with HTML & CSS, building first static sites and falling in love with turning ideas into interactive experiences.",
+    tags: ["HTML", "CSS", "JavaScript"],
+  },
+];
+
+export const services = [
+  {
+    name: "Full-Stack Development",
+    icon: Code2,
+    description:
+      "End-to-end web apps using Laravel, React, and Node.js — from database architecture to polished UI.",
+    color: "var(--accent)",
+    colorRaw: "#6366f1",
+  },
+  {
+    name: "UI/UX Design",
+    icon: Palette,
+    description:
+      "Beautiful, intuitive interfaces built with Tailwind and Bootstrap that users genuinely enjoy using.",
+    color: "#ec4899",
+    colorRaw: "#ec4899",
+  },
+  {
+    name: "Performance Optimization",
+    icon: Zap,
+    description:
+      "Diagnosing and fixing bottlenecks — like cutting a 5-minute report down to 5 seconds.",
+    color: "#f59e0b",
+    colorRaw: "#f59e0b",
   },
 ];

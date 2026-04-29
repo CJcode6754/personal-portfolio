@@ -1,90 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
-  Briefcase, GraduationCap, Code2, Star, Rocket, Wrench,
+  Briefcase
 } from "lucide-react";
+import { timeline } from "../assets";
 
-/* DESC order — most recent first */
-const timeline = [
-  {
-    id: "junior-dev",
-    year: "Sept 2025 – Present",
-    icon: Star,
-    iconColor: "#06b6d4",
-    iconBg: "rgba(6,182,212,0.12)",
-    iconBorder: "rgba(6,182,212,0.3)",
-    title: "Junior Developer",
-    subtitle: "Intercommerce Network Services · Makati City, Philippines",
-    description:
-      "Built the Transfer Notification System for Clark Development Corporation, digitizing a paper-based permit workflow. Cut report generation from 5 min → 5–10 s. Added duplicate-payment safeguards and security hardening across multiple government agency systems.",
-    tags: ["Laravel", "React", "PHP", "MySQL", "Sanctum"],
-    isCurrent: true,
-  },
-  {
-    id: "commissions",
-    year: "Jun – Sep 2025",
-    icon: Wrench,
-    iconColor: "#ec4899",
-    iconBg: "rgba(236,72,153,0.12)",
-    iconBorder: "rgba(236,72,153,0.3)",
-    title: "Commission Projects",
-    subtitle: "EduForm & AppliLoan",
-    description:
-      "EduForm — multi-role school management (grades, attendance, BMI, parent conferences). AppliLoan — loan platform with QR payments, barcode inventory & sales analytics.",
-    tags: ["Laravel", "Sanctum", "React", "Zustand", "Tailwind CSS"],
-  },
-  {
-    id: "internship",
-    year: "Mar – Jun 2025",
-    icon: Briefcase,
-    iconColor: "#8b5cf6",
-    iconBg: "rgba(139,92,246,0.12)",
-    iconBorder: "rgba(139,92,246,0.3)",
-    title: "Full-Stack Developer Intern",
-    subtitle: "Mentorspire IT Services · Tayabas City, Philippines",
-    description:
-      "Improved a voter-tagging app and built gaming platform features — digital wallets, player verification, and team management. Worked in Agile with daily code reviews.",
-    tags: ["Laravel", "React", "MySQL", "Git", "Agile"],
-  },
-  {
-    id: "beemo",
-    year: "Aug – Dec 2024",
-    icon: Code2,
-    iconColor: "#10b981",
-    iconBg: "rgba(16,185,129,0.12)",
-    iconBorder: "rgba(16,185,129,0.3)",
-    title: "BEEMO — Capstone Project",
-    subtitle: "IoT Beehive Management System",
-    description:
-      "Real-time beehive monitor processing sensor data from Arduino/NodeMCU. Analytics dashboard with automated harvest alerts via email and SMS API.",
-    tags: ["PHP", "MySQL", "Chart.js", "Arduino", "IoT"],
-  },
-  {
-    id: "bsit",
-    year: "2021 – July 2025",
-    icon: GraduationCap,
-    iconColor: "#6366f1",
-    iconBg: "rgba(99,102,241,0.12)",
-    iconBorder: "rgba(99,102,241,0.3)",
-    title: "BS Information Technology",
-    subtitle: "CSTC — College of Sciences, Technology and Communication Inc.",
-    description:
-      "Graduated with a BSIT degree, studying software engineering, databases, networking, and system design.",
-    tags: ["BSIT", "Software Engineering", "Database"],
-  },
-  {
-    id: "hello-world",
-    year: "2021",
-    icon: Rocket,
-    iconColor: "#f59e0b",
-    iconBg: "rgba(245,158,11,0.12)",
-    iconBorder: "rgba(245,158,11,0.3)",
-    title: "Hello, World!",
-    subtitle: "First Line of Code",
-    description:
-      "Started with HTML & CSS, building first static sites and falling in love with turning ideas into interactive experiences.",
-    tags: ["HTML", "CSS", "JavaScript"],
-  },
-];
 
 const ExperienceTimeline = () => {
   const [isVisible, setIsVisible] = useState(false);
