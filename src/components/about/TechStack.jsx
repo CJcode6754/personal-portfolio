@@ -1,131 +1,178 @@
 import React, { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import { stats, technologies } from "../assets";
+
 const TechStack = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [tech, setTech] = useState([]);
   const [myStats, setMyStats] = useState([]);
 
-  const fetchTechStack = () => {
-    setTech(technologies);
-  }
-
-  const fetchStats = () => {
-    setMyStats(stats)
-  }
-
   useEffect(() => {
-    fetchTechStack();
-    fetchStats();
+    setTech(technologies);
+    setMyStats(stats);
   }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.05 }
     );
-
-    const element = document.getElementById('techstack-section');
-    if (element) observer.observe(element);
-
-    return () => {
-      if (element) observer.unobserve(element);
-    };
+    const el = document.getElementById("techstack-section");
+    if (el) observer.observe(el);
+    return () => { if (el) observer.unobserve(el); };
   }, []);
 
-  return (
-    <section id="techstack-section" className="min-h-screen py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 relative overflow-hidden">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
-      </div>
+  const fade = (delay = 0) => ({
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "translateY(0)" : "translateY(28px)",
+    transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+  });
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+  const statIconColors = [
+    { from: "#6366f1", to: "#a78bfa" },
+    { from: "#10b981", to: "#34d399" },
+    { from: "#f59e0b", to: "#f97316" },
+    { from: "#06b6d4", to: "#3b82f6" },
+  ];
+
+  return (
+    <section
+      id="techstack-section"
+      style={{
+        backgroundColor: "var(--bg-secondary)",
+        padding: "4.5rem 1.5rem",
+        overflow: "hidden",
+        position: "relative",
+        transition: "background-color 0.4s ease",
+      }}
+    >
+      {/* Decorative blob */}
+      <div style={{
+        position: "absolute", top: "-10rem", right: 0,
+        width: "24rem", height: "24rem", borderRadius: "9999px",
+        background: "radial-gradient(circle, var(--accent-2), transparent)",
+        filter: "blur(80px)", opacity: 0.15, pointerEvents: "none",
+      }} />
+
+      <div style={{ maxWidth: "72rem", margin: "0 auto", position: "relative", zIndex: 1 }}>
+
         {/* Header */}
-        <div className={`text-center mb-20 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-full px-6 py-3 border border-purple-500/30 mb-8">
-            <Star className="w-5 h-5 text-purple-400" />
-            <span className="text-purple-300 font-medium">Skills & Expertise</span>
+        <div style={{ textAlign: "center", marginBottom: "3rem", ...fade(0) }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: "0.5rem",
+            padding: "0.375rem 1rem", borderRadius: "9999px",
+            background: "var(--bg-card)", border: "1px solid var(--border-strong)",
+            color: "var(--accent)", fontSize: "0.875rem", fontWeight: 500,
+            marginBottom: "1.5rem",
+          }}>
+            <Star style={{ width: "1rem", height: "1rem" }} />
+            Skills & Expertise
           </div>
-          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-            My <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 style={{
+            fontFamily: "Outfit, sans-serif", fontSize: "clamp(2.5rem, 6vw, 4rem)",
+            fontWeight: 800, color: "var(--text-primary)", marginBottom: "1rem",
+            lineHeight: 1.1,
+          }}>
+            My{" "}
+            <span style={{
+              background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+            }}>
               Tech Stack
             </span>
           </h2>
-          <p className="text-slate-400 max-w-3xl mx-auto text-xl leading-relaxed">
-            Crafting digital experiences with cutting-edge technologies and creative problem-solving
+          <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem", maxWidth: "32rem", margin: "0 auto" }}>
+            Tools and technologies I use to bring ideas to life.
           </p>
         </div>
 
-        {/* Technologies Compact Grid */}
-        <div className={`mb-20 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{ transitionDelay: '0.2s' }}>
-          <h3 className="text-3xl font-bold text-white text-center mb-12">
-            Technologies I Love
-          </h3>
-          
-          {/* Floating Tech Pills */}
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            {tech.map((tech, index) => (
-              <div
-                key={tech.name}
-                className={`group relative inline-flex items-center gap-3 bg-gradient-to-r from-slate-800/70 to-slate-900/70 backdrop-blur-lg rounded-full px-6 py-3 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 hover:scale-110 hover:-translate-y-1 cursor-pointer ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ transitionDelay: `${0.05 * index}s` }}
-              >
-                {/* Gradient Background on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
-                
-                {/* Icon */}
-                {/* <span className="text-2xl group-hover:scale-125 transition-transform duration-300 relative z-10">
-                  {tech.icon}
-                </span> */}
-
-                <img src={tech.icon} alt="" className="w-6 h-8 object-contain" />
-                
-                {/* Name */}
-                <span className="text-white font-medium group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-300 group-hover:to-pink-300 group-hover:bg-clip-text transition-all duration-300 relative z-10">
-                  {tech.name}
-                </span>
-
-                {/* Hover Glow Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} rounded-full blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-300 -z-10`}></div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Stats Section */}
-        <div className={`mb-20 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{ transitionDelay: '0.4s' }}>
-          <div className="bg-gradient-to-r from-slate-800/30 to-slate-900/30 backdrop-blur-xl rounded-3xl border border-slate-700/50 p-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {myStats.map((stat, index) => {
-                const IconComponent = stat.icon;
-                return (
-                  <div key={stat.label} className="text-center group">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
-                    <div className="text-slate-400 text-sm">{stat.label}</div>
-                  </div>
-                );
-              })}
+        {/* Tech Pills */}
+        <div style={{
+          display: "flex", flexWrap: "wrap", gap: "0.75rem",
+          justifyContent: "center", marginBottom: "3rem", ...fade(0.1)
+        }}>
+          {tech.map((t, i) => (
+            <div
+              key={t.name}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "0.625rem",
+                padding: "0.625rem 1.25rem", borderRadius: "9999px",
+                background: "var(--bg-card)", border: "1px solid var(--border)",
+                cursor: "default",
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(12px)",
+                transition: `opacity 0.5s ease ${0.03 * i}s, transform 0.5s ease ${0.03 * i}s, border-color 0.2s, box-shadow 0.2s`,
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = "var(--accent)";
+                e.currentTarget.style.boxShadow = "0 4px 20px var(--accent-glow)";
+                e.currentTarget.style.transform = "translateY(-3px)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              <img src={t.icon} alt={t.name} style={{ width: "1.25rem", height: "1.25rem", objectFit: "contain" }} />
+              <span style={{ fontSize: "0.875rem", fontWeight: 500, color: "var(--text-primary)" }}>
+                {t.name}
+              </span>
             </div>
-          </div>
+          ))}
         </div>
+
+        {/* Stats Grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: "1.25rem",
+          ...fade(0.25),
+        }}>
+          {myStats.map((stat, i) => {
+            const IconComponent = stat.icon;
+            const colors = statIconColors[i] || statIconColors[0];
+            return (
+              <div
+                key={stat.label}
+                style={{
+                  backgroundColor: "var(--bg-card)", border: "1px solid var(--border)",
+                  borderRadius: "1.25rem", padding: "2rem 1.5rem", textAlign: "center",
+                  cursor: "default", transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "var(--shadow-lg)";
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.borderColor = "var(--border)";
+                }}
+              >
+                <div style={{
+                  display: "inline-flex", alignItems: "center", justifyContent: "center",
+                  width: "3.5rem", height: "3.5rem", borderRadius: "1rem",
+                  background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`,
+                  marginBottom: "1.25rem",
+                }}>
+                  <IconComponent style={{ width: "1.75rem", height: "1.75rem", color: "#fff" }} />
+                </div>
+                <div style={{
+                  fontFamily: "Outfit, sans-serif", fontSize: "2.25rem", fontWeight: 800,
+                  color: "var(--text-primary)", marginBottom: "0.375rem",
+                }}>
+                  {stat.number}
+                </div>
+                <div style={{ fontSize: "0.875rem", color: "var(--text-secondary)", fontWeight: 500 }}>
+                  {stat.label}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

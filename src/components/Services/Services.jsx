@@ -1,126 +1,248 @@
 import React, { useEffect, useState } from "react";
-import { Code, Zap, Palette, Rocket } from "lucide-react";
+import { Code2, Zap, Palette, Rocket, Github, Mail } from "lucide-react";
+
+const services = [
+  {
+    name: "Full-Stack Development",
+    icon: Code2,
+    description:
+      "End-to-end web apps using Laravel, React, and Node.js — from database architecture to polished UI.",
+    color: "var(--accent)",
+    colorRaw: "#6366f1",
+  },
+  {
+    name: "UI/UX Design",
+    icon: Palette,
+    description:
+      "Beautiful, intuitive interfaces built with Tailwind and Bootstrap that users genuinely enjoy using.",
+    color: "#ec4899",
+    colorRaw: "#ec4899",
+  },
+  {
+    name: "Performance Optimization",
+    icon: Zap,
+    description:
+      "Diagnosing and fixing bottlenecks — like cutting a 5-minute report down to 5 seconds.",
+    color: "#f59e0b",
+    colorRaw: "#f59e0b",
+  },
+];
 
 export default function Services() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
+      { threshold: 0.05 }
     );
-
-    const element = document.getElementById("techstack-section");
-    if (element) observer.observe(element);
-
-    return () => {
-      if (element) observer.unobserve(element);
-    };
+    const el = document.getElementById("services");
+    if (el) observer.observe(el);
+    return () => { if (el) observer.unobserve(el); };
   }, []);
 
-  const services = [
-    {
-      name: "Full-Stack Development",
-      icon: Code,
-      description: "End-to-end web applications with modern frameworks",
-      color: "from-blue-500 to-purple-500",
-    },
-    {
-      name: "UI/UX Design",
-      icon: Palette,
-      description: "Beautiful, intuitive interfaces that users love",
-      color: "from-pink-500 to-rose-500",
-    },
-    {
-      name: "Performance Optimization",
-      icon: Zap,
-      description: "Lightning-fast applications with optimal user experience",
-      color: "from-yellow-500 to-orange-500",
-    },
-  ];
+  const fade = (delay = 0) => ({
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "translateY(0)" : "translateY(24px)",
+    transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+  });
 
   return (
     <section
       id="services"
-      className="min-h-screen py-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-6 md:px-24 relative overflow-hidden"
+      style={{
+        backgroundColor: "var(--bg-primary)",
+        padding: "4.5rem 1.5rem",
+        overflow: "hidden",
+        position: "relative",
+        transition: "background-color 0.4s ease",
+      }}
     >
-      {/* Services Section */}
-      <div
-        className={`mb-16 transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-        style={{ transitionDelay: "0.6s" }}
-      >
-        <h3 className="text-3xl font-bold text-white text-center mb-12">
-          What I Offer
-        </h3>
+      {/* Blob */}
+      <div style={{
+        position: "absolute", top: 0, right: 0,
+        width: "22rem", height: "22rem", borderRadius: "9999px",
+        background: "radial-gradient(circle, var(--accent-2), transparent)",
+        filter: "blur(80px)", opacity: 0.1, pointerEvents: "none",
+        transform: "translate(30%, -30%)",
+      }} />
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <div
-                key={service.name}
-                className="group bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-xl rounded-3xl p-4 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2 hover:scale-105"
-              >
-                <div
-                  className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <IconComponent className="w-8 h-8 text-white" />
-                </div>
-                <h4 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
-                  {service.name}
-                </h4>
-                <p className="text-slate-400 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            );
-          })}
+      <div style={{ maxWidth: "72rem", margin: "0 auto", position: "relative", zIndex: 1 }}>
+
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: "2.5rem", ...fade(0) }}>
+          <h2 style={{
+            fontFamily: "Outfit, sans-serif",
+            fontSize: "clamp(2.5rem, 6vw, 4rem)",
+            fontWeight: 800, color: "var(--text-primary)",
+            marginBottom: "1rem", lineHeight: 1.1,
+          }}>
+            What I{" "}
+            <span style={{
+              background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+            }}>Offer</span>
+          </h2>
+          <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem", maxWidth: "36rem", margin: "0 auto" }}>
+            Services I provide to help you build better digital products.
+          </p>
         </div>
-      </div>
 
-      {/* Enhanced CTA */}
-      <div
-        className={`text-center transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-        style={{ transitionDelay: "0.8s" }}
-      >
-        <div className="bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-cyan-500/20 backdrop-blur-xl rounded-3xl p-12 border border-purple-500/30 max-w-4xl mx-auto relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-3xl"></div>
+        {/* Services Grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "1.5rem",
+          marginBottom: "3rem",
+          ...fade(0.15),
+        }}>
+          {services.map(({ name, icon: Icon, description, color, colorRaw }) => (
+            <ServiceCard key={name} name={name} Icon={Icon} description={description} color={color} colorRaw={colorRaw} />
+          ))}
+        </div>
 
-          <div className="relative z-10">
-            <div className="text-6xl mb-6 animate-bounce">🚀</div>
-            <h3 className="text-3xl font-bold text-white mb-6">
-              Ready to Build Something
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {" "}
-                Amazing?
-              </span>
-            </h3>
-            <p className="text-slate-300 mb-8 text-lg max-w-2xl mx-auto leading-relaxed">
-              Let's collaborate and turn your vision into reality. I'm
-              passionate about creating digital experiences that make a
-              difference.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.linkedin.com/in/ceejay-ibabiosa-206052292/" target="_blank" className="group inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
-                <Rocket className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
-                Let's Work Together
-              </a>
-              <a href="https://github.com/CJcode6754" target="_blank" className="inline-flex items-center justify-center border-2 border-slate-600 bg-slate-800/30 hover:bg-slate-700/50 hover:border-purple-500/50 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105">
-                View My Work
-              </a>
-            </div>
-          </div>
+        {/* CTA */}
+        <CTABanner isVisible={isVisible} />
+
+        {/* Footer */}
+        <div style={{ marginTop: "4rem", textAlign: "center", fontSize: "0.875rem", color: "var(--text-muted)" }}>
+          Designed & built by{" "}
+          <span style={{ color: "var(--accent)", fontWeight: 600 }}>Ceejay Ibabiosa</span>
+          {" "} · Philippines · {new Date().getFullYear()}
         </div>
       </div>
     </section>
+  );
+}
+
+function ServiceCard({ name, Icon, description, color, colorRaw }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: "var(--bg-card)",
+        border: `1px solid ${hovered ? colorRaw : "var(--border)"}`,
+        borderRadius: "1.25rem",
+        padding: "2rem",
+        cursor: "default",
+        transform: hovered ? "translateY(-6px)" : "translateY(0)",
+        boxShadow: hovered ? `0 8px 30px ${colorRaw}22` : "var(--shadow)",
+        transition: "transform 0.3s, border-color 0.3s, box-shadow 0.3s",
+      }}
+    >
+      <div style={{
+        width: "3.5rem", height: "3.5rem", borderRadius: "1rem",
+        background: `${colorRaw}18`, border: `1px solid ${colorRaw}33`,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        marginBottom: "1.5rem",
+        transform: hovered ? "scale(1.1)" : "scale(1)",
+        transition: "transform 0.3s",
+      }}>
+        <Icon style={{ width: "1.75rem", height: "1.75rem", color: colorRaw }} />
+      </div>
+      <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
+        {name}
+      </h3>
+      <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function CTABanner({ isVisible }) {
+  const [li, setLi] = useState(false);
+  const [gh, setGh] = useState(false);
+
+  return (
+    <div style={{
+      position: "relative", overflow: "hidden",
+      borderRadius: "1.75rem",
+      background: "var(--bg-card)",
+      border: "1px solid var(--border)",
+      padding: "4rem 2rem",
+      textAlign: "center",
+      opacity: isVisible ? 1 : 0,
+      transform: isVisible ? "translateY(0)" : "translateY(24px)",
+      transition: "opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s",
+    }}>
+      {/* Corner blobs */}
+      <div style={{
+        position: "absolute", top: 0, right: 0, width: "16rem", height: "16rem",
+        borderRadius: "9999px", background: "radial-gradient(circle, var(--accent), transparent)",
+        filter: "blur(60px)", opacity: 0.15, transform: "translate(30%, -30%)", pointerEvents: "none",
+      }} />
+      <div style={{
+        position: "absolute", bottom: 0, left: 0, width: "16rem", height: "16rem",
+        borderRadius: "9999px", background: "radial-gradient(circle, var(--accent-2), transparent)",
+        filter: "blur(60px)", opacity: 0.15, transform: "translate(-30%, 30%)", pointerEvents: "none",
+      }} />
+
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ fontSize: "3.5rem", marginBottom: "1.25rem" }}>🚀</div>
+        <h3 style={{
+          fontFamily: "Outfit, sans-serif",
+          fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontWeight: 800,
+          color: "var(--text-primary)", marginBottom: "1rem",
+        }}>
+          Ready to build something{" "}
+          <span style={{
+            background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+          }}>
+            amazing?
+          </span>
+        </h3>
+        <p style={{
+          color: "var(--text-secondary)", fontSize: "1.0625rem",
+          maxWidth: "36rem", margin: "0 auto 2.5rem", lineHeight: 1.7,
+        }}>
+          Let's collaborate and turn your vision into reality. I'm passionate about
+          creating digital experiences that make a real difference.
+        </p>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <a
+            href="https://www.linkedin.com/in/ceejay-ibabiosa-206052292/"
+            target="_blank" rel="noopener noreferrer"
+            id="services-cta-btn"
+            onMouseEnter={() => setLi(true)}
+            onMouseLeave={() => setLi(false)}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              padding: "0.875rem 2rem", borderRadius: "9999px",
+              background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
+              color: "#fff", fontWeight: 600, fontSize: "0.9375rem",
+              textDecoration: "none",
+              boxShadow: "0 4px 20px var(--accent-glow)",
+              transform: li ? "scale(1.04)" : "scale(1)",
+              transition: "transform 0.25s",
+            }}
+          >
+            <Mail style={{ width: "1rem", height: "1rem" }} /> Let's Work Together
+          </a>
+          <a
+            href="https://github.com/CJcode6754"
+            target="_blank" rel="noopener noreferrer"
+            id="services-github-btn"
+            onMouseEnter={() => setGh(true)}
+            onMouseLeave={() => setGh(false)}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              padding: "0.875rem 2rem", borderRadius: "9999px",
+              background: "var(--bg-secondary)",
+              color: "var(--text-primary)", fontWeight: 600, fontSize: "0.9375rem",
+              textDecoration: "none",
+              border: `1px solid ${gh ? "var(--accent)" : "var(--border-strong)"}`,
+              transform: gh ? "scale(1.04)" : "scale(1)",
+              transition: "transform 0.25s, border-color 0.25s",
+            }}
+          >
+            <Github style={{ width: "1rem", height: "1rem" }} /> View My Work
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
