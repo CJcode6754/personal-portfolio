@@ -1,41 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Home, User, Folder, BriefcaseBusinessIcon, Briefcase, Sun, Moon } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 
 const Sidebar = () => {
   const { isDark, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
 
   const menuItems = [
-    { href: '#home', label: 'Home', icon: Home, id: 'home' },
-    { href: '#techstack-section', label: 'Skills', icon: User, id: 'techstack-section' },
-    { href: '#experience-section', label: 'Experience', icon: Briefcase, id: 'experience-section' },
-    { href: '#project-section', label: 'Projects', icon: Folder, id: 'project-section' },
-    { href: '#services', label: 'Services', icon: BriefcaseBusinessIcon, id: 'services' },
+    { path: '/', label: 'Home', icon: Home },
+    { path: '/skills', label: 'Skills', icon: User },
+    { path: '/experience', label: 'Experience', icon: Briefcase },
+    { path: '/projects', label: 'Projects', icon: Folder },
+    { path: '/services', label: 'Services', icon: BriefcaseBusinessIcon },
   ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const ids = menuItems.map(m => m.id);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { threshold: 0.3 }
-    );
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -60,9 +44,8 @@ const Sidebar = () => {
         maxWidth: 'calc(100vw - 1rem)',
       }}
     >
-      {/* Logo */}
-      <a
-        href="#home"
+      <Link
+        to="/"
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           width: '2.25rem', height: '2.25rem', borderRadius: '9999px',
@@ -77,15 +60,14 @@ const Sidebar = () => {
         aria-label="Go to home"
       >
         CJ
-      </a>
+      </Link>
 
-      {/* Nav Links */}
-      {menuItems.map(({ href, label, icon: Icon, id }) => {
-        const isActive = activeSection === id;
+      {menuItems.map(({ path, label, icon: Icon }) => {
+        const isActive = location.pathname === path;
         return (
-          <a
-            key={href}
-            href={href}
+          <Link
+            key={path}
+            to={path}
             aria-label={label}
             style={{
               display: 'flex', alignItems: 'center', gap: '0.375rem',
@@ -105,14 +87,12 @@ const Sidebar = () => {
           >
             <Icon style={{ width: '0.9rem', height: '0.9rem' }} />
             <span style={{ display: 'none' }} className="sm-show">{label}</span>
-          </a>
+          </Link>
         );
       })}
 
-      {/* Divider */}
       <div style={{ width: '1px', height: '1.25rem', background: 'var(--border-strong)', margin: '0 0.25rem', flexShrink: 0 }} />
 
-      {/* Theme Toggle */}
       <button
         onClick={toggleTheme}
         id="theme-toggle-btn"

@@ -2,22 +2,10 @@ import React, { useEffect, useState } from "react";
 import {
   Briefcase
 } from "lucide-react";
+import { motion } from "motion/react";
 import { timeline } from "../assets";
 
-
 const ExperienceTimeline = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.05 }
-    );
-    const el = document.getElementById("experience-section");
-    if (el) observer.observe(el);
-    return () => { if (el) observer.unobserve(el); };
-  }, []);
-
   return (
     <section
       id="experience-section"
@@ -29,7 +17,6 @@ const ExperienceTimeline = () => {
         transition: "background-color 0.4s ease",
       }}
     >
-      {/* Blob */}
       <div style={{
         position: "absolute", bottom: "-4rem", left: "-4rem",
         width: "22rem", height: "22rem", borderRadius: "9999px",
@@ -39,13 +26,13 @@ const ExperienceTimeline = () => {
 
       <div style={{ maxWidth: "56rem", margin: "0 auto", position: "relative", zIndex: 1 }}>
 
-        {/* Header */}
-        <div style={{
-          textAlign: "center", marginBottom: "3rem",
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? "translateY(0)" : "translateY(20px)",
-          transition: "opacity 0.6s ease, transform 0.6s ease",
-        }}>
+        <motion.div 
+          style={{ textAlign: "center", marginBottom: "3rem" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
             padding: "0.3rem 0.875rem", borderRadius: "9999px",
@@ -73,11 +60,9 @@ const ExperienceTimeline = () => {
           <p style={{ color: "var(--text-secondary)", fontSize: "1rem", maxWidth: "32rem", margin: "0 auto" }}>
             From my first line of code to building enterprise systems.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Compact vertical timeline — left anchored */}
         <div style={{ position: "relative", paddingLeft: "2.5rem" }}>
-
           {timeline.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -86,7 +71,6 @@ const ExperienceTimeline = () => {
                 item={item}
                 Icon={Icon}
                 index={i}
-                isVisible={isVisible}
                 isLast={i === timeline.length - 1}
                 nextItem={timeline[i + 1]}
               />
@@ -99,21 +83,20 @@ const ExperienceTimeline = () => {
   );
 };
 
-const TimelineCard = ({ item, Icon, index, isVisible, isLast, nextItem }) => {
+const TimelineCard = ({ item, Icon, index, isLast, nextItem }) => {
   const [hovered, setHovered] = useState(false);
-  const [expanded, setExpanded] = useState(false);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: 0.1 * index }}
       style={{
         position: "relative",
         marginBottom: isLast ? 0 : "1.25rem",
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0)" : "translateY(16px)",
-        transition: `opacity 0.5s ease ${0.08 * index}s, transform 0.5s ease ${0.08 * index}s`,
       }}
     >
-      {/* Connecting Line Segment */}
       {!isLast && (
         <div style={{
           position: "absolute",
@@ -127,7 +110,6 @@ const TimelineCard = ({ item, Icon, index, isVisible, isLast, nextItem }) => {
         }} />
       )}
 
-      {/* Icon dot */}
       <div style={{
         position: "absolute",
         left: "-2.5rem",
@@ -144,7 +126,6 @@ const TimelineCard = ({ item, Icon, index, isVisible, isLast, nextItem }) => {
         <Icon style={{ width: "0.75rem", height: "0.75rem", color: item.iconColor }} />
       </div>
 
-      {/* Card */}
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -158,7 +139,6 @@ const TimelineCard = ({ item, Icon, index, isVisible, isLast, nextItem }) => {
           cursor: "default",
         }}
       >
-        {/* Top row: year + title + current badge */}
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.25rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexWrap: "wrap" }}>
             <h3 style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--text-primary)", margin: 0 }}>
@@ -190,12 +170,10 @@ const TimelineCard = ({ item, Icon, index, isVisible, isLast, nextItem }) => {
           </span>
         </div>
 
-        {/* Subtitle */}
         <p style={{ fontSize: "0.8rem", color: item.iconColor, fontWeight: 500, margin: "0 0 0.5rem 0" }}>
           {item.subtitle}
         </p>
 
-        {/* Description — collapsible on small content, always shown */}
         <p style={{
           fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.65,
           margin: "0 0 0.75rem 0",
@@ -203,7 +181,6 @@ const TimelineCard = ({ item, Icon, index, isVisible, isLast, nextItem }) => {
           {item.description}
         </p>
 
-        {/* Tags */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
           {item.tags.map(tag => (
             <span key={tag} style={{
@@ -216,7 +193,7 @@ const TimelineCard = ({ item, Icon, index, isVisible, isLast, nextItem }) => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

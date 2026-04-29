@@ -1,26 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Github, Mail } from "lucide-react";
+import { motion } from "motion/react";
 import { services } from "../assets";
 
 export default function Services() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.05 }
-    );
-    const el = document.getElementById("services");
-    if (el) observer.observe(el);
-    return () => { if (el) observer.unobserve(el); };
-  }, []);
-
-  const fade = (delay = 0) => ({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0)" : "translateY(24px)",
-    transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
-  });
-
   return (
     <section
       id="services"
@@ -32,7 +15,6 @@ export default function Services() {
         transition: "background-color 0.4s ease",
       }}
     >
-      {/* Blob */}
       <div style={{
         position: "absolute", top: 0, right: 0,
         width: "22rem", height: "22rem", borderRadius: "9999px",
@@ -43,8 +25,13 @@ export default function Services() {
 
       <div style={{ maxWidth: "72rem", margin: "0 auto", position: "relative", zIndex: 1 }}>
 
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "2.5rem", ...fade(0) }}>
+        <motion.div 
+          style={{ textAlign: "center", marginBottom: "2.5rem" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 style={{
             fontFamily: "Outfit, sans-serif",
             fontSize: "clamp(2.5rem, 6vw, 4rem)",
@@ -60,25 +47,27 @@ export default function Services() {
           <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem", maxWidth: "36rem", margin: "0 auto" }}>
             Services I provide to help you build better digital products.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Services Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
-          gap: "1.5rem",
-          marginBottom: "3rem",
-          ...fade(0.15),
-        }}>
+        <motion.div 
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+            gap: "1.5rem",
+            marginBottom: "3rem",
+          }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+        >
           {services.map(({ name, icon: Icon, description, color, colorRaw }) => (
             <ServiceCard key={name} name={name} Icon={Icon} description={description} color={color} colorRaw={colorRaw} />
           ))}
-        </div>
+        </motion.div>
 
-        {/* CTA */}
-        <CTABanner isVisible={isVisible} />
+        <CTABanner />
 
-        {/* Footer */}
         <div style={{ marginTop: "4rem", textAlign: "center", fontSize: "0.875rem", color: "var(--text-muted)" }}>
           Designed & built by{" "}
           <span style={{ color: "var(--accent)", fontWeight: 600 }}>Ceejay Ibabiosa</span>
@@ -92,7 +81,11 @@ export default function Services() {
 function ServiceCard({ name, Icon, description, color, colorRaw }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -122,27 +115,29 @@ function ServiceCard({ name, Icon, description, color, colorRaw }) {
       <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.7 }}>
         {description}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
-function CTABanner({ isVisible }) {
+function CTABanner() {
   const [li, setLi] = useState(false);
   const [gh, setGh] = useState(false);
 
   return (
-    <div style={{
-      position: "relative", overflow: "hidden",
-      borderRadius: "1.75rem",
-      background: "var(--bg-card)",
-      border: "1px solid var(--border)",
-      padding: "4rem 2rem",
-      textAlign: "center",
-      opacity: isVisible ? 1 : 0,
-      transform: isVisible ? "translateY(0)" : "translateY(24px)",
-      transition: "opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s",
-    }}>
-      {/* Corner blobs */}
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+      style={{
+        position: "relative", overflow: "hidden",
+        borderRadius: "1.75rem",
+        background: "var(--bg-card)",
+        border: "1px solid var(--border)",
+        padding: "4rem 2rem",
+        textAlign: "center",
+      }}
+    >
       <div style={{
         position: "absolute", top: 0, right: 0, width: "16rem", height: "16rem",
         borderRadius: "9999px", background: "radial-gradient(circle, var(--accent), transparent)",
@@ -217,6 +212,6 @@ function CTABanner({ isVisible }) {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

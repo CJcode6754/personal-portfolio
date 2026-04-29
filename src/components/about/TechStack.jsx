@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Star } from "lucide-react";
+import { motion } from "motion/react";
 import { stats, technologies } from "../assets";
 
 const TechStack = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [tech, setTech] = useState([]);
   const [myStats, setMyStats] = useState([]);
 
@@ -11,22 +11,6 @@ const TechStack = () => {
     setTech(technologies);
     setMyStats(stats);
   }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.05 }
-    );
-    const el = document.getElementById("techstack-section");
-    if (el) observer.observe(el);
-    return () => { if (el) observer.unobserve(el); };
-  }, []);
-
-  const fade = (delay = 0) => ({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0)" : "translateY(28px)",
-    transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
-  });
 
   const statIconColors = [
     { from: "#6366f1", to: "#a78bfa" },
@@ -46,7 +30,6 @@ const TechStack = () => {
         transition: "background-color 0.4s ease",
       }}
     >
-      {/* Decorative blob */}
       <div style={{
         position: "absolute", top: "-10rem", right: 0,
         width: "24rem", height: "24rem", borderRadius: "9999px",
@@ -56,8 +39,13 @@ const TechStack = () => {
 
       <div style={{ maxWidth: "72rem", margin: "0 auto", position: "relative", zIndex: 1 }}>
 
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "3rem", ...fade(0) }}>
+        <motion.div 
+          style={{ textAlign: "center", marginBottom: "3rem" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
             padding: "0.375rem 1rem", borderRadius: "9999px",
@@ -84,24 +72,31 @@ const TechStack = () => {
           <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem", maxWidth: "32rem", margin: "0 auto" }}>
             Tools and technologies I use to bring ideas to life.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Tech Pills */}
-        <div style={{
-          display: "flex", flexWrap: "wrap", gap: "0.75rem",
-          justifyContent: "center", marginBottom: "3rem", ...fade(0.1)
-        }}>
+        <motion.div 
+          style={{
+            display: "flex", flexWrap: "wrap", gap: "0.75rem",
+            justifyContent: "center", marginBottom: "3rem"
+          }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ staggerChildren: 0.03, delayChildren: 0.2 }}
+        >
           {tech.map((t, i) => (
-            <div
+            <motion.div
               key={t.name}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
               style={{
                 display: "inline-flex", alignItems: "center", gap: "0.625rem",
                 padding: "0.625rem 1.25rem", borderRadius: "9999px",
                 background: "var(--bg-card)", border: "1px solid var(--border)",
                 cursor: "default",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(12px)",
-                transition: `opacity 0.5s ease ${0.03 * i}s, transform 0.5s ease ${0.03 * i}s, border-color 0.2s, box-shadow 0.2s`,
+                transition: `border-color 0.2s, box-shadow 0.2s, transform 0.2s`,
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = "var(--accent)";
@@ -118,17 +113,21 @@ const TechStack = () => {
               <span style={{ fontSize: "0.875rem", fontWeight: 500, color: "var(--text-primary)" }}>
                 {t.name}
               </span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Stats Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
-          gap: "1.25rem",
-          ...fade(0.25),
-        }}>
+        <motion.div 
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 200px), 1fr))",
+            gap: "1.25rem"
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           {myStats.map((stat, i) => {
             const IconComponent = stat.icon;
             const colors = statIconColors[i] || statIconColors[0];
@@ -171,7 +170,7 @@ const TechStack = () => {
               </div>
             );
           })}
-        </div>
+        </motion.div>
 
       </div>
     </section>

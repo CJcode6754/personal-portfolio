@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Github, Users, User, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { teamProjects, personalProjects } from "../assets";
 
-/* ── Compact Project Card ───────────────────────────────────────── */
-const ProjectCard = ({ project, isTeam, onImageClick }) => {
+const ProjectCard = ({ project, isTeam, onImageClick, index }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.1 * index }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -22,7 +26,6 @@ const ProjectCard = ({ project, isTeam, onImageClick }) => {
         flexDirection: "column",
       }}
     >
-      {/* Image */}
       <div 
         onClick={() => onImageClick && onImageClick(project.image)}
         style={{ position: "relative", height: "160px", overflow: "hidden", flexShrink: 0, cursor: "zoom-in" }}
@@ -38,13 +41,11 @@ const ProjectCard = ({ project, isTeam, onImageClick }) => {
             transition: "transform 0.4s ease",
           }}
         />
-        {/* Gradient overlay */}
         <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)",
           pointerEvents: "none",
         }} />
-        {/* Status badge */}
         <div style={{ position: "absolute", top: "0.625rem", left: "0.625rem", display: "flex", gap: "0.375rem" }}>
           <span style={{
             padding: "0.2rem 0.6rem", borderRadius: "9999px",
@@ -55,7 +56,6 @@ const ProjectCard = ({ project, isTeam, onImageClick }) => {
             {project.category}
           </span>
         </div>
-        {/* Links on hover */}
         <div style={{
           position: "absolute", bottom: "0.625rem", left: "0.625rem",
           display: "flex", gap: "0.375rem",
@@ -98,9 +98,7 @@ const ProjectCard = ({ project, isTeam, onImageClick }) => {
         </div>
       </div>
 
-      {/* Content */}
       <div style={{ padding: "1rem", flex: 1, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        {/* Title row */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <h3 style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--text-primary)", margin: 0, flex: 1 }}>
             {project.title}
@@ -111,7 +109,6 @@ const ProjectCard = ({ project, isTeam, onImageClick }) => {
           }
         </div>
 
-        {/* Description — 2-line clamp */}
         <p style={{
           fontSize: "0.8rem", color: "var(--text-secondary)", lineHeight: 1.55,
           margin: 0,
@@ -121,7 +118,6 @@ const ProjectCard = ({ project, isTeam, onImageClick }) => {
           {project.description}
         </p>
 
-        {/* Tech tags */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", marginTop: "auto", paddingTop: "0.375rem" }}>
           {project.technologies.slice(0, 5).map((t, i) => (
             <span key={i} style={{
@@ -143,31 +139,13 @@ const ProjectCard = ({ project, isTeam, onImageClick }) => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-/* ── Main Section ──────────────────────────────────────────────── */
 const ProjectSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState("personal");
   const [selectedImage, setSelectedImage] = useState(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.05 }
-    );
-    const el = document.getElementById("project-section");
-    if (el) observer.observe(el);
-    return () => { if (el) observer.unobserve(el); };
-  }, []);
-
-  const fade = (delay = 0) => ({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0)" : "translateY(20px)",
-    transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`,
-  });
 
   const Tab = ({ tab, label, icon: Icon, count }) => {
     const active = activeTab === tab;
@@ -184,6 +162,8 @@ const ProjectSection = () => {
           color: active ? "#fff" : "var(--text-secondary)",
           boxShadow: active ? "0 4px 16px var(--accent-glow)" : "none",
           transition: "all 0.2s",
+          position: "relative",
+          zIndex: 1,
         }}
         onMouseEnter={e => { if (!active) e.currentTarget.style.color = "var(--text-primary)"; }}
         onMouseLeave={e => { if (!active) e.currentTarget.style.color = "var(--text-secondary)"; }}
@@ -218,8 +198,13 @@ const ProjectSection = () => {
     >
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
 
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "2.5rem", ...fade(0) }}>
+        <motion.div 
+          style={{ textAlign: "center", marginBottom: "2.5rem" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 style={{
             fontFamily: "Outfit, sans-serif",
             fontSize: "clamp(2rem, 5vw, 3rem)",
@@ -234,10 +219,15 @@ const ProjectSection = () => {
           <p style={{ color: "var(--text-secondary)", fontSize: "1rem", maxWidth: "32rem", margin: "0 auto" }}>
             Personal builds and team collaborations — {personalProjects.length + teamProjects.length} projects shipped.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Tabs */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem", ...fade(0.08) }}>
+        <motion.div 
+          style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
           <div style={{
             display: "inline-flex", gap: "0.375rem", padding: "0.375rem",
             borderRadius: "0.875rem", background: "var(--bg-card)", border: "1px solid var(--border)",
@@ -245,23 +235,31 @@ const ProjectSection = () => {
             <Tab tab="personal" label="Personal" icon={User} count={personalProjects.length} />
             <Tab tab="team" label="Team" icon={Users} count={teamProjects.length} />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
-          gap: "1.25rem",
-          ...fade(0.15),
-        }}>
-          {projects.map(p => (
-            <ProjectCard key={p.id} project={p} isTeam={isTeam} onImageClick={setSelectedImage} />
-          ))}
-        </div>
+        <motion.div 
+          layout
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
+            gap: "1.25rem",
+          }}
+        >
+          <AnimatePresence mode="popLayout">
+            {projects.map((p, i) => (
+              <ProjectCard 
+                key={p.id} 
+                project={p} 
+                isTeam={isTeam} 
+                onImageClick={setSelectedImage}
+                index={i}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
       </div>
 
-      {/* Image Modal */}
       {selectedImage && (
         <div 
           onClick={() => setSelectedImage(null)}
