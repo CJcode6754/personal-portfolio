@@ -193,6 +193,11 @@ body {
 }
 
 /* ── Ping keyframe (used in timeline current badge) ──────────────── */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 @keyframes ping {
   75%, 100% {
     transform: scale(2);
@@ -237,6 +242,38 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(0.5rem, 1.5vw, 0.875rem);
   width: 100%;
+}
+
+@media (max-width: 480px) {
+  #bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-image {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: clamp(180px, 50vw, 260px);
+  }
+
+  .bento-card {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: clamp(100px, 28vw, 150px);
+  }
+}
+
+@media (max-width: 400px) {
+  .home-cta-row {
+    flex-wrap: wrap;
+  }
+
+  .btn-primary, .btn-secondary {
+    flex: 1 1 100%;
+  }
+
+  :root {
+    --btn-label-display: none;
+  }
 }
 
 .bento-image {

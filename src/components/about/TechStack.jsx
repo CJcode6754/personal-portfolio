@@ -69,7 +69,7 @@ const TechStack = () => {
               Tech Stack
             </span>
           </h2>
-          <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem", maxWidth: "32rem", margin: "0 auto" }}>
+          <p style={{ color: "var(--text-secondary)", fontSize: "clamp(0.875rem, 2vw, 1.125rem)", maxWidth: "32rem", margin: "0 auto" }}>
             Tools and technologies I use to bring ideas to life.
           </p>
         </motion.div>
@@ -136,7 +136,7 @@ const TechStack = () => {
                 key={stat.label}
                 style={{
                   backgroundColor: "var(--bg-card)", border: "1px solid var(--border)",
-                  borderRadius: "1.25rem", padding: "2rem 1.5rem", textAlign: "center",
+                  borderRadius: "1.25rem", padding: "clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem)", textAlign: "center",
                   cursor: "default", transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
                 }}
                 onMouseEnter={e => {

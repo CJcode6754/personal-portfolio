@@ -1,10 +1,67 @@
-import FinanceFlow from "../assets/projects/FinanceFlow.png";
-import IAM from "../assets/projects/IAM.png";
-import BeeMo from "../assets/projects/BeeMo.png";
-import AutoCaller from "../assets/projects/autoCaller.png";
-import CineSearch from "../assets/projects/CineSearch.png";
-import ThinkDraft from "../assets/projects/ThinkDraft.png";
-import SayHiImage from "../assets/projects/sayHi.png";
+import HireSightThumb from "../assets/projects/hiresight/thumbnail.png";
+import HireSightDashboard from "../assets/projects/hiresight/dashboard.png";
+import HireSightBoard from "../assets/projects/hiresight/board.png";
+import HireSightAbout from "../assets/projects/hiresight/about.png";
+import HireSightLogin from "../assets/projects/hiresight/login.png";
+import HireSightRegister from "../assets/projects/hiresight/register.png";
+// FinanceFlow
+import FinanceFlowThumb from "../assets/projects/financeflow/thumbnail.png";
+import FinanceFlowDashboard from "../assets/projects/financeflow/dashboard.png";
+import FinanceFlowAnalytics from "../assets/projects/financeflow/analytics.png";
+import FinanceFlowBudget from "../assets/projects/financeflow/budget.png";
+import FinanceFlowTransactions from "../assets/projects/financeflow/transactions.png";
+import FinanceFlowSavings from "../assets/projects/financeflow/savings.png";
+import FinanceFlowWallet from "../assets/projects/financeflow/wallet.png";
+// ThinkDraft
+import ThinkDraftThumb from "../assets/projects/thinkdraft/thumbnail.png";
+import ThinkDraftHome from "../assets/projects/thinkdraft/home.png";
+import ThinkDraftHome2 from "../assets/projects/thinkdraft/home2.png";
+import ThinkDraftHome3 from "../assets/projects/thinkdraft/home3.png";
+import ThinkDraftBlogs from "../assets/projects/thinkdraft/blogs.png";
+import ThinkDraftAddBlog from "../assets/projects/thinkdraft/add-blog.png";
+import ThinkDraftAdminDashboard from "../assets/projects/thinkdraft/admin-dashboard.png";
+// AutoCaller
+import AutoCallerThumb from "../assets/projects/autocaller/thumbnail.png";
+import AutoCallerHome from "../assets/projects/autocaller/home.png";
+import AutoCallerHome2 from "../assets/projects/autocaller/home2.png";
+import AutoCallerHome3 from "../assets/projects/autocaller/home3.png";
+import AutoCallerSearch from "../assets/projects/autocaller/search.png";
+import AutoCallerAddCar from "../assets/projects/autocaller/add-car.png";
+import AutoCallerLogin from "../assets/projects/autocaller/login.png";
+import AutoCallerRegister from "../assets/projects/autocaller/register.png";
+// SayHi
+import SayHiThumb from "../assets/projects/sayhi/thumbnail.png";
+import SayHiChats from "../assets/projects/sayhi/chats.png";
+import SayHiChats2 from "../assets/projects/sayhi/chats2.png";
+import SayHiProfile from "../assets/projects/sayhi/profile.png";
+import SayHiTheme from "../assets/projects/sayhi/theme.png";
+import SayHiLogin from "../assets/projects/sayhi/login.png";
+import SayHiRegister from "../assets/projects/sayhi/register.png";
+// CineSearch
+import CineSearchThumb from "../assets/projects/cinesearch/thumbnail.png";
+import CineSearchHomepage from "../assets/projects/cinesearch/homepage.png";
+import CineSearchMovies from "../assets/projects/cinesearch/movies.png";
+import CineSearchTvSeries from "../assets/projects/cinesearch/tv-series.png";
+import CineSearchAnime from "../assets/projects/cinesearch/anime.png";
+// IAM
+import IAMThumb from "../assets/projects/iam/thumbnail.png";
+import IAMDashboard from "../assets/projects/iam/dashboard.png";
+import IAMUsers from "../assets/projects/iam/users.png";
+import IAMGroups from "../assets/projects/iam/groups.png";
+import IAMRoles from "../assets/projects/iam/roles.png";
+import IAMPermission from "../assets/projects/iam/permission.png";
+import IAMModule from "../assets/projects/iam/module.png";
+import IAMLogin from "../assets/projects/iam/login.png";
+import IAMRegister from "../assets/projects/iam/register.png";
+// BeeMo
+import BeeMoThumb from "../assets/projects/beemo/thumbnail.png";
+import BeeMoDashboard from "../assets/projects/beemo/dashboard.png";
+import BeeMoChooseHive from "../assets/projects/beemo/choose-hive.png";
+import BeeMoParameterMonitoring from "../assets/projects/beemo/parameter-monitoring.png";
+import BeeMoReports from "../assets/projects/beemo/reports.png";
+import BeeMoWorker from "../assets/projects/beemo/worker.png";
+import BeeMoGuide from "../assets/projects/beemo/guide.png";
+import BeeMoLogin from "../assets/projects/beemo/login.png";
 import LaravelIcon from "../assets/icons/laravel.svg";
 import JavaScriptIcon from "../assets/icons/javascript.svg";
 import PHPIcon from "../assets/icons/php.svg";
@@ -63,7 +120,6 @@ export const teamProjects = [
       "Arduino",
       "MySQL",
     ],
-    image: BeeMo,
     github: "https://github.com/CJcode6754/BeeMo",
     live: "",
     category: "IoT + Backend",
@@ -71,10 +127,53 @@ export const teamProjects = [
     teamSize: "3 members",
     duration: "5 months",
     status: "Completed",
+    images: [
+      { src: BeeMoThumb, caption: "BeeMo — IoT Beehive Monitor" },
+      { src: BeeMoDashboard, caption: "Dashboard — Real-time Hive Analytics" },
+      { src: BeeMoChooseHive, caption: "Choose Hive" },
+      { src: BeeMoParameterMonitoring, caption: "Parameter Monitoring" },
+      { src: BeeMoReports, caption: "Reports" },
+      { src: BeeMoWorker, caption: "Worker Management" },
+      { src: BeeMoGuide, caption: "Guide" },
+      { src: BeeMoLogin, caption: "Login" },
+    ],
   },
 ];
 
 export const personalProjects = [
+  {
+    id: "hiresight",
+    title: "HireSight",
+    description:
+      "Full-stack job application tracker replacing messy spreadsheets with a visual Kanban pipeline, AI-powered tools, and real-time analytics — giving you complete visibility from wishlist to offer.",
+    responsibilities: [
+      "Built visual Kanban board with drag-and-drop across 7 pipeline stages using dnd-kit and Framer Motion",
+      "Integrated Google Gemini 2.5 Flash for AI chat, cover letter generation, and pipeline insights",
+      "Implemented stateless Bearer token auth with Laravel Sanctum and Hashids for ID obfuscation",
+      "Deployed on Vercel + Render with Dockerized PHP-FPM/nginx and Aiven MySQL",
+    ],
+    technologies: [
+      "React 19", "TypeScript", "Vite", "TailwindCSS", "DaisyUI",
+      "Zustand", "Laravel 12", "PHP 8.2", "Sanctum", "Gemini API",
+      "dnd-kit", "Framer Motion", "Recharts",
+    ],
+    images: [
+      { src: HireSightThumb, caption: "HireSight — Job Application Tracker" },
+      { src: HireSightDashboard, caption: "Dashboard — Analytics & Pipeline Overview" },
+      { src: HireSightBoard, caption: "Kanban Board — Drag-and-drop Pipeline" },
+      { src: HireSightAbout, caption: "About / Landing Page" },
+      { src: HireSightLogin, caption: "Login" },
+      { src: HireSightRegister, caption: "Register" },
+    ],
+    github: "https://github.com/CJcode6754/job-tracker-frontend",
+    githubApi: "https://github.com/CJcode6754/job-tracker-api",
+    liveProtected: "https://hire-sight-track.vercel.app",
+    live: "",
+    category: "Full Stack",
+    gradient: "from-indigo-500 to-violet-500",
+    duration: "Active",
+    status: "Live",
+  },
   {
     id: "financeflow",
     title: "FinanceFlow",
@@ -94,13 +193,21 @@ export const personalProjects = [
       "Chart.js",
       "JavaScript",
     ],
-    image: FinanceFlow,
     github: "https://github.com/CJcode6754/FinanceFlow",
     live: "",
     category: "Full Stack",
     gradient: "from-green-500 to-emerald-500",
     duration: "2 months",
     status: "Completed",
+    images: [
+      { src: FinanceFlowThumb, caption: "FinanceFlow — Personal Finance Manager" },
+      { src: FinanceFlowDashboard, caption: "Dashboard" },
+      { src: FinanceFlowAnalytics, caption: "Analytics" },
+      { src: FinanceFlowBudget, caption: "Budget Management" },
+      { src: FinanceFlowTransactions, caption: "Transactions" },
+      { src: FinanceFlowSavings, caption: "Savings" },
+      { src: FinanceFlowWallet, caption: "Wallet" },
+    ],
   },
   {
     id: "thinkdraft",
@@ -122,13 +229,21 @@ export const personalProjects = [
       "Gemini API",
       "JWT",
     ],
-    image: ThinkDraft,
     github: "https://github.com/CJcode6754/ThinkDraft",
     live: "https://think-draft-e8iv.vercel.app",
     category: "Full Stack",
     gradient: "from-pink-500 to-purple-500",
     duration: "1 month",
     status: "Completed",
+    images: [
+      { src: ThinkDraftThumb, caption: "ThinkDraft — AI Blog Platform" },
+      { src: ThinkDraftHome, caption: "Home" },
+      { src: ThinkDraftHome2, caption: "Home — Features" },
+      { src: ThinkDraftHome3, caption: "Home — CTA" },
+      { src: ThinkDraftBlogs, caption: "Blogs" },
+      { src: ThinkDraftAddBlog, caption: "Add Blog" },
+      { src: ThinkDraftAdminDashboard, caption: "Admin Dashboard" },
+    ],
   },
   {
     id: "autocaller",
@@ -149,13 +264,22 @@ export const personalProjects = [
       "JavaScript",
       "MySQL",
     ],
-    image: AutoCaller,
     github: "https://github.com/CJcode6754/AutoCaller",
     live: "",
     category: "Full Stack",
     gradient: "from-blue-500 to-cyan-500",
     duration: "1 month",
     status: "Completed",
+    images: [
+      { src: AutoCallerThumb, caption: "AutoCaller — Car Marketplace" },
+      { src: AutoCallerHome, caption: "Home" },
+      { src: AutoCallerHome2, caption: "Home — Listings" },
+      { src: AutoCallerHome3, caption: "Home — Featured" },
+      { src: AutoCallerSearch, caption: "Search & Filters" },
+      { src: AutoCallerAddCar, caption: "Add Car Listing" },
+      { src: AutoCallerLogin, caption: "Login" },
+      { src: AutoCallerRegister, caption: "Register" },
+    ],
   },
   {
     id: "sayhi",
@@ -178,13 +302,21 @@ export const personalProjects = [
       "Zustand",
       "Cloudinary",
     ],
-    image: SayHiImage,
     github: "https://github.com/CJcode6754/sayHi.git",
     live: "",
     category: "Full Stack",
     gradient: "from-pink-500 to-purple-500",
     duration: "1.2 months",
     status: "Completed",
+    images: [
+      { src: SayHiThumb, caption: "SayHi — Real-time Chat App" },
+      { src: SayHiChats, caption: "Chats" },
+      { src: SayHiChats2, caption: "Chats — Active Conversation" },
+      { src: SayHiProfile, caption: "Profile" },
+      { src: SayHiTheme, caption: "Theme Customization" },
+      { src: SayHiLogin, caption: "Login" },
+      { src: SayHiRegister, caption: "Register" },
+    ],
   },
   {
     id: "cinesearch",
@@ -198,13 +330,19 @@ export const personalProjects = [
       "Deployed application on Vercel for optimized performance and accessibility",
     ],
     technologies: ["React", "Tailwind CSS", "NodeJS", "Appwrite", "TMDB API"],
-    image: CineSearch,
     github: "https://github.com/CJcode6754/CineSearch",
     live: "https://cine-search-delta.vercel.app",
     category: "Frontend",
     gradient: "from-red-500 to-pink-500",
     duration: "1 week",
     status: "Completed",
+    images: [
+      { src: CineSearchThumb, caption: "CineSearch — Movie Browser" },
+      { src: CineSearchHomepage, caption: "Homepage" },
+      { src: CineSearchMovies, caption: "Movies" },
+      { src: CineSearchTvSeries, caption: "TV Series" },
+      { src: CineSearchAnime, caption: "Anime" },
+    ],
   },
   {
     id: "iamaccesscontrol",
@@ -227,13 +365,23 @@ export const personalProjects = [
       "Axios",
       "JWT",
     ],
-    image: IAM,
     github: "https://github.com/YourUsername/IAM-Access-Control",
     live: "",
     category: "Full Stack",
     gradient: "from-indigo-500 to-purple-500",
     duration: "1 week",
     status: "Completed",
+    images: [
+      { src: IAMThumb, caption: "IAM — Access Control System" },
+      { src: IAMDashboard, caption: "Dashboard" },
+      { src: IAMUsers, caption: "Users Management" },
+      { src: IAMGroups, caption: "Groups" },
+      { src: IAMRoles, caption: "Roles" },
+      { src: IAMPermission, caption: "Permissions" },
+      { src: IAMModule, caption: "Modules" },
+      { src: IAMLogin, caption: "Login" },
+      { src: IAMRegister, caption: "Register" },
+    ],
   },
 ];
 

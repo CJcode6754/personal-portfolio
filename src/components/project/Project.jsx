@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { Github, Users, User, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { teamProjects, personalProjects } from "../assets";
+import ProjectCarousel from "./ProjectCarousel";
 
-const ProjectCard = ({ project, isTeam, onImageClick, index }) => {
+const ProjectCard = ({ project, isTeam, onOpen, index }) => {
   const [hovered, setHovered] = useState(false);
+  const hasCarousel = Array.isArray(project.images) && project.images.length > 0;
 
   return (
     <motion.div
@@ -27,11 +29,11 @@ const ProjectCard = ({ project, isTeam, onImageClick, index }) => {
       }}
     >
       <div 
-        onClick={() => onImageClick && onImageClick(project.image)}
-        style={{ position: "relative", height: "160px", overflow: "hidden", flexShrink: 0, cursor: "zoom-in" }}
+        onClick={() => hasCarousel && onOpen(project)}
+        style={{ position: "relative", height: "160px", overflow: "hidden", flexShrink: 0, cursor: hasCarousel ? "pointer" : "default" }}
       >
         <img
-          src={project.image}
+          src={project.images?.[0]?.src || project.image}
           alt={project.title}
           style={{
             width: "100%", height: "100%",
@@ -56,46 +58,18 @@ const ProjectCard = ({ project, isTeam, onImageClick, index }) => {
             {project.category}
           </span>
         </div>
-        <div style={{
-          position: "absolute", bottom: "0.625rem", left: "0.625rem",
-          display: "flex", gap: "0.375rem",
-          opacity: hovered ? 1 : 0,
-          transform: hovered ? "translateY(0)" : "translateY(6px)",
-          transition: "opacity 0.25s, transform 0.25s",
-        }}>
-          {project.github && (
-            <a
-              href={project.github} target="_blank" rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "0.3rem",
-                padding: "0.3rem 0.7rem", borderRadius: "9999px",
-                background: "rgba(0,0,0,0.7)", color: "#fff",
-                border: "1px solid rgba(255,255,255,0.18)",
-                fontSize: "0.7rem", fontWeight: 500, textDecoration: "none",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              <Github style={{ width: "0.75rem", height: "0.75rem" }} /> Code
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live} target="_blank" rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "0.3rem",
-                padding: "0.3rem 0.7rem", borderRadius: "9999px",
-                background: "rgba(99,102,241,0.85)", color: "#fff",
-                border: "1px solid rgba(129,140,248,0.4)",
-                fontSize: "0.7rem", fontWeight: 500, textDecoration: "none",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              <ExternalLink style={{ width: "0.75rem", height: "0.75rem" }} /> Live
-            </a>
-          )}
-        </div>
+        {hasCarousel && hovered && (
+          <div style={{
+            position: "absolute", bottom: "0.625rem", right: "0.625rem",
+            padding: "0.25rem 0.6rem", borderRadius: "9999px",
+            background: "rgba(99,102,241,0.85)", color: "#fff",
+            fontSize: "0.6rem", fontWeight: 700,
+            backdropFilter: "blur(6px)",
+            pointerEvents: "none",
+          }}>
+            {project.images.length} slides
+          </div>
+        )}
       </div>
 
       <div style={{ padding: "1rem", flex: 1, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
@@ -145,7 +119,9 @@ const ProjectCard = ({ project, isTeam, onImageClick, index }) => {
 
 const ProjectSection = () => {
   const [activeTab, setActiveTab] = useState("personal");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [carouselProject, setCarouselProject] = useState(null);
+  const openCarousel = useCallback((p) => setCarouselProject(p), []);
+  const closeCarousel = useCallback(() => setCarouselProject(null), []);
 
   const Tab = ({ tab, label, icon: Icon, count }) => {
     const active = activeTab === tab;
@@ -251,7 +227,7 @@ const ProjectSection = () => {
                 key={p.id} 
                 project={p} 
                 isTeam={isTeam} 
-                onImageClick={setSelectedImage}
+                onOpen={openCarousel}
                 index={i}
               />
             ))}
@@ -260,47 +236,11 @@ const ProjectSection = () => {
 
       </div>
 
-      {selectedImage && (
-        <div 
-          onClick={() => setSelectedImage(null)}
-          style={{
-            position: "fixed", inset: 0, zIndex: 100,
-            backgroundColor: "rgba(0, 0, 0, 0.85)",
-            backdropFilter: "blur(8px)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            padding: "2rem",
-            cursor: "zoom-out",
-          }}
-        >
-          <img 
-            src={selectedImage} 
-            alt="Project full view" 
-            style={{
-              maxWidth: "100%", maxHeight: "100%",
-              borderRadius: "0.75rem",
-              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
-              objectFit: "contain",
-            }}
-            onClick={e => e.stopPropagation()}
-          />
-          <button
-            onClick={() => setSelectedImage(null)}
-            style={{
-              position: "absolute", top: "1.5rem", right: "1.5rem",
-              background: "rgba(255, 255, 255, 0.1)",
-              color: "#fff", border: "none",
-              width: "3rem", height: "3rem", borderRadius: "9999px",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: "1.5rem", cursor: "pointer",
-              transition: "background 0.2s",
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)"}
-            onMouseLeave={e => e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)"}
-          >
-            ×
-          </button>
-        </div>
-      )}
+      <AnimatePresence>
+        {carouselProject && (
+          <ProjectCarousel project={carouselProject} onClose={closeCarousel} />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
