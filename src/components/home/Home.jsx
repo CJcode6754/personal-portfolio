@@ -186,7 +186,7 @@ const Home = () => {
 
         <Link
           to="/skills"
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[var(--text-muted)] transition-opacity duration-300 hover:opacity-80"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[var(--text-muted)] transition-opacity duration-300 hover:opacity-80 hidden sm:flex"
           aria-label="Explore more"
         >
           <span className="text-[10px] tracking-[0.15em] uppercase font-semibold">Explore</span>

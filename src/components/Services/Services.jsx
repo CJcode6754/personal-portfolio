@@ -44,9 +44,12 @@ export default function Services() {
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
             }}>Offer</span>
           </h2>
-          <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem", maxWidth: "36rem", margin: "0 auto" }}>
-            Services I provide to help you build better digital products.
-          </p>
+          <p style={{
+          color: "var(--text-secondary)", fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
+          maxWidth: "36rem", margin: "0 auto",
+        }}>
+          Services I provide to help you build better digital products.
+        </p>
         </motion.div>
 
         <motion.div 
@@ -134,7 +137,7 @@ function CTABanner() {
         borderRadius: "1.75rem",
         background: "var(--bg-card)",
         border: "1px solid var(--border)",
-        padding: "4rem 2rem",
+        padding: "clamp(2rem, 6vw, 4rem) clamp(1.25rem, 4vw, 2rem)",
         textAlign: "center",
       }}
     >
