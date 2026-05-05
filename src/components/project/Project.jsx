@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from "react";
-import { Github, Users, User, ExternalLink } from "lucide-react";
+import { Users, User } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { teamProjects, personalProjects } from "../assets";
 import ProjectCarousel from "./ProjectCarousel";
+import TechPopover from "./TechPopover";
 
 const ProjectCard = ({ project, isTeam, onOpen, index }) => {
   const [hovered, setHovered] = useState(false);
@@ -103,13 +104,7 @@ const ProjectCard = ({ project, isTeam, onOpen, index }) => {
             </span>
           ))}
           {project.technologies.length > 5 && (
-            <span style={{
-              padding: "0.175rem 0.5rem", borderRadius: "9999px",
-              background: "var(--accent-glow)", border: "1px solid var(--accent)",
-              color: "var(--accent)", fontSize: "0.65rem", fontWeight: 600,
-            }}>
-              +{project.technologies.length - 5}
-            </span>
+            <TechPopover techs={project.technologies.slice(5)} />
           )}
         </div>
       </div>

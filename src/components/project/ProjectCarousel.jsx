@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef, memo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, X, Github, ExternalLink, Lock } from "lucide-react";
+import TechPopover from "./TechPopover";
 
 // ── Lazy image with IntersectionObserver ─────────────────────────────────────
 const LazyImage = memo(({ src, alt, priority = false, style = {} }) => {
@@ -106,7 +107,7 @@ const HeroSlide = memo(({ project }) => (
         display: "-webkit-box", WebkitLineClamp: 1,
         WebkitBoxOrient: "vertical", overflow: "hidden",
       }}>{project.description}</p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", marginTop: "0.5rem" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", marginTop: "0.5rem", alignItems: "center" }}>
         {project.technologies.slice(0, 4).map((t, i) => (
           <span key={i} style={{
             padding: "0.175rem 0.55rem", borderRadius: "9999px",
@@ -116,13 +117,7 @@ const HeroSlide = memo(({ project }) => (
             backdropFilter: "blur(4px)",
           }}>{t}</span>
         ))}
-        {project.technologies.length > 4 && (
-          <span style={{
-            padding: "0.175rem 0.55rem", borderRadius: "9999px",
-            background: "rgba(99,102,241,0.5)", color: "#fff",
-            fontSize: "0.65rem", fontWeight: 600,
-          }}>+{project.technologies.length - 4}</span>
-        )}
+        <TechPopover techs={project.technologies.slice(4)} dark />
       </div>
     </div>
   </div>
