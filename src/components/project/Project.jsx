@@ -49,7 +49,7 @@ const ProjectCard = ({ project, isTeam, onOpen, index }) => {
           background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)",
           pointerEvents: "none",
         }} />
-        <div style={{ position: "absolute", top: "0.625rem", left: "0.625rem", display: "flex", gap: "0.375rem" }}>
+        <div style={{ position: "absolute", top: "0.625rem", left: "0.625rem", display: "flex", gap: "0.375rem", flexWrap: "wrap" }}>
           <span style={{
             padding: "0.2rem 0.6rem", borderRadius: "9999px",
             background: "rgba(0,0,0,0.55)", color: "#e2e8f0",
@@ -58,6 +58,17 @@ const ProjectCard = ({ project, isTeam, onOpen, index }) => {
           }}>
             {project.category}
           </span>
+          {project.isCommission && (
+            <span style={{
+              padding: "0.2rem 0.65rem", borderRadius: "9999px",
+              background: "linear-gradient(135deg, #10b981, #059669)", color: "#fff",
+              fontSize: "0.65rem", fontWeight: 700,
+              backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,0.2)",
+              boxShadow: "0 2px 8px rgba(16,185,129,0.25)",
+            }}>
+              Commission
+            </span>
+          )}
         </div>
         {hasCarousel && hovered && (
           <div style={{

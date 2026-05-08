@@ -182,7 +182,7 @@ export const teamProjects = [
     id: "acadflow",
     title: "AcadFlow",
     description:
-      "A commission-based school management platform for teachers, students, and super admins, with grade computation, attendance, health tracking, and reporting.",
+      "A school management platform for teachers, students, and super admins, with grade computation, attendance, health tracking, and reporting.",
     myRole: "Backend Developer",
     responsibilities: [
       "Built secure REST APIs with Laravel Sanctum for role-based access across teacher, student, and super admin workflows",
@@ -199,6 +199,7 @@ export const teamProjects = [
     gradient: "from-sky-500 to-cyan-500",
     teamSize: "3 members",
     duration: "4 months",
+    isCommission: true,
     status: "Completed",
     images: [
       { src: AcadFlowThumb, caption: "AcadFlow — Educational Management System" },
@@ -260,6 +261,7 @@ export const teamProjects = [
     gradient: "from-emerald-500 to-teal-500",
     teamSize: "3 members",
     duration: "4 months",
+    isCommission: true,
     status: "Completed",
     images: [
       { src: AppliLoanThumb, caption: "AppliLoan — Appliance Loan Management Platform" },
@@ -626,9 +628,9 @@ export const timeline = [
     iconBg: "rgba(236,72,153,0.12)",
     iconBorder: "rgba(236,72,153,0.3)",
     title: "Commission Projects",
-    subtitle: "EduForm & AppliLoan",
+    subtitle: "AcadFlow & AppliLoan",
     description:
-      "EduForm — multi-role school management (grades, attendance, BMI, parent conferences). AppliLoan — loan platform with QR payments, barcode inventory & sales analytics.",
+      "AcadFlow — multi-role school management (grades, attendance, BMI, parent conferences). AppliLoan — loan platform with QR payments, barcode inventory & sales analytics.",
     tags: ["Laravel", "Sanctum", "React", "Zustand", "Tailwind CSS"],
   },
   {
