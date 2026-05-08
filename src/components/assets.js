@@ -193,7 +193,8 @@ export const teamProjects = [
     technologies: [
       "Laravel 12", "PHP 8.2", "Sanctum", "MySQL", "React", "Zustand", "Tailwind CSS", "Axios", "DomPDF", "PhpSpreadsheet",
     ],
-    github: "",
+    github: "https://github.com/Commissions-Collab/EduForm---FRONTEND",
+    githubApi: "https://github.com/Commissions-Collab/AppliLoan-BACKEND",
     live: "",
     category: "Team",
     gradient: "from-sky-500 to-cyan-500",
@@ -255,7 +256,8 @@ export const teamProjects = [
     technologies: [
       "Laravel 12", "PHP 8.2", "Sanctum", "MySQL", "React", "Zustand", "Tailwind CSS", "Axios", "QR Payment", "Barcode Scanner",
     ],
-    github: "",
+    github: "https://github.com/Commissions-Collab/AppliLoan-FRONTEND",
+    githubApi: "https://github.com/Commissions-Collab/AppliLoan-BACKEND",
     live: "",
     category: "Team",
     gradient: "from-emerald-500 to-teal-500",
