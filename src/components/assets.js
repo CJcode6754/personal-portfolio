@@ -62,6 +62,46 @@ import BeeMoReports from "../assets/projects/beemo/reports.png";
 import BeeMoWorker from "../assets/projects/beemo/worker.png";
 import BeeMoGuide from "../assets/projects/beemo/guide.png";
 import BeeMoLogin from "../assets/projects/beemo/login.png";
+
+import AcadFlowThumb from "../assets/projects/acadflow/AcadFlow-Thumbnail.png";
+import AcadFlowLogin from "../assets/projects/acadflow/login.png";
+import AcadFlowRegister from "../assets/projects/acadflow/register.png";
+import AcadFlowAdminDashboard from "../assets/projects/acadflow/admin/dashboard.png";
+import AcadFlowAdminGrade from "../assets/projects/acadflow/admin/academic-records.png";
+import AcadFlowAdminAttendance from "../assets/projects/acadflow/admin/daily-attendance.png";
+import AcadFlowAdminHealth from "../assets/projects/acadflow/admin/health-profile.png";
+import AcadFlowAdminParentConference from "../assets/projects/acadflow/admin/parent-conference.png";
+import AcadFlowAdminWorkload from "../assets/projects/acadflow/admin/workload.png";
+import AcadFlowStudentDashboard from "../assets/projects/acadflow/student/dashboard.png";
+import AcadFlowStudentDailyAttendance from "../assets/projects/acadflow/student/attendance.png";
+import AcadFlowStudentAcademicRecords from "../assets/projects/acadflow/student/grade.png";
+import AcadFlowStudentCertificate from "../assets/projects/acadflow/student/achievements.png";
+import AcadFlowStudentHealth from "../assets/projects/acadflow/student/health-rofile.png";
+import AcadFlowSuperDashboard from "../assets/projects/acadflow/Superadmin/dashboard.png";
+import AcadFlowSuperCalendar from "../assets/projects/acadflow/Superadmin/academinc-calendar.png";
+import AcadFlowSuperClassManagement from "../assets/projects/acadflow/Superadmin/class-management.png";
+import AcadFlowSuperTeacherManagement from "../assets/projects/acadflow/Superadmin/teacher-management.png";
+import AcadFlowSuperStudentApproval from "../assets/projects/acadflow/Superadmin/student-approval.png";
+import AcadFlowSuperPromotionReport from "../assets/projects/acadflow/Superadmin/promotion-report.png";
+
+import AppliLoanThumb from "../assets/projects/appliloan/appliloan-thumbnail.png";
+import AppliLoanLogin from "../assets/projects/appliloan/login.png";
+import AppliLoanAdminDashboard from "../assets/projects/appliloan/admin/dashboard.png";
+import AppliLoanAdminLoanApplications from "../assets/projects/appliloan/admin/loan-applications.png";
+import AppliLoanAdminLoanPayments from "../assets/projects/appliloan/admin/loan-payments.png";
+import AppliLoanAdminInventory from "../assets/projects/appliloan/admin/inventory-management.png";
+import AppliLoanAdminSalesReport from "../assets/projects/appliloan/admin/sales-report.png";
+import AppliLoanAdminDividends from "../assets/projects/appliloan/admin/divedends-report.png";
+import AppliLoanClerkDashboard from "../assets/projects/appliloan/clerk/dashboard.png";
+import AppliLoanClerkLoanApplications from "../assets/projects/appliloan/clerk/loan-applications.png";
+import AppliLoanClerkLoanPayments from "../assets/projects/appliloan/clerk/loan-payments.png";
+import AppliLoanClerkInventory from "../assets/projects/appliloan/clerk/inventory-management.png";
+import AppliLoanClerkMemberApproval from "../assets/projects/appliloan/clerk/membership-approval.png";
+import AppliLoanMemberDashboard from "../assets/projects/appliloan/member/dashboard.png";
+import AppliLoanMemberLoanMonitoring from "../assets/projects/appliloan/member/loan-monitoring.png";
+import AppliLoanMemberAppliances from "../assets/projects/appliloan/member/appliances.png";
+import AppliLoanMemberMembershipApplication from "../assets/projects/appliloan/member/membership-application.png";
+import AppliLoanMemberSettings from "../assets/projects/appliloan/member/settings.png";
 import LaravelIcon from "../assets/icons/laravel.svg";
 import JavaScriptIcon from "../assets/icons/javascript.svg";
 import PHPIcon from "../assets/icons/php.svg";
@@ -136,6 +176,128 @@ export const teamProjects = [
       { src: BeeMoWorker, caption: "Worker Management" },
       { src: BeeMoGuide, caption: "Guide" },
       { src: BeeMoLogin, caption: "Login" },
+    ],
+  },
+  {
+    id: "acadflow",
+    title: "AcadFlow",
+    description:
+      "A commission-based school management platform for teachers, students, and super admins, with grade computation, attendance, health tracking, and reporting.",
+    myRole: "Backend Developer",
+    responsibilities: [
+      "Built secure REST APIs with Laravel Sanctum for role-based access across teacher, student, and super admin workflows",
+      "Implemented grade computation, attendance tracking, BMI monitoring, reporting, and certificate generation",
+      "Connected React frontend components to Laravel APIs using Axios and handled state with Zustand",
+      "Collaborated with frontend teammates to deliver student dashboards, admin controls, and school settings features on schedule",
+    ],
+    technologies: [
+      "Laravel 12", "PHP 8.2", "Sanctum", "MySQL", "React", "Zustand", "Tailwind CSS", "Axios", "DomPDF", "PhpSpreadsheet",
+    ],
+    github: "",
+    live: "",
+    category: "Team",
+    gradient: "from-sky-500 to-cyan-500",
+    teamSize: "3 members",
+    duration: "4 months",
+    status: "Completed",
+    images: [
+      { src: AcadFlowThumb, caption: "AcadFlow — Educational Management System" },
+    ],
+    roleGroups: [
+      {
+        role: "Teacher / Admin",
+        images: [
+          { src: AcadFlowThumb, caption: "AcadFlow — Teacher/Admin Overview" },
+          { src: AcadFlowAdminDashboard, caption: "Teacher/Admin Dashboard" },
+          { src: AcadFlowAdminGrade, caption: "Grade Management" },
+          { src: AcadFlowAdminAttendance, caption: "Attendance Tracking" },
+          { src: AcadFlowAdminHealth, caption: "Health / BMI Monitoring" },
+          { src: AcadFlowAdminParentConference, caption: "Parent Conference Scheduling" },
+          { src: AcadFlowAdminWorkload, caption: "Teacher Workload Management" },
+        ],
+      },
+      {
+        role: "Student",
+        images: [
+          { src: AcadFlowStudentDashboard, caption: "Student Dashboard" },
+          { src: AcadFlowStudentDailyAttendance, caption: "Daily Attendance" },
+          { src: AcadFlowStudentAcademicRecords, caption: "Academic Records" },
+          { src: AcadFlowStudentCertificate, caption: "Certificates" },
+          { src: AcadFlowStudentHealth, caption: "Health Profile" },
+        ],
+      },
+      {
+        role: "Super Admin",
+        images: [
+          { src: AcadFlowSuperDashboard, caption: "Super Admin Dashboard" },
+          { src: AcadFlowSuperCalendar, caption: "Academic Calendar Setup" },
+          { src: AcadFlowSuperClassManagement, caption: "Class & Section Management" },
+          { src: AcadFlowSuperTeacherManagement, caption: "Teacher Management" },
+          { src: AcadFlowSuperStudentApproval, caption: "Student Approval Workflow" },
+          { src: AcadFlowSuperPromotionReport, caption: "Promotion Report" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "appliloan",
+    title: "AppliLoan",
+    description:
+      "A appliance loan management platform with role-based approval flows, QR payments, barcode inventory, and analytics for super admins, clerks, and applicants.",
+    myRole: "Backend Developer",
+    responsibilities: [
+      "Built Laravel APIs for multi-role loan submission, review, approval, and payment tracking",
+      "Implemented automatic interest computation, payment schedules, QR payment support, and barcode inventory deduction",
+      "Integrated frontend React/Zustand/Tailwind UI with API authentication and secure role-based permissions",
+      "Worked with the team to deliver dashboards and reports for members, clerks, and administrators",
+    ],
+    technologies: [
+      "Laravel 12", "PHP 8.2", "Sanctum", "MySQL", "React", "Zustand", "Tailwind CSS", "Axios", "QR Payment", "Barcode Scanner",
+    ],
+    github: "",
+    live: "",
+    category: "Team",
+    gradient: "from-emerald-500 to-teal-500",
+    teamSize: "3 members",
+    duration: "4 months",
+    status: "Completed",
+    images: [
+      { src: AppliLoanThumb, caption: "AppliLoan — Appliance Loan Management Platform" },
+    ],
+    roleGroups: [
+      {
+        role: "Super Admin",
+        images: [
+          { src: AppliLoanThumb, caption: "AppliLoan — Super Admin Overview" },
+          { src: AppliLoanAdminDashboard, caption: "Admin Dashboard" },
+          { src: AppliLoanAdminLoanApplications, caption: "Loan Applications" },
+          { src: AppliLoanAdminLoanPayments, caption: "Loan Payments" },
+          { src: AppliLoanAdminInventory, caption: "Inventory Management" },
+          { src: AppliLoanAdminSalesReport, caption: "Sales Analytics" },
+          { src: AppliLoanAdminDividends, caption: "Dividends Report" },
+        ],
+      },
+      {
+        role: "Clerk",
+        images: [
+          { src: AppliLoanClerkDashboard, caption: "Clerk Dashboard" },
+          { src: AppliLoanClerkLoanApplications, caption: "Loan Applications" },
+          { src: AppliLoanClerkLoanPayments, caption: "Payment Approval" },
+          { src: AppliLoanClerkInventory, caption: "Inventory Tracking" },
+          { src: AppliLoanClerkMemberApproval, caption: "Membership Approval" },
+        ],
+      },
+      {
+        role: "Member",
+        images: [
+          { src: AppliLoanLogin, caption: "Login" },
+          { src: AppliLoanMemberDashboard, caption: "Member Dashboard" },
+          { src: AppliLoanMemberLoanMonitoring, caption: "Loan Monitoring" },
+          { src: AppliLoanMemberAppliances, caption: "Appliances Catalog" },
+          { src: AppliLoanMemberMembershipApplication, caption: "Membership Application" },
+          { src: AppliLoanMemberSettings, caption: "Settings" },
+        ],
+      },
     ],
   },
 ];
