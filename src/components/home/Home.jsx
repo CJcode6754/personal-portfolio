@@ -76,10 +76,10 @@ const Home = () => {
               Available for new opportunities
             </motion.div>
 
-            <h1 className="font-[Outfit,sans-serif] text-[var(--text-primary)] font-extrabold leading-[1.1] mb-4" style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)" }}>
+            <h1 className="font-[Outfit,sans-serif] text-[var(--text-primary)] font-extrabold leading-[1.1] mb-4" style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)", letterSpacing: "-0.04em" }}>
               Hi, I'm Ceejay
               <br />
-              <span className="bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] bg-clip-text text-transparent">
+              <span className="text-[var(--accent)]">
                 Ibabiosa.
               </span>
             </h1>
@@ -91,10 +91,8 @@ const Home = () => {
             </div>
 
             <p className="text-[var(--text-secondary)] leading-relaxed mb-5 max-w-2xl" style={{ fontSize: "clamp(0.875rem, 2vw, 1.125rem)" }}>
-              A passionate developer building enterprise-grade web systems. Specializing in{" "}
-              <strong className="text-[var(--text-primary)] font-semibold">Laravel</strong> and{" "}
-              <strong className="text-[var(--text-primary)] font-semibold">React</strong>,
-              I transform complex business problems into elegant, scalable digital solutions.
+              I build web applications using <strong className="text-[var(--text-primary)] font-semibold">Laravel</strong> and{" "}
+              <strong className="text-[var(--text-primary)] font-semibold">React</strong>. I enjoy working on projects that solve real needs—like an IoT beehive monitor for my capstone or management platforms I've developed for local commissions.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 text-[var(--text-muted)] text-sm font-medium">
@@ -175,7 +173,7 @@ const Home = () => {
 
               <div className="relative z-10 mt-2">
                 <p className="font-bold uppercase tracking-[0.1em] text-white/75 mb-1" style={{ fontSize: "clamp(0.55rem, 1.2vw, 0.72rem)" }}>Portfolio</p>
-                <p className="font-bold text-white leading-none mb-1" style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)" }}>5+</p>
+                <p className="font-bold text-white leading-none mb-1" style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)" }}>8+</p>
                 <p className="text-white/85 font-medium" style={{ fontSize: "clamp(0.65rem, 1.5vw, 0.875rem)" }}>
                   Projects Shipped <ArrowRight className="inline ml-1 w-3 h-3" />
                 </p>
@@ -185,7 +183,7 @@ const Home = () => {
         </motion.div>
 
         <Link
-          to="/skills"
+          to="/projects"
           className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[var(--text-muted)] transition-opacity duration-300 hover:opacity-80 hidden sm:flex"
           aria-label="Explore more"
         >

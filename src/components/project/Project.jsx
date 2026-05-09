@@ -61,7 +61,7 @@ const ProjectCard = ({ project, isTeam, onOpen, index }) => {
           {project.isCommission && (
             <span style={{
               padding: "0.2rem 0.65rem", borderRadius: "9999px",
-              background: "linear-gradient(135deg, #10b981, #059669)", color: "#fff",
+              background: "#10b981", color: "#fff",
               fontSize: "0.65rem", fontWeight: 700,
               backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,0.2)",
               boxShadow: "0 2px 8px rgba(16,185,129,0.25)",
@@ -140,7 +140,7 @@ const ProjectSection = () => {
           padding: "0.6rem 1.25rem", borderRadius: "0.75rem",
           fontSize: "0.8125rem", fontWeight: 600, cursor: "pointer",
           border: "none", outline: "none",
-          background: active ? "linear-gradient(135deg, var(--accent), var(--accent-2))" : "transparent",
+          background: active ? "var(--accent)" : "transparent",
           color: active ? "#fff" : "var(--text-secondary)",
           boxShadow: active ? "0 4px 16px var(--accent-glow)" : "none",
           transition: "all 0.2s",
@@ -193,10 +193,7 @@ const ProjectSection = () => {
             fontWeight: 800, color: "var(--text-primary)",
             marginBottom: "0.625rem", lineHeight: 1.15,
           }}>
-            My <span style={{
-              background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            }}>Projects</span>
+            My <span style={{ color: "var(--accent)" }}>Projects</span>
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "1rem", maxWidth: "32rem", margin: "0 auto" }}>
             Personal builds and team collaborations — {personalProjects.length + teamProjects.length} projects shipped.

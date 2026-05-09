@@ -50,15 +50,12 @@ const ExperienceTimeline = () => {
             marginBottom: "0.75rem", lineHeight: 1.15,
           }}>
             Experience &{" "}
-            <span style={{
-              background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            }}>
+            <span style={{ color: "var(--accent)" }}>
               Timeline
             </span>
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "1rem", maxWidth: "32rem", margin: "0 auto" }}>
-            From my first line of code to building enterprise systems.
+            From my first line of code to developing practical web applications.
           </p>
         </motion.div>
 

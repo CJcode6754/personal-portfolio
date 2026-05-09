@@ -40,15 +40,14 @@ export default function Services() {
           }}>
             What I{" "}
             <span style={{
-              background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+              color: "var(--accent)",
             }}>Offer</span>
           </h2>
-          <p style={{
+        <p style={{
           color: "var(--text-secondary)", fontSize: "clamp(0.875rem, 2vw, 1.125rem)",
           maxWidth: "36rem", margin: "0 auto",
         }}>
-          Services I provide to help you build better digital products.
+          Building digital products while constantly learning new ways to solve problems.
         </p>
         </motion.div>
 
@@ -160,10 +159,7 @@ function CTABanner() {
           color: "var(--text-primary)", marginBottom: "1rem",
         }}>
           Ready to build something{" "}
-          <span style={{
-            background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
-            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-          }}>
+          <span style={{ color: "var(--accent)" }}>
             amazing?
           </span>
         </h3>
@@ -184,7 +180,7 @@ function CTABanner() {
             style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
               padding: "0.875rem 2rem", borderRadius: "9999px",
-              background: "linear-gradient(135deg, var(--accent), var(--accent-2))",
+              background: "var(--accent)",
               color: "#fff", fontWeight: 600, fontSize: "0.9375rem",
               textDecoration: "none",
               boxShadow: "0 4px 20px var(--accent-glow)",

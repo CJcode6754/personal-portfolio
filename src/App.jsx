@@ -11,9 +11,9 @@ import { ThemeProvider } from "./context/ThemeContext";
 // Mapping of paths to section IDs
 const pathMap = {
   "/": "home",
-  "/skills": "techstack-section",
-  "/experience": "experience-section",
   "/projects": "project-section",
+  "/experience": "experience-section",
+  "/skills": "techstack-section",
   "/services": "services",
 };
 
@@ -109,9 +109,9 @@ function App() {
           <Sidebar />
           <main>
             <div id="home"><Home /></div>
-            <div id="techstack-section"><TechStack /></div>
-            <div id="experience-section"><ExperienceTimeline /></div>
             <div id="project-section"><ProjectSection /></div>
+            <div id="experience-section"><ExperienceTimeline /></div>
+            <div id="techstack-section"><TechStack /></div>
             <div id="services"><Services /></div>
           </main>
         </div>

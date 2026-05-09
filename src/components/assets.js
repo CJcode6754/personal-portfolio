@@ -140,7 +140,7 @@ export const teamProjects = [
     id: "beemo",
     title: "BeeMo: IoT Beehive Monitor",
     description:
-      "BeeMo is an IoT-based, web-enabled monitoring system for Tetragonula biroi, a stingless bee species native to the Philippines. This comprehensive system provides real-time environmental monitoring, automated alerts, and detailed analytics to help beekeepers optimize hive conditions and bee health.",
+      "IoT system that monitors stingless beehives in real-time for small-scale Filipino beekeepers. Sensors on the hive track temperature, humidity, and activity. Dashboard shows live data, automated SMS/email alerts if something's wrong, and gives harvest recommendations based on hive conditions.",
     myRole: "Backend Developer, QA Engineer & Arduino Programmer",
     responsibilities: [
       "Designed and developed backend API architecture using PHP and MySQL with efficient database schema for sensor data",
@@ -149,16 +149,7 @@ export const teamProjects = [
       "Performed comprehensive testing, quality assurance, and created a responsive data dashboard with Chart.js",
     ],
     technologies: [
-      "PHP",
-      "HTML",
-      "CSS",
-      "Bootstrap",
-      "JavaScript",
-      "Chart.js",
-      "PHPMailer",
-      "Infobip API",
-      "Arduino",
-      "MySQL",
+      "PHP", "Tailwind CSS", "MySQL", "Chart.js", "Arduino",
     ],
     github: "https://github.com/CJcode6754/BeeMo",
     live: "",
@@ -182,7 +173,7 @@ export const teamProjects = [
     id: "acadflow",
     title: "AcadFlow",
     description:
-      "A school management platform for teachers, students, and super admins, with grade computation, attendance, health tracking, and reporting.",
+      "School management platform commissioned by a private school. Teachers track grades and attendance, students see their records and health data, admins manage entire school operations (calendar, classes, teacher assignments, student approvals, promotion reports).",
     myRole: "Backend Developer",
     responsibilities: [
       "Built secure REST APIs with Laravel Sanctum for role-based access across teacher, student, and super admin workflows",
@@ -191,7 +182,7 @@ export const teamProjects = [
       "Collaborated with frontend teammates to deliver student dashboards, admin controls, and school settings features on schedule",
     ],
     technologies: [
-      "Laravel 12", "PHP 8.2", "Sanctum", "MySQL", "React", "Zustand", "Tailwind CSS", "Axios", "DomPDF", "PhpSpreadsheet",
+      "Laravel 12", "PHP 8.2", "React", "Tailwind CSS", "MySQL",
     ],
     github: "https://github.com/Commissions-Collab/EduForm---FRONTEND",
     githubApi: "https://github.com/Commissions-Collab/AppliLoan-BACKEND",
@@ -201,6 +192,7 @@ export const teamProjects = [
     teamSize: "3 members",
     duration: "4 months",
     isCommission: true,
+    client: "Private School Commission",
     status: "Completed",
     images: [
       { src: AcadFlowThumb, caption: "AcadFlow — Educational Management System" },
@@ -245,7 +237,7 @@ export const teamProjects = [
     id: "appliloan",
     title: "AppliLoan",
     description:
-      "A appliance loan management platform with role-based approval flows, QR payments, barcode inventory, and analytics for super admins, clerks, and applicants.",
+      "Loan management platform commissioned by an appliance loan cooperative. Members apply for loans, clerks process approvals with barcode inventory checks, super admins track payments and generate sales/dividend reports. Every transaction tracked with QR codes for accountability.",
     myRole: "Backend Developer",
     responsibilities: [
       "Built Laravel APIs for multi-role loan submission, review, approval, and payment tracking",
@@ -254,7 +246,7 @@ export const teamProjects = [
       "Worked with the team to deliver dashboards and reports for members, clerks, and administrators",
     ],
     technologies: [
-      "Laravel 12", "PHP 8.2", "Sanctum", "MySQL", "React", "Zustand", "Tailwind CSS", "Axios", "QR Payment", "Barcode Scanner",
+      "Laravel 12", "PHP 8.2", "React", "Tailwind CSS", "MySQL",
     ],
     github: "https://github.com/Commissions-Collab/AppliLoan-FRONTEND",
     githubApi: "https://github.com/Commissions-Collab/AppliLoan-BACKEND",
@@ -264,6 +256,7 @@ export const teamProjects = [
     teamSize: "3 members",
     duration: "4 months",
     isCommission: true,
+    client: "Appliance Loan Cooperative Commission",
     status: "Completed",
     images: [
       { src: AppliLoanThumb, caption: "AppliLoan — Appliance Loan Management Platform" },
@@ -311,7 +304,7 @@ export const personalProjects = [
     id: "hiresight",
     title: "HireSight",
     description:
-      "Full-stack job application tracker replacing messy spreadsheets with a visual Kanban pipeline, AI-powered tools, and real-time analytics — giving you complete visibility from wishlist to offer.",
+      "Job tracker that replaces spreadsheets with a visual Kanban board, AI tools, and real analytics. Track applications across 7 pipeline stages, generate cover letters with Gemini API, and see your conversion rate at a glance.",
     responsibilities: [
       "Built visual Kanban board with drag-and-drop across 7 pipeline stages using dnd-kit and Framer Motion",
       "Integrated Google Gemini 2.5 Flash for AI chat, cover letter generation, and pipeline insights",
@@ -319,9 +312,7 @@ export const personalProjects = [
       "Deployed on Vercel + Render with Dockerized PHP-FPM/nginx and Aiven MySQL",
     ],
     technologies: [
-      "React 19", "TypeScript", "Vite", "TailwindCSS", "DaisyUI",
-      "Zustand", "Laravel 12", "PHP 8.2", "Sanctum", "Gemini API",
-      "dnd-kit", "Framer Motion", "Recharts",
+      "React 19", "TypeScript", "Tailwind CSS", "Laravel 12", "PHP 8.2", "MySQL",
     ],
     images: [
       { src: HireSightThumb, caption: "HireSight — Job Application Tracker" },
@@ -334,7 +325,7 @@ export const personalProjects = [
     github: "https://github.com/CJcode6754/job-tracker-frontend",
     githubApi: "https://github.com/CJcode6754/job-tracker-api",
     liveProtected: "https://hire-sight-track.vercel.app",
-    live: "",
+    live: "https://hire-sight-track.vercel.app",
     category: "Full Stack",
     gradient: "from-indigo-500 to-violet-500",
     duration: "Active",
@@ -344,7 +335,7 @@ export const personalProjects = [
     id: "financeflow",
     title: "FinanceFlow",
     description:
-      "A comprehensive personal finance management application that empowers users to take control of their financial health through intuitive expense tracking, budget management, and detailed analytics.",
+      "Track every expense, visualize spending patterns, and stay on budget. Categorize transactions, set spending alerts, and export reports — giving you actual control over your money instead of just wondering where it goes.",
     responsibilities: [
       "Developed full expense tracking and budget management system with categorization, tagging, and spending alerts",
       "Built responsive Tailwind CSS UI and interactive dashboards using Chart.js for financial analytics",
@@ -379,7 +370,7 @@ export const personalProjects = [
     id: "thinkdraft",
     title: "ThinkDraft",
     description:
-      "An AI-powered blog generation platform that leverages the Gemini API to help content creators generate high-quality, engaging blog posts with intelligent content suggestions and seamless management features.",
+      "AI-powered blog writer. Write 10x faster by having Gemini generate your first draft, then edit and publish. No more blank page syndrome — focus on ideas, not typing.",
     responsibilities: [
       "Integrated Google's Gemini API for AI-driven content generation and tagging",
       "Developed full-stack application with React frontend, Express.js backend, and MongoDB schema",
@@ -387,13 +378,7 @@ export const personalProjects = [
       "Deployed application with CI/CD pipeline for seamless updates and scalability",
     ],
     technologies: [
-      "React",
-      "Express",
-      "NodeJS",
-      "MongoDB",
-      "Tailwind",
-      "Gemini API",
-      "JWT",
+      "React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS",
     ],
     github: "https://github.com/CJcode6754/ThinkDraft",
     live: "https://think-draft-e8iv.vercel.app",
@@ -415,7 +400,7 @@ export const personalProjects = [
     id: "autocaller",
     title: "AutoCaller",
     description:
-      "A modern Laravel-based platform where users can post cars for sale and receive direct calls from potential buyers. Features advanced search filters, real-time messaging, and integrated payment processing for a seamless selling experience.",
+      "Car marketplace where sellers list vehicles and buyers find their next ride. Search by make, model, price — get real pictures, full details, and direct seller contact. No fluff, no listings with one photo.",
     responsibilities: [
       "Developed car listing system with image uploads, search filters, and detailed specifications",
       "Created responsive Tailwind CSS UI and admin dashboard for managing listings and transactions",
@@ -451,22 +436,15 @@ export const personalProjects = [
     id: "sayhi",
     title: "SayHi",
     description:
-      "A real-time chat application with active user tracking, built using the MERN stack and Socket.io. Features include live messaging, online status indicators, and media sharing capabilities.",
+      "A real-time communication platform designed to eliminate latency in digital conversations. Features instant messaging, live typing indicators, and presence tracking. Built with a focus on state synchronization and seamless media sharing.",
     responsibilities: [
-      "Implemented real-time messaging, typing indicators, and read receipts using Socket.io",
-      "Built responsive Tailwind CSS UI with media upload and group/private chat functionality",
-      "Developed backend with JWT authentication and Cloudinary integration for media storage",
-      "Optimized state management with Zustand for performance and minimal re-renders",
+      "Architected real-time bi-directional communication using Socket.io and Node.js for sub-100ms message delivery",
+      "Developed a robust state management system using Zustand to handle real-time UI updates (online status, typing indicators)",
+      "Integrated Cloudinary API for optimized image storage and instant preview during uploads",
+      "Implemented JWT-based authentication and secure session management with MongoDB for persistent message history",
     ],
     technologies: [
-      "MongoDB",
-      "Express.js",
-      "React",
-      "Node.js",
-      "Socket.io",
-      "Tailwind CSS",
-      "Zustand",
-      "Cloudinary",
+      "React", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Socket.io",
     ],
     github: "https://github.com/CJcode6754/sayHi.git",
     live: "",
@@ -488,14 +466,14 @@ export const personalProjects = [
     id: "cinesearch",
     title: "CineSearch",
     description:
-      "A modern and responsive movie browsing application that allows users to search for movies, view trending content, and access detailed movie information with beautiful UI animations.",
+      "A high-performance media discovery engine powered by the TMDB API. Offers an immersive experience for browsing movies, TV shows, and anime with instant search, genre filtering, and detailed metadata visualization.",
     responsibilities: [
-      "Integrated TMDB API for movie search, trending content, and detailed info pages",
-      "Designed responsive Tailwind CSS UI with animations, skeleton screens, and filtering features",
-      "Implemented Appwrite backend services for authentication and watchlist functionality",
-      "Deployed application on Vercel for optimized performance and accessibility",
+      "Engineered a responsive frontend with React and Tailwind CSS, utilizing skeleton loaders for a premium 'app-like' feel",
+      "Integrated TMDB API for real-time content fetching, including trending lists and complex genre-based filtering",
+      "Implemented client-side watchlist functionality using Appwrite's cloud database and authentication services",
+      "Optimized API request handling and image lazy-loading to ensure smooth performance on low-bandwidth connections",
     ],
-    technologies: ["React", "Tailwind CSS", "NodeJS", "Appwrite", "TMDB API"],
+    technologies: ["React", "Tailwind CSS", "TMDB API"],
     github: "https://github.com/CJcode6754/CineSearch",
     live: "https://cine-search-delta.vercel.app",
     category: "Frontend",
@@ -512,26 +490,19 @@ export const personalProjects = [
   },
   {
     id: "iamaccesscontrol",
-    title: "IAM-Style Access Control System",
+    title: "IAM Access Control System",
     description:
-      "A full-stack web application implementing a simplified yet powerful Identity and Access Management (IAM) system. Inspired by cloud providers, it enables fine-grained control over application resources via users, groups, and roles.",
+      "A security-focused Identity and Access Management (IAM) engine. It enables granular control over user permissions through a hierarchical Role-Based Access Control (RBAC) system, organized by groups and modules.",
     responsibilities: [
-      "Developed CRUD operations for users, groups, roles, and permissions with inheritance rules",
-      "Built module-level permission system with real-time checks using middleware",
-      "Implemented JWT authentication and dynamic admin dashboard with Tailwind CSS",
-      "Designed secure, scalable backend API with Express.js and SQLite",
+      "Designed a hierarchical RBAC schema allowing for inherited permissions across groups, roles, and individual modules",
+      "Developed a middleware-based authorization engine in Express.js for real-time permission verification on every API request",
+      "Built a dynamic admin dashboard for managing complex user-role relationships with an intuitive 'Permission Matrix' UI",
+      "Implemented secure authentication flows using JWT and optimized database queries with SQLite for lightweight, portable deployment",
     ],
     technologies: [
-      "React",
-      "Redux Toolkit",
-      "Tailwind CSS",
-      "Node.js",
-      "Express.js",
-      "SQLite",
-      "Axios",
-      "JWT",
+      "React", "Node.js", "Express.js", "Tailwind CSS", "SQLite",
     ],
-    github: "https://github.com/YourUsername/IAM-Access-Control",
+    github: "https://github.com/CJcode6754/IAM-Access-Control",
     live: "",
     category: "Full Stack",
     gradient: "from-indigo-500 to-purple-500",
@@ -563,49 +534,13 @@ export const technologies = [
   { name: "Node.js", icon: NodeJsIcon, color: "from-green-500 to-emerald-500" },
   { name: "Express", icon: ExpressIcon, color: "from-green-400 to-cyan-400" },
   { name: "Tailwind", icon: TailwindIcon, color: "from-cyan-400 to-blue-500" },
-  {
-    name: "Bootstrap",
-    icon: BootstrapIcon,
-    color: "from-purple-600 to-blue-600",
-  },
   { name: "MySQL", icon: MySQLIcon, color: "from-blue-600 to-indigo-600" },
   { name: "MongoDB", icon: MongoDBIcon, color: "from-green-400 to-cyan-400" },
-  {
-    name: "PostgreSQL",
-    icon: PostgresIcon,
-    color: "from-blue-500 to-slate-600",
-  },
-  { name: "Figma", icon: FigmaIcon, color: "from-pink-500 to-purple-500" },
   { name: "Git", icon: GitIcon, color: "from-orange-500 to-red-500" },
   { name: "Chart.js", icon: ChartJsIcon, color: "from-green-400 to-cyan-400" },
 ];
 
-export const stats = [
-  {
-    number: "5+",
-    label: "Projects Completed",
-    icon: Rocket,
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    number: "2+",
-    label: "Happy Clients",
-    icon: Users,
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    number: "6+",
-    label: "Months Experience",
-    icon: Trophy,
-    color: "from-yellow-500 to-orange-500",
-  },
-  {
-    number: "100%",
-    label: "Success Rate",
-    icon: Target,
-    color: "from-cyan-500 to-blue-500",
-  },
-];
+
 
 export const timeline = [
   {
@@ -618,7 +553,7 @@ export const timeline = [
     title: "Junior Developer",
     subtitle: "Intercommerce Network Services · Makati City, Philippines",
     description:
-      "Built the Transfer Notification System for Clark Development Corporation, digitizing a paper-based permit workflow. Cut report generation from 5 min → 5–10 s and apply the proper query based on the requirements. Added lock payment features that safeguards and security hardening the systems. Also, help with the change request for different systems and fix error encountered on production environment",
+      "Built the Transfer Notification System for Clark Development Corporation, digitizing a paper-based permit workflow by implementing optimized database queries and secure payment features. Improved system performance, enhanced security hardening, and provided ongoing production support and feature enhancements.",
     tags: ["Laravel", "React", "PHP", "Codeigniter", "JavaScript", "MySQL", "Sanctum"],
     isCurrent: true,
   },
@@ -694,24 +629,24 @@ export const services = [
     name: "Full-Stack Development",
     icon: Code2,
     description:
-      "End-to-end web apps using Laravel, React, and Node.js — from database architecture to polished UI.",
+      "React frontends + Laravel backends. Build your idea from database to UI, deployed and running.",
     color: "var(--accent)",
     colorRaw: "#6366f1",
   },
   {
-    name: "UI/UX Design",
-    icon: Palette,
-    description:
-      "Beautiful, intuitive interfaces built with Tailwind and Bootstrap that users genuinely enjoy using.",
-    color: "#ec4899",
-    colorRaw: "#ec4899",
-  },
-  {
-    name: "Performance Optimization",
+    name: "API Design & Integration",
     icon: Zap,
     description:
-      "Diagnosing and fixing bottlenecks — like cutting a 5-minute report down to 5 seconds.",
+      "RESTful APIs that actually work. Secure authentication, proper error handling, optimized queries.",
     color: "#f59e0b",
     colorRaw: "#f59e0b",
+  },
+  {
+    name: "Database Architecture",
+    icon: Briefcase,
+    description:
+      "Design schemas that scale. MySQL, PostgreSQL — efficient queries and proper indexing matter.",
+    color: "#ec4899",
+    colorRaw: "#ec4899",
   },
 ];

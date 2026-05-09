@@ -91,12 +91,11 @@ const LazyImage = memo(({ src, alt, priority = false, style = {} }) => {
 
 // ── Hero / Thumbnail slide (slide 0) ─────────────────────────────────────────
 const HeroSlide = memo(({ project, image, role }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
   const src = image?.src || project.images?.[0]?.src;
   const caption = image?.caption || project.title;
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <div style={{ position: "relative", width: "100%", height: "100%", overflow: "hidden" }}>
       {/* blurred bg fill */}
       <img
         src={src}
@@ -110,107 +109,32 @@ const HeroSlide = memo(({ project, image, role }) => {
         }}
       />
       <LazyImage src={src} alt={caption} priority style={{ position: "relative" }} />
+      
+      {/* Simple gradient at the bottom for some depth */}
       <div style={{
         position: "absolute", inset: 0,
-        background: isExpanded 
-          ? "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%)"
-          : "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 35%, transparent 55%)",
-        transition: "background 0.3s ease",
+        background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%)",
       }} />
+      
+      {/* Small floating label for project title */}
       <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0,
-        padding: "clamp(1.5rem, 5vw, 2.75rem) clamp(1.5rem, 5vw, 2.5rem) clamp(1.25rem, 4vw, 2rem)",
-        maxHeight: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
+        position: "absolute", bottom: "1.5rem", left: "1.5rem",
+        padding: "0.5rem 1rem", borderRadius: "0.75rem",
+        background: "rgba(0,0,0,0.6)", color: "#fff",
+        backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.1)",
+        display: "flex", alignItems: "center", gap: "0.75rem"
       }}>
-        {/* Overline eyebrow */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.875rem" }}>
-          {role && (
-            <span style={{
-              fontFamily: "Inter, sans-serif",
-              padding: "0.3rem 0.875rem", borderRadius: "2rem",
-              background: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.85)",
-              fontSize: "0.65rem", fontWeight: 600,
-              letterSpacing: "0.08em", textTransform: "uppercase",
-              border: "1px solid rgba(255,255,255,0.15)",
-              backdropFilter: "blur(8px)",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-            }}>
+        <h2 style={{ fontFamily: "Outfit, sans-serif", fontSize: "1rem", fontWeight: 700, margin: 0 }}>
+          {project.title}
+        </h2>
+        {role && (
+          <>
+            <div style={{ width: "1px", height: "1rem", background: "rgba(255,255,255,0.2)" }} />
+            <span style={{ fontSize: "0.7rem", fontWeight: 600, color: "rgba(255,255,255,0.7)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
               {role}
             </span>
-          )}
-          <div style={{
-            height: "1px", flex: 1,
-            background: "linear-gradient(90deg, rgba(255,255,255,0.25), transparent 80%)",
-          }} />
-        </div>
-        {/* Title */}
-        <h2 style={{
-          fontFamily: "Outfit, sans-serif",
-          fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)",
-          fontWeight: 800, color: "#fff",
-          margin: "0 0 0.625rem", lineHeight: 1.08,
-          letterSpacing: "-0.02em",
-          textShadow: "0 4px 20px rgba(0,0,0,0.5)",
-        }}>{project.title}</h2>
-        {/* Description */}
-        <div style={{ 
-          position: "relative", 
-          marginBottom: "1.125rem",
-          maxHeight: isExpanded ? "200px" : "auto",
-          overflowY: isExpanded ? "auto" : "visible",
-          paddingRight: isExpanded ? "0.5rem" : 0,
-        }}>
-          <p style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: "clamp(0.825rem, 2.5vw, 0.95rem)",
-            color: "rgba(255,255,255,0.72)",
-            lineHeight: 1.65, margin: 0,
-            fontWeight: 400,
-            maxWidth: "540px",
-            display: isExpanded ? "block" : "-webkit-box",
-            WebkitLineClamp: isExpanded ? "unset" : 2,
-            WebkitBoxOrient: "vertical",
-            overflow: isExpanded ? "visible" : "hidden",
-            textShadow: "0 2px 8px rgba(0,0,0,0.3)",
-          }}>
-            {project.description}
-          </p>
-        </div>
-        {project.description.length > 120 && (
-          <button 
-            onClick={(e) => { e.stopPropagation(); setIsExpanded(!isExpanded); }}
-            style={{
-              background: "none", border: "none", color: "var(--accent)",
-              fontSize: "0.75rem", fontWeight: 700, cursor: "pointer",
-              padding: "0.25rem 0", marginTop: "-0.5rem", marginBottom: "0.5rem",
-              display: "flex", alignItems: "center", gap: "0.25rem"
-            }}
-          >
-            {isExpanded ? "Show Less" : "Read More..."}
-          </button>
+          </>
         )}
-        {/* Tech stack */}
-        <div style={{
-          display: "flex", flexWrap: "wrap", gap: "0.4rem", alignItems: "center",
-        }}>
-          {project.technologies.slice(0, 5).map((t, i) => (
-            <span key={i} style={{
-              fontFamily: "Inter, sans-serif",
-              padding: "0.25rem 0.7rem", borderRadius: "1.5rem",
-              background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.75)",
-              fontSize: "0.675rem", fontWeight: 500,
-              letterSpacing: "0.02em",
-              border: "1px solid rgba(255,255,255,0.1)",
-              backdropFilter: "blur(6px)",
-            }}>{t}</span>
-          ))}
-          {project.technologies.length > 5 && (
-            <TechPopover techs={project.technologies.slice(5)} dark />
-          )}
-        </div>
       </div>
     </div>
   );
@@ -275,6 +199,14 @@ const ProjectCarousel = ({ project, onClose }) => {
 
   // Keyboard navigation
   useEffect(() => {
+    const defaultOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = defaultOverflow || "unset";
+    };
+  }, []);
+
+  useEffect(() => {
     const handler = (e) => {
       if (e.key === "ArrowLeft") prev();
       else if (e.key === "ArrowRight") next();
@@ -317,7 +249,6 @@ const ProjectCarousel = ({ project, onClose }) => {
         display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
         padding: "clamp(0.5rem, 3vw, 1rem)",
-        overflowY: "auto",
       }}
     >
       {/* Card */}
@@ -332,28 +263,26 @@ const ProjectCarousel = ({ project, onClose }) => {
           background: "var(--bg-card)",
           borderRadius: "1.25rem",
           border: "1px solid var(--border-strong)",
-          overflowX: "hidden",
-          overflowY: "auto",
           boxShadow: "0 32px 80px rgba(0,0,0,0.6)",
           display: "flex", flexDirection: "column",
-          maxHeight: "90vh",
+          maxHeight: "92vh",
+          overflow: "hidden",
+          overscrollBehavior: "contain",
         }}
       >
-        {/* Role group tabs */}
+        {/* Role group tabs (Header) */}
         {roleGroups.length > 1 && (
           <div style={{
-            display: "flex", flexWrap: "wrap", gap: "0.3rem", padding: "0.875rem 1.25rem 0.625rem",
+            display: "flex", flexWrap: "wrap", gap: "0.3rem", padding: "0.875rem 1.25rem",
             background: "var(--bg-card)", borderBottom: "1px solid var(--border)",
-            alignItems: "center",
+            alignItems: "center", zIndex: 30,
           }}>
             <span style={{
-              fontFamily: "Inter, sans-serif",
-              fontSize: "0.6rem", fontWeight: 600,
-              letterSpacing: "0.1em", textTransform: "uppercase",
-              color: "var(--text-muted)",
+              fontFamily: "Inter, sans-serif", fontSize: "0.6rem", fontWeight: 600,
+              letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)",
               marginRight: "0.5rem",
             }}>View</span>
-            {roleGroups.map((group, index) => (
+            {roleGroups.map((group) => (
               <button
                 key={group.role}
                 onClick={() => {
@@ -363,303 +292,177 @@ const ProjectCarousel = ({ project, onClose }) => {
                   }
                 }}
                 style={{
-                  fontFamily: "Inter, sans-serif",
-                  padding: "0.4rem 0.9rem", borderRadius: "0.6rem",
+                  fontFamily: "Inter, sans-serif", padding: "0.4rem 0.9rem", borderRadius: "0.6rem",
                   border: "none", cursor: "pointer",
                   background: group.role === selectedRole
-                    ? "linear-gradient(135deg, var(--accent), var(--accent-2))"
+                    ? "var(--accent)"
                     : "var(--bg-secondary)",
                   color: group.role === selectedRole ? "#fff" : "var(--text-secondary)",
-                  fontSize: "0.7rem", fontWeight: 600,
-                  letterSpacing: "0.03em",
-                  transition: "all 0.25s ease",
-                  boxShadow: group.role === selectedRole ? "0 4px 12px rgba(0,0,0,0.15)" : "none",
-                  transform: group.role === selectedRole ? "translateY(-1px)" : "translateY(0)",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-                onMouseEnter={(e) => {
-                  if (group.role !== selectedRole) {
-                    e.target.style.background = "var(--bg-hover)";
-                    e.target.style.color = "var(--text-primary)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (group.role !== selectedRole) {
-                    e.target.style.background = "var(--bg-secondary)";
-                    e.target.style.color = "var(--text-secondary)";
-                  }
+                  fontSize: "0.7rem", fontWeight: 600, transition: "all 0.25s ease",
                 }}
               >
                 {group.role}
-                {group.role === selectedRole && (
-                  <div style={{
-                    position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)",
-                    width: "60%", height: "2px",
-                    background: "rgba(255,255,255,0.8)", borderRadius: "1px",
-                  }} />
-                )}
               </button>
             ))}
           </div>
         )}
 
-        {/* Slide area */}
-        <div
-          style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", flexShrink: 0, cursor: "grab", padding: "0.75rem 0.75rem 0", background: "var(--bg-secondary)" }}
-          onMouseDown={onDragStart}
-          onMouseUp={onDragEnd}
-          onTouchStart={onDragStart}
-          onTouchEnd={onDragEnd}
-        >
-          <AnimatePresence initial={false} custom={direction} mode="popLayout">
-            <motion.div
-              key={`${selectedRole}-${current}`}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
-              style={{ position: "absolute", inset: "0.75rem 0.75rem 0", borderRadius: "0.75rem", overflow: "hidden" }}
-            >
-              {current === 0
-                ? <HeroSlide project={project} image={slides[0]} role={currentGroup.role} />
-                : <ImageSlide image={slides[current]} index={current} total={total} />
-              }
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Close */}
-          <button
-            onClick={onClose}
-            aria-label="Close carousel"
-            style={{
-              position: "absolute", top: "1.5rem", right: "1.5rem", zIndex: 10,
-              width: "2.5rem", height: "2.5rem", borderRadius: "50%",
-              background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.2)",
-              color: "#fff", cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              backdropFilter: "blur(8px)",
-              boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
-              transition: "all 0.25s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(0,0,0,0.9)";
-              e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.5)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(0,0,0,0.7)";
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.4)";
-            }}
+        {/* Scrollable Body Container */}
+        <div style={{ flex: 1, overflowY: "auto", position: "relative" }}>
+          
+          {/* Slide area */}
+          <div
+            style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--bg-secondary)" }}
+            onMouseDown={onDragStart}
+            onMouseUp={onDragEnd}
+            onTouchStart={onDragStart}
+            onTouchEnd={onDragEnd}
           >
-            <X size={14} />
-          </button>
-
-          {/* Arrows */}
-          {total > 1 && (
-            <>
-              <button
-                onClick={prev}
-                aria-label="Previous slide"
-                style={arrowStyle("left")}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(0,0,0,0.9)";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1.05)";
-                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.5)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(0,0,0,0.7)";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.4)";
-                }}
+            <AnimatePresence initial={false} custom={direction} mode="popLayout">
+              <motion.div
+                key={`${selectedRole}-${current}`}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
+                style={{ position: "absolute", inset: 0 }}
               >
-                <ChevronLeft size={18} style={{ marginLeft: "-1px" }} />
-              </button>
-              <button
-                onClick={next}
-                aria-label="Next slide"
-                style={arrowStyle("right")}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(0,0,0,0.9)";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1.05)";
-                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.5)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(0,0,0,0.7)";
-                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.4)";
-                }}
-              >
-                <ChevronRight size={18} style={{ marginLeft: "1px" }} />
-              </button>
-            </>
-          )}
+                {current === 0
+                  ? <HeroSlide project={project} image={slides[0]} role={currentGroup.role} />
+                  : <ImageSlide image={slides[current]} index={current} total={total} />
+                }
+              </motion.div>
+            </AnimatePresence>
 
-          {/* Slide counter */}
-          <div style={{
-            position: "absolute", top: "1.5rem", left: "1.5rem",
-            padding: "0.3rem 0.85rem", borderRadius: "2rem",
-            background: "rgba(0,0,0,0.7)", color: "rgba(255,255,255,0.75)",
-            fontFamily: "Inter, sans-serif",
-            fontSize: "0.65rem", fontWeight: 500,
-            letterSpacing: "0.06em",
-            backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.1)",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-            display: "flex", alignItems: "center", gap: "0.25rem",
-          }}>
-            <span style={{ fontWeight: 700, color: "#fff" }}>{current + 1}</span>
-            <span style={{ opacity: 0.5 }}>/</span>
-            <span>{total}</span>
+            <button
+              onClick={onClose}
+              style={{
+                position: "absolute", top: "1rem", right: "1rem", zIndex: 10,
+                width: "2.5rem", height: "2.5rem", borderRadius: "50%",
+                background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.2)",
+                color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                backdropFilter: "blur(8px)",
+              }}
+            >
+              <X size={14} />
+            </button>
+
+            {total > 1 && (
+              <>
+                <button onClick={prev} style={arrowStyle("left")}><ChevronLeft size={18} /></button>
+                <button onClick={next} style={arrowStyle("right")}><ChevronRight size={18} /></button>
+              </>
+            )}
+            
+            {/* Pagination info floating on image */}
+            <div style={{
+              position: "absolute", top: "1rem", left: "1rem",
+              padding: "0.3rem 0.8rem", borderRadius: "2rem",
+              background: "rgba(0,0,0,0.6)", color: "#fff",
+              fontSize: "0.65rem", fontWeight: 600, backdropFilter: "blur(6px)",
+            }}>
+              {current + 1} / {total}
+            </div>
           </div>
-        </div>
 
-        {/* Details Toggle Button (Floating or in bottom bar) */}
-        <div style={{
-          padding: "0.5rem 1.25rem",
-          display: "flex",
-          justifyContent: "center",
-          background: "var(--bg-secondary)",
-          borderTop: "1px solid var(--border)",
-        }}>
-          <button
-            onClick={() => setShowDetails(!showDetails)}
-            style={{
-              background: "none", border: "none", color: "var(--text-secondary)",
-              fontSize: "0.75rem", fontWeight: 700, cursor: "pointer",
-              display: "flex", alignItems: "center", gap: "0.5rem",
-              padding: "0.5rem 1rem", borderRadius: "0.5rem",
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={(e) => { e.target.style.color = "var(--accent)"; e.target.style.background = "var(--bg-hover)"; }}
-            onMouseLeave={(e) => { e.target.style.color = "var(--text-secondary)"; e.target.style.background = "none"; }}
-          >
-            {showDetails ? "Hide Project Details" : "View Project Details & Responsibilities"}
-          </button>
-        </div>
-
-        {/* Details Content */}
-        <AnimatePresence>
-          {showDetails && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              style={{ overflow: "hidden", background: "var(--bg-card)" }}
+          {/* Details Toggle Button */}
+          <div style={{
+            padding: "0.75rem 1.25rem", borderBottom: "1px solid var(--border)",
+            display: "flex", justifyContent: "center", background: "var(--bg-secondary)",
+          }}>
+            <button
+              onClick={() => setShowDetails(!showDetails)}
+              style={{
+                background: "none", border: "none", color: "var(--text-secondary)",
+                fontSize: "0.75rem", fontWeight: 700, cursor: "pointer",
+                display: "flex", alignItems: "center", gap: "0.5rem",
+              }}
             >
-              <div style={{ padding: "1.5rem 2rem 2rem", borderTop: "1px solid var(--border)" }}>
-                <div style={{ marginBottom: "1.5rem" }}>
-                  <h4 style={{ 
-                    fontFamily: "Outfit, sans-serif", fontSize: "0.9rem", fontWeight: 700, 
-                    color: "var(--text-primary)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem"
-                  }}>
-                    <div style={{ width: "4px", height: "16px", background: "var(--accent)", borderRadius: "2px" }} />
-                    Project Description
-                  </h4>
-                  <p style={{ 
-                    fontFamily: "Inter, sans-serif", fontSize: "0.875rem", color: "var(--text-secondary)", 
-                    lineHeight: 1.6, margin: 0 
-                  }}>
-                    {project.description}
-                  </p>
-                </div>
+              {showDetails ? "Hide Project Details" : "View Project Details & Responsibilities"}
+            </button>
+          </div>
 
-                {project.responsibilities && project.responsibilities.length > 0 && (
+          {/* Details Content */}
+          <AnimatePresence>
+            {showDetails && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                style={{ overflow: "hidden" }}
+              >
+                <div style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                   <div>
-                    <h4 style={{ 
-                      fontFamily: "Outfit, sans-serif", fontSize: "0.9rem", fontWeight: 700, 
-                      color: "var(--text-primary)", marginBottom: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem"
-                    }}>
-                      <div style={{ width: "4px", height: "16px", background: "var(--accent-2)", borderRadius: "2px" }} />
-                      Key Responsibilities & Achievements
+                    <h4 style={{ fontFamily: "Outfit, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
+                      Project Summary
                     </h4>
-                    <ul style={{ 
-                      margin: 0, paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.625rem" 
-                    }}>
-                      {project.responsibilities.map((resp, i) => (
-                        <li key={i} style={{ 
-                          fontFamily: "Inter, sans-serif", fontSize: "0.875rem", color: "var(--text-secondary)", 
-                          lineHeight: 1.5 
-                        }}>
-                          {resp}
-                        </li>
-                      ))}
-                    </ul>
+                    <p style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.7, margin: 0 }}>
+                      {project.description}
+                    </p>
                   </div>
-                )}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                  {project.responsibilities && project.responsibilities.length > 0 && (
+                    <div>
+                      <h4 style={{ fontFamily: "Outfit, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
+                        Key Responsibilities & Achievements
+                      </h4>
+                      <ul style={{ margin: 0, paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                        {project.responsibilities.map((resp, i) => (
+                          <li key={i} style={{ fontFamily: "Inter, sans-serif", fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.6, listStyleType: "circle" }}>
+                            {resp}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
-        {/* Bottom bar */}
+        {/* Footer (Sticky) */}
         <div style={{
-          padding: "0.875rem 1.25rem",
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          gap: "1rem",
-          borderTop: "1px solid var(--border)",
-          background: "var(--bg-card)",
-          boxShadow: "0 -4px 16px rgba(0,0,0,0.1)",
+          padding: "1rem 1.5rem", background: "var(--bg-card)", borderTop: "1px solid var(--border)",
+          display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", zIndex: 30,
         }}>
           {/* Dots */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            {slides.map((img, i) => (
+          <div style={{ display: "flex", gap: "0.4rem" }}>
+            {slides.map((_, i) => (
               <button
-                key={`${selectedRole}-${i}`}
+                key={i}
                 onClick={() => go(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                title={i === 0 ? "Overview" : img.caption || `Screenshot ${i}`}
                 style={{
-                  width: i === current ? "2rem" : "0.75rem",
-                  height: "0.75rem",
-                  borderRadius: "9999px",
-                  border: "none", cursor: "pointer",
-                  background: i === current
-                    ? "linear-gradient(135deg, var(--accent), var(--accent-2))"
-                    : "rgba(255,255,255,0.3)",
-                  transition: "all 0.3s ease",
-                  padding: 0, flexShrink: 0,
-                  boxShadow: i === current ? "0 2px 8px rgba(0,0,0,0.3)" : "none",
-                  transform: i === current ? "scale(1.1)" : "scale(1)",
-                }}
-                onMouseEnter={(e) => {
-                  if (i !== current) {
-                    e.target.style.background = "rgba(255,255,255,0.5)";
-                    e.target.style.transform = "scale(1.05)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (i !== current) {
-                    e.target.style.background = "rgba(255,255,255,0.3)";
-                    e.target.style.transform = "scale(1)";
-                  }
+                  width: i === current ? "1.5rem" : "0.5rem", height: "0.5rem",
+                  borderRadius: "999px", border: "none", cursor: "pointer",
+                  background: i === current ? "var(--accent)" : "var(--border-strong)",
+                  transition: "all 0.3s",
                 }}
               />
             ))}
           </div>
 
           {/* Action links */}
-          <div style={{ display: "flex", gap: "0.5rem", marginLeft: "auto" }}>
+          <div style={{ display: "flex", gap: "0.5rem" }}>
             {project.githubApi && (
               <a href={project.githubApi} target="_blank" rel="noopener noreferrer" style={linkStyle("secondary")}>
-                <Github size={13} /> <span style={{ display: "var(--btn-label-display, inline)" }}>API</span>
+                <Github size={14} /> API
               </a>
             )}
             {project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer" style={linkStyle("secondary")}>
-                <Github size={13} /> <span style={{ display: "var(--btn-label-display, inline)" }}>{project.githubApi ? "Frontend" : "Code"}</span>
+                <Github size={14} /> {project.githubApi ? "Frontend" : "Code"}
               </a>
             )}
             {project.live ? (
               <a href={project.live} target="_blank" rel="noopener noreferrer" style={linkStyle("primary")}>
-                <ExternalLink size={13} /> <span style={{ display: "var(--btn-label-display, inline)" }}>Live</span>
+                <ExternalLink size={14} /> Live
               </a>
             ) : project.liveProtected && (
               <a href={project.liveProtected} target="_blank" rel="noopener noreferrer" style={linkStyle("primary")}>
-                <Lock size={13} /> <span style={{ display: "var(--btn-label-display, inline)" }}>Live</span>
+                <Lock size={14} /> Live
               </a>
             )}
           </div>
@@ -671,31 +474,21 @@ const ProjectCarousel = ({ project, onClose }) => {
 
 const arrowStyle = (side) => ({
   position: "absolute", top: "50%", transform: "translateY(-50%)",
-  [side]: "1.25rem", zIndex: 10,
-  width: "2.25rem", height: "2.25rem", borderRadius: "50%",
-  background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.2)",
-  color: "#fff", cursor: "pointer",
-  display: "flex", alignItems: "center", justifyContent: "center",
-  backdropFilter: "blur(8px)",
-  boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
-  transition: "all 0.25s ease",
-  ":hover": {
-    background: "rgba(0,0,0,0.9)",
-    transform: "translateY(-50%) scale(1.05)",
-    boxShadow: "0 6px 20px rgba(0,0,0,0.5)",
-  },
+  [side]: "1rem", zIndex: 10,
+  width: "2.5rem", height: "2.5rem", borderRadius: "50%",
+  background: "rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.15)",
+  color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+  backdropFilter: "blur(6px)",
 });
 
 const linkStyle = (variant) => ({
-  display: "inline-flex", alignItems: "center", gap: "0.35rem",
-  padding: "0.4rem 0.9rem", borderRadius: "0.5rem",
-  fontFamily: "Inter, sans-serif",
-  fontSize: "0.7rem", fontWeight: 600, textDecoration: "none",
-  letterSpacing: "0.02em",
-  transition: "all 0.2s ease",
+  display: "inline-flex", alignItems: "center", gap: "0.5rem",
+  padding: "0.5rem 1rem", borderRadius: "0.6rem",
+  fontFamily: "Inter, sans-serif", fontSize: "0.75rem", fontWeight: 700, textDecoration: "none",
+  transition: "all 0.2s",
   ...(variant === "primary"
-    ? { background: "linear-gradient(135deg, var(--accent), var(--accent-2))", color: "#fff", boxShadow: "0 2px 10px var(--accent-glow)" }
-    : { background: "var(--bg-secondary)", color: "var(--text-secondary)", border: "1px solid var(--border-strong)" }
+    ? { background: "var(--accent)", color: "#fff" }
+    : { background: "var(--bg-secondary)", color: "var(--text-secondary)", border: "1px solid var(--border)" }
   ),
 });
 

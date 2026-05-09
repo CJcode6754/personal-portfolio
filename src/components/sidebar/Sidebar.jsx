@@ -10,9 +10,9 @@ const Sidebar = () => {
 
   const menuItems = [
     { path: '/', label: 'Home', icon: Home },
-    { path: '/skills', label: 'Skills', icon: User },
-    { path: '/experience', label: 'Experience', icon: Briefcase },
     { path: '/projects', label: 'Projects', icon: Folder },
+    { path: '/experience', label: 'Experience', icon: Briefcase },
+    { path: '/skills', label: 'Skills', icon: User },
     { path: '/services', label: 'Services', icon: BriefcaseBusinessIcon },
   ];
 
@@ -49,7 +49,7 @@ const Sidebar = () => {
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           width: '2.25rem', height: '2.25rem', borderRadius: '9999px',
-          background: 'linear-gradient(135deg, var(--accent), var(--accent-2))',
+          background: 'var(--accent)',
           color: '#fff', fontWeight: 700, fontSize: '0.8rem',
           textDecoration: 'none', marginRight: '0.5rem',
           transition: 'transform 0.2s',
@@ -99,7 +99,7 @@ const Sidebar = () => {
         aria-label="Toggle dark/light mode"
         style={{
           width: '2.75rem', height: '1.5rem', borderRadius: '9999px',
-          background: 'linear-gradient(135deg, var(--accent), var(--accent-2))',
+          background: 'var(--accent)',
           border: 'none', cursor: 'pointer', position: 'relative',
           flexShrink: 0, outline: 'none',
           transition: 'opacity 0.2s',
