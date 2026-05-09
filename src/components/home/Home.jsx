@@ -175,7 +175,7 @@ const Home = () => {
                 <p className="font-bold uppercase tracking-[0.1em] text-white/75 mb-1" style={{ fontSize: "clamp(0.55rem, 1.2vw, 0.72rem)" }}>Portfolio</p>
                 <p className="font-bold text-white leading-none mb-1" style={{ fontSize: "clamp(1.5rem, 4vw, 2rem)" }}>8+</p>
                 <p className="text-white/85 font-medium" style={{ fontSize: "clamp(0.65rem, 1.5vw, 0.875rem)" }}>
-                  Projects Shipped <ArrowRight className="inline ml-1 w-3 h-3" />
+                  Projects Built <ArrowRight className="inline ml-1 w-3 h-3" />
                 </p>
               </div>
             </Link>

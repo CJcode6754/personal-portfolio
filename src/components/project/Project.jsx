@@ -196,7 +196,7 @@ const ProjectSection = () => {
             My <span style={{ color: "var(--accent)" }}>Projects</span>
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "1rem", maxWidth: "32rem", margin: "0 auto" }}>
-            Personal builds and team collaborations — {personalProjects.length + teamProjects.length} projects shipped.
+            Personal builds and team collaborations — {personalProjects.length + teamProjects.length} projects developed.
           </p>
         </motion.div>
 
