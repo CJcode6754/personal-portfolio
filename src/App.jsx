@@ -22,9 +22,11 @@ const ScrollManager = () => {
   const { pathname } = location;
   const navigate = useNavigate();
   const isScrollingRef = useRef(false);
+  const isInitialLoadRef = useRef(true);
 
   // Handle scrolling when the URL changes (e.g., clicking a link)
-  useEffect(() => {
+  // useLayoutEffect runs before paint, helping avoid the "flash" of the top of the page
+  React.useLayoutEffect(() => {
     // If this update came from the scroll spy, don't trigger another scroll
     if (location.state?.fromScrollSpy) return;
     
@@ -35,36 +37,45 @@ const ScrollManager = () => {
     if (sectionId) {
       const element = document.getElementById(sectionId);
       if (element) {
-        // Optimization: only scroll if the element isn't already roughly in view
         const rect = element.getBoundingClientRect();
         const isInView = rect.top >= -50 && rect.top <= 150;
         
         if (!isInView) {
           isScrollingRef.current = true;
-          element.scrollIntoView({ behavior: "smooth" });
           
-          const handleScrollEnd = () => {
+          if (isInitialLoadRef.current) {
+            // Instant jump on first load to prevent seeing the scroll animation
+            const topOffset = element.offsetTop - 120; // 120 is the scroll-padding-top
+            window.scrollTo({ top: topOffset, behavior: 'instant' });
             isScrollingRef.current = false;
-            window.removeEventListener("scrollend", handleScrollEnd);
-          };
-          window.addEventListener("scrollend", handleScrollEnd);
-          
-          // Fallback for browsers without scrollend or if it fails to fire
-          setTimeout(() => {
-            isScrollingRef.current = false;
-            window.removeEventListener("scrollend", handleScrollEnd);
-          }, 1500);
+          } else {
+            // Smooth scroll for subsequent navigation
+            element.scrollIntoView({ behavior: 'smooth' });
+            
+            const handleScrollEnd = () => {
+              isScrollingRef.current = false;
+              window.removeEventListener("scrollend", handleScrollEnd);
+            };
+            window.addEventListener("scrollend", handleScrollEnd);
+            
+            setTimeout(() => {
+              isScrollingRef.current = false;
+              window.removeEventListener("scrollend", handleScrollEnd);
+            }, 1500);
+          }
         }
       }
     } else if (pathname === "/") {
       if (window.scrollY > 10) {
         isScrollingRef.current = true;
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: isInitialLoadRef.current ? 'instant' : 'smooth' });
         setTimeout(() => {
           isScrollingRef.current = false;
         }, 1000);
       }
     }
+    
+    isInitialLoadRef.current = false;
   }, [pathname, location.state]);
 
   // Handle URL updates when scrolling (Scroll-Spy)

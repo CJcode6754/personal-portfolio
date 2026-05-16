@@ -5,6 +5,36 @@
     <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CjDev - Portfolio</title>
+    <style>
+      /* Instant background color to prevent white flash before CSS loads */
+      html { background-color: #ffffff; }
+      html.dark { background-color: #0f172a; }
+      
+      /* Temporary class to disable transitions on load */
+      .preload * {
+        transition: none !important;
+      }
+    </style>
+    <script>
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const isDark = saved === 'dark' || (!saved && true);
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        // Add class to disable transitions
+        document.documentElement.classList.add('preload');
+      })();
+      
+      // Remove the preload class after the page has loaded
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.documentElement.classList.remove('preload');
+        }, 100);
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
