@@ -102,6 +102,13 @@ import AppliLoanMemberLoanMonitoring from "../assets/projects/appliloan/member/l
 import AppliLoanMemberAppliances from "../assets/projects/appliloan/member/appliances.png";
 import AppliLoanMemberMembershipApplication from "../assets/projects/appliloan/member/membership-application.png";
 import AppliLoanMemberSettings from "../assets/projects/appliloan/member/settings.png";
+// Roast My Resume
+import RoastMyResumeThumb from "../assets/projects/roastmyresume/roaster-thumbnail.png";
+import RoastMyResumeRoasterPage from "../assets/projects/roastmyresume/roaster-page.png";
+import RoastMyResumeHallOfShame from "../assets/projects/roastmyresume/hall-of-shame.png";
+import RoastMyResumeAdmin from "../assets/projects/roastmyresume/admin-page.png";
+import RoastMyResumeLogin from "../assets/projects/roastmyresume/login.png";
+import RoastMyResumeRegister from "../assets/projects/roastmyresume/register.png";
 import LaravelIcon from "../assets/icons/laravel.svg";
 import JavaScriptIcon from "../assets/icons/javascript.svg";
 import PHPIcon from "../assets/icons/php.svg";
@@ -300,6 +307,36 @@ export const teamProjects = [
 ];
 
 export const personalProjects = [
+  {
+    id: "roastmyresume",
+    title: "Resume Roaster AI",
+    description:
+      "The most toxic, unfiltered, and brutal AI-powered resume evaluator on the internet. Built to destroy the egos of overconfident applicants, this app takes your PDF resume and delivers a devastating reality check via a custom-tuned llama-3.1-8b-instant model.",
+    responsibilities: [
+      "Integrated Groq API (llama-3.1-8b-instant) for continuous, highly sarcastic, and industry-specific AI roasting in English and Taglish",
+      "Implemented client-side PDF text extraction using PDF.js for seamless and instantaneous processing",
+      "Built a 'Hall of Shame' leaderboard for users to publish their Career Concern Index and roast excerpt",
+      "Secured API keys and rate-limited backend endpoints using Supabase Edge Functions",
+      "Designed a strict anonymity protocol to scrub real names from AI memory before generating the roast",
+    ],
+    technologies: [
+      "React", "Tailwind CSS", "Supabase", "PDF.js", "Groq API",
+    ],
+    images: [
+      { src: RoastMyResumeThumb, caption: "Resume Roaster AI — Brutal Resume Evaluator" },
+      { src: RoastMyResumeRoasterPage, caption: "Roaster Page — Upload and Get Roasted" },
+      { src: RoastMyResumeHallOfShame, caption: "Hall of Shame — Leaderboard" },
+      { src: RoastMyResumeAdmin, caption: "Admin Dashboard" },
+      { src: RoastMyResumeLogin, caption: "Login" },
+      { src: RoastMyResumeRegister, caption: "Register" },
+    ],
+    github: "https://github.com/CJcode6754/roast-my-resume",
+    live: "https://roast-my-resume-teal.vercel.app",
+    category: "Full Stack",
+    gradient: "from-orange-500 to-red-600",
+    duration: "Active",
+    status: "Completed",
+  },
   {
     id: "hiresight",
     title: "HireSight",
